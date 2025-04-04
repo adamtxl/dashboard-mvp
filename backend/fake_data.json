@@ -1,0 +1,26 @@
+[
+    {"location": "Burger Barn", "sensor_id": "temp-001", "type": "temperature", "timestamp": "2025-04-04T10:00:00Z", "value": 71},
+    {"location": "Burger Barn", "sensor_id": "hum-001", "type": "humidity", "timestamp": "2025-04-04T10:00:00Z", "value": 41},
+    {"location": "Burger Barn", "sensor_id": "pres-001", "type": "pressure", "timestamp": "2025-04-04T10:00:00Z", "value": 101.3},
+  
+    {"location": "Burger Barn", "sensor_id": "temp-001", "type": "temperature", "timestamp": "2025-04-04T10:10:00Z", "value": 72},
+    {"location": "Burger Barn", "sensor_id": "hum-001", "type": "humidity", "timestamp": "2025-04-04T10:10:00Z", "value": 42},
+    {"location": "Burger Barn", "sensor_id": "pres-001", "type": "pressure", "timestamp": "2025-04-04T10:10:00Z", "value": 101.2},
+  
+    {"location": "Burger Barn", "sensor_id": "temp-001", "type": "temperature", "timestamp": "2025-04-04T10:20:00Z", "value": 73},
+    {"location": "Burger Barn", "sensor_id": "hum-001", "type": "humidity", "timestamp": "2025-04-04T10:20:00Z", "value": 43},
+    {"location": "Burger Barn", "sensor_id": "pres-001", "type": "pressure", "timestamp": "2025-04-04T10:20:00Z", "value": 101.1},
+  
+    {"location": "Taco Tower", "sensor_id": "temp-002", "type": "temperature", "timestamp": "2025-04-04T10:00:00Z", "value": 67},
+    {"location": "Taco Tower", "sensor_id": "hum-002", "type": "humidity", "timestamp": "2025-04-04T10:00:00Z", "value": 35},
+    {"location": "Taco Tower", "sensor_id": "pres-002", "type": "pressure", "timestamp": "2025-04-04T10:00:00Z", "value": 100.8},
+  
+    {"location": "Taco Tower", "sensor_id": "temp-002", "type": "temperature", "timestamp": "2025-04-04T10:10:00Z", "value": 68},
+    {"location": "Taco Tower", "sensor_id": "hum-002", "type": "humidity", "timestamp": "2025-04-04T10:10:00Z", "value": 36},
+    {"location": "Taco Tower", "sensor_id": "pres-002", "type": "pressure", "timestamp": "2025-04-04T10:10:00Z", "value": 100.9},
+  
+    {"location": "Taco Tower", "sensor_id": "temp-002", "type": "temperature", "timestamp": "2025-04-04T10:20:00Z", "value": 69},
+    {"location": "Taco Tower", "sensor_id": "hum-002", "type": "humidity", "timestamp": "2025-04-04T10:20:00Z", "value": 37},
+    {"location": "Taco Tower", "sensor_id": "pres-002", "type": "pressure", "timestamp": "2025-04-04T10:20:00Z", "value": 101.0}
+  ]
+  
