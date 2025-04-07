@@ -3,6 +3,7 @@ import axios from 'axios'
 import SensorChart from './components/SensorChart'
 import SensorSelector from './components/SensorSelector'
 
+
 function App() {
   const [rawData, setRawData] = useState([])
   const [locations, setLocations] = useState([])
@@ -24,6 +25,7 @@ function App() {
       .catch(err => console.error("Failed to fetch data:", err))
   }, [])
 
+  
   const handleSensorAdd = (sensor) => {
     setSelectedSensors(prev => [...prev, sensor])
   }
@@ -34,6 +36,8 @@ function App() {
       [key]: { ...prev[key], ...config }
     }))
   }
+  console.log("🧪 selectedSensors:", selectedSensors)
+
 
   return (
     <div style={{ padding: '2rem' }}>

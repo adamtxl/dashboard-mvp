@@ -1,14 +1,20 @@
-// src/components/SensorChart.jsx
-
 import { useState, useMemo } from 'react'
+import { Line } from 'react-chartjs-2'
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
-} from 'recharts'
+  Chart as ChartJS,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend
+} from 'chart.js'
+
+ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend)
 
 function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }) {
   const { location, type } = sensor
   const [showConfig, setShowConfig] = useState(false)
-
   const key = `${location}|${type}`
 
   const filteredData = useMemo(() => {
@@ -21,16 +27,57 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
 
     const ranged = timeRange === "all" ? base : base.filter(d => new Date(d.timestamp) >= cutoff)
 
-    return ranged.map(d => ({
-      ...d,
-      alert: (alertConfig.low && d.value < alertConfig.low) ||
-             (alertConfig.high && d.value > alertConfig.high)
-    }))
+    return ranged.map(d => {
+      const isAlert = (alertConfig.low && d.value < alertConfig.low) ||
+                      (alertConfig.high && d.value > alertConfig.high)
+      return {
+        ...d,
+        alert: isAlert
+      }
+    })
   }, [rawData, location, type, alertConfig, timeRange])
 
   const updateField = (field, value) => {
     onConfigChange({ [field]: value })
   }
+
+  const chartData = {
+    labels: filteredData.map(d => d.timestamp),
+    datasets: [
+      {
+        label: `${type}`,
+        data: filteredData.map(d => d.value),
+        borderColor: '#8884d8',
+        backgroundColor: '#8884d8',
+        tension: 0.4
+      },
+      {
+        label: 'Alert',
+        data: filteredData.map(d => d.alert ? d.value : null),
+        borderColor: 'red',
+        backgroundColor: 'red',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.4,
+        hidden: !filteredData.some(d => d.alert)
+      }
+    ]
+  }
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top' },
+      tooltip: { mode: 'index', intersect: false }
+    },
+    scales: {
+      y: { beginAtZero: true }
+    }
+  }
+
+  console.log("🔍 Chart data for", location, type, filteredData)
+
 
   return (
     <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #ddd' }}>
@@ -73,19 +120,13 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         </div>
       )}
 
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={filteredData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="timestamp" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="value" stroke="#8884d8" name={type} />
-          {(alertConfig.low || alertConfig.high) && (
-            <Line type="monotone" dataKey={d => d.alert ? d.value : null} stroke="red" dot />
-          )}
-        </LineChart>
-      </ResponsiveContainer>
+      {filteredData.length > 0 ? (
+        <div style={{ height: 300 }}>
+          <Line data={chartData} options={chartOptions} />
+        </div>
+      ) : (
+        <p>No data found for {location} – {type} in selected timeframe.</p>
+      )}
     </div>
   )
 }
