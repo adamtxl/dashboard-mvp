@@ -13,12 +13,16 @@ import {
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend)
 
 function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }) {
-  const { location, type } = sensor
+  const { facility, sensor_name, type } = sensor
   const [showConfig, setShowConfig] = useState(false)
-  const key = `${location}|${type}`
+  const key = `${facility}|${sensor_name}|${type}`
 
   const filteredData = useMemo(() => {
-    const base = rawData.filter(d => d.location === location && d.type === type)
+    const base = rawData.filter(d =>
+      d.facility === facility &&
+      d.sensor_name === sensor_name &&
+      d.type === type
+    )
 
     const cutoff = new Date()
     if (timeRange === "1h") cutoff.setHours(cutoff.getHours() - 1)
@@ -35,7 +39,7 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         alert: isAlert
       }
     })
-  }, [rawData, location, type, alertConfig, timeRange])
+  }, [rawData, facility, type, sensor_name, alertConfig, timeRange])
 
   const updateField = (field, value) => {
     onConfigChange({ [field]: value })
@@ -56,10 +60,11 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         data: filteredData.map(d => d.alert ? d.value : null),
         borderColor: 'red',
         backgroundColor: 'red',
-        pointRadius: 5,
-        pointHoverRadius: 7,
+        pointRadius: 16,
+        pointHoverRadius: 10,
+        pointStyle: 'star',
         tension: 0.4,
-        hidden: !filteredData.some(d => d.alert)
+        showLine: false
       }
     ]
   }
@@ -76,12 +81,17 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
     }
   }
 
-  console.log("🔍 Chart data for", location, type, filteredData)
-
-
   return (
-    <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #ddd' }}>
-      <h3>{location} – {type}</h3>
+    <div
+      style={{
+        marginBottom: '2rem',
+        padding: '1rem',
+        border: '1px solid #ddd',
+        width: '100%',
+        boxSizing: 'border-box'
+      }}
+    >
+      <h3>{facility} – {sensor_name} ({type})</h3>
 
       <button onClick={() => setShowConfig(!showConfig)}>⚙️ Configure Alerts</button>
 
@@ -116,16 +126,16 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
 
       {filteredData.some(d => d.alert) && (
         <div style={{ marginTop: '1rem', backgroundColor: 'red', color: 'white', padding: '0.5rem' }}>
-          🚨 ALERT: {type} value out of range at {location}
+          🚨 ALERT: {type} value out of range at {facility}
         </div>
       )}
 
       {filteredData.length > 0 ? (
-        <div style={{ height: 300 }}>
+        <div style={{ height: 300, width: '100%' }}>
           <Line data={chartData} options={chartOptions} />
         </div>
       ) : (
-        <p>No data found for {location} – {type} in selected timeframe.</p>
+        <p>No data found for {facility} – {type} in selected timeframe.</p>
       )}
     </div>
   )

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import SensorChart from '../components/SensorChart'
 import SensorSelector from '../components/SensorSelector'
-
+import './Home.css'
 
 function Home() {
   const [rawData, setRawData] = useState([])
@@ -11,13 +11,15 @@ function Home() {
   const [selectedSensors, setSelectedSensors] = useState([])
   const [alertConfigs, setAlertConfigs] = useState({})
   const [timeRange, setTimeRange] = useState("7d")
+  const sensorNames = [...new Set(rawData.map(entry => entry.sensor_name))]
+
 
   useEffect(() => {
     axios.get('http://localhost:8000/data')
       .then(res => {
         setRawData(res.data)
 
-        const locs = [...new Set(res.data.map(entry => entry.location))]
+        const locs = [...new Set(res.data.map(entry => entry.facility))]
         const types = [...new Set(res.data.map(entry => entry.type))]
         setLocations(locs)
         setSensorTypes(types)
@@ -25,7 +27,6 @@ function Home() {
       .catch(err => console.error("Failed to fetch data:", err))
   }, [])
 
-  
   const handleSensorAdd = (sensor) => {
     setSelectedSensors(prev => [...prev, sensor])
   }
@@ -36,8 +37,6 @@ function Home() {
       [key]: { ...prev[key], ...config }
     }))
   }
-  console.log("🧪 selectedSensors:", selectedSensors)
-
 
   return (
     <div style={{ padding: '2rem' }}>
@@ -55,23 +54,29 @@ function Home() {
       </div>
 
       <SensorSelector
-        locations={locations}
-        sensorTypes={sensorTypes}
-        onAddSensor={handleSensorAdd}
-      />
+  locations={locations}
+  sensorTypes={sensorTypes}
+  sensorNames={sensorNames}
+  onAddSensor={handleSensorAdd}
+/>
 
-      <div>
+
+      <div className="sensor-grid">
         {selectedSensors.map((sensor, index) => (
-          <SensorChart
-            key={`${sensor.location}|${sensor.type}|${index}`}
-            sensor={sensor}
-            rawData={rawData}
-            timeRange={timeRange}
-            alertConfig={alertConfigs[`${sensor.location}|${sensor.type}`] || {}}
-            onConfigChange={(config) =>
-              handleAlertConfigUpdate(`${sensor.location}|${sensor.type}`, config)
-            }
-          />
+          <div
+            key={`${sensor.facility}|${sensor.sensor_name}|${sensor.type}|${index}`}
+            className="sensor-card"
+          >
+            <SensorChart
+              sensor={sensor}
+              rawData={rawData}
+              timeRange={timeRange}
+              alertConfig={alertConfigs[`${sensor.facility}|${sensor.type}`] || {}}
+              onConfigChange={(config) =>
+                handleAlertConfigUpdate(`${sensor.facility}|${sensor.type}`, config)
+              }
+            />
+          </div>
         ))}
       </div>
     </div>
