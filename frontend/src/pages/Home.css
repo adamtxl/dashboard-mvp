@@ -1,0 +1,18 @@
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .sensor-card {
+    width: 100%;
+    color: black;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    outline: 2px dashed magenta;
+  }
