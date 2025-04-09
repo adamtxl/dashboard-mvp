@@ -12,6 +12,16 @@ function Home() {
   const [alertConfigs, setAlertConfigs] = useState({})
   const [timeRange, setTimeRange] = useState("7d")
   const sensorNames = [...new Set(rawData.map(entry => entry.sensor_name))]
+  const handleSensorRemove = (sensorToRemove) => {
+    setSelectedSensors(prev =>
+      prev.filter(sensor =>
+        !(sensor.facility === sensorToRemove.facility &&
+          sensor.sensor_name === sensorToRemove.sensor_name &&
+          sensor.type === sensorToRemove.type)
+      )
+    )
+  }
+  
 
 
   useEffect(() => {
@@ -61,24 +71,41 @@ function Home() {
 />
 
 
-      <div className="sensor-grid">
-        {selectedSensors.map((sensor, index) => (
-          <div
-            key={`${sensor.facility}|${sensor.sensor_name}|${sensor.type}|${index}`}
-            className="sensor-card"
-          >
-            <SensorChart
-              sensor={sensor}
-              rawData={rawData}
-              timeRange={timeRange}
-              alertConfig={alertConfigs[`${sensor.facility}|${sensor.type}`] || {}}
-              onConfigChange={(config) =>
-                handleAlertConfigUpdate(`${sensor.facility}|${sensor.type}`, config)
-              }
-            />
-          </div>
-        ))}
-      </div>
+<div className="sensor-grid">
+  {selectedSensors.map((sensor, index) => (
+    <div
+      key={`${sensor.facility}|${sensor.sensor_name}|${sensor.type}|${index}`}
+      className="sensor-card"
+    >
+      <button
+        onClick={() => handleSensorRemove(sensor)}
+        style={{
+          float: 'right',
+          backgroundColor: 'transparent',
+          border: 'none',
+          fontSize: '1.2rem',
+          cursor: 'pointer',
+          color: '#888'
+        }}
+        title="Remove Widget"
+      >
+        ❌
+      </button>
+
+      <SensorChart
+        sensor={sensor}
+        rawData={rawData}
+        timeRange={timeRange}
+        alertConfig={alertConfigs[`${sensor.facility}|${sensor.type}`] || {}}
+        onConfigChange={(config) =>
+          handleAlertConfigUpdate(`${sensor.facility}|${sensor.type}`, config)
+        }
+      />
+    </div>
+  ))}
+</div>
+
+
     </div>
   )
 }
