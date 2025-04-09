@@ -5,8 +5,8 @@ import Locations from './pages/Locations'
 function App() {
   return (
     <Router>
-      <div style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
-        <h1>Sensor Dashboard</h1>
+<div style={{ padding: '0.5rem 1rem', borderBottom: '1px solid #ccc' }}>
+<h1>Sensor Dashboard</h1>
         <nav style={{ marginBottom: '1rem' }}>
           <Link to="/">🏠 Home</Link> | <Link to="/locations">📍 Locations</Link>
         </nav>

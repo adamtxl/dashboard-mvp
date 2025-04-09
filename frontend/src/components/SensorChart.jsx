@@ -96,33 +96,39 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
       <button onClick={() => setShowConfig(!showConfig)}>⚙️ Configure Alerts</button>
 
       {showConfig && (
-        <div style={{ marginTop: '1rem' }}>
-          <label>
-            Low Threshold:
-            <input
-              type="number"
-              value={alertConfig.low || ''}
-              onChange={e => updateField('low', Number(e.target.value))}
-            />
-          </label><br />
-          <label>
-            High Threshold:
-            <input
-              type="number"
-              value={alertConfig.high || ''}
-              onChange={e => updateField('high', Number(e.target.value))}
-            />
-          </label><br />
-          <label>
-            Alert Email:
-            <input
-              type="email"
-              value={alertConfig.email || ''}
-              onChange={e => updateField('email', e.target.value)}
-            />
-          </label>
-        </div>
-      )}
+  <div style={{ marginTop: '1rem' }}>
+    <label>
+      Low Threshold:
+      <input
+        type="number"
+        value={alertConfig.low || ''}
+        onChange={e => updateField('low', Number(e.target.value))}
+      />
+    </label><br />
+    <label>
+      High Threshold:
+      <input
+        type="number"
+        value={alertConfig.high || ''}
+        onChange={e => updateField('high', Number(e.target.value))}
+      />
+    </label><br />
+    <label>
+      Alert Email:
+      <input
+        type="email"
+        value={alertConfig.email || ''}
+        onChange={e => updateField('email', e.target.value)}
+      />
+    </label><br />
+    <button
+      onClick={() => setShowConfig(false)}
+      style={{ marginTop: '0.5rem' }}
+    >
+      💾 Save & Close
+    </button>
+  </div>
+)}
 
       {filteredData.some(d => d.alert) && (
         <div style={{ marginTop: '1rem', backgroundColor: 'red', color: 'white', padding: '0.5rem' }}>

@@ -39,8 +39,8 @@ function Home() {
   }
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Sensor Dashboard</h1>
+    <div style={{ padding: '.5rem' }}>
+
 
       <div style={{ marginBottom: '1rem' }}>
         <label>Time Range:&nbsp;
