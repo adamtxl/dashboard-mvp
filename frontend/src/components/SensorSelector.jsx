@@ -1,9 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 
 function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
   const [location, setLocation] = useState('')
   const [type, setType] = useState('')
   const [sensorName, setSensorName] = useState('')
+
+  // Dynamically filter sensor names based on selected location + type
+  const filteredSensorNames = useMemo(() => {
+    return sensorNames.filter(nameObj =>
+      (!location || nameObj.facility === location) &&
+      (!type || nameObj.type === type)
+    ).map(obj => obj.sensor_name)
+  }, [sensorNames, location, type])
 
   useEffect(() => {
     if (locations.length > 0 && !location) {
@@ -12,10 +20,13 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
     if (sensorTypes.length > 0 && !type) {
       setType(sensorTypes[0])
     }
-    if (sensorNames.length > 0 && !sensorName) {
-      setSensorName(sensorNames[0])
+  }, [locations, sensorTypes])
+
+  useEffect(() => {
+    if (filteredSensorNames.length > 0 && !sensorName) {
+      setSensorName(filteredSensorNames[0])
     }
-  }, [locations, sensorTypes, sensorNames])
+  }, [filteredSensorNames])
 
   const handleAdd = () => {
     if (location && type && sensorName) {
@@ -35,7 +46,7 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
 
       <label>
         Facility:&nbsp;
-        <select value={location} onChange={e => setLocation(e.target.value)}>
+        <select value={location} onChange={e => { setLocation(e.target.value); setSensorName('') }}>
           {locations.map(loc => (
             <option key={loc} value={loc}>{loc}</option>
           ))}
@@ -46,7 +57,7 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
 
       <label>
         Sensor Type:&nbsp;
-        <select value={type} onChange={e => setType(e.target.value)}>
+        <select value={type} onChange={e => { setType(e.target.value); setSensorName('') }}>
           {sensorTypes.map(t => (
             <option key={t} value={t}>{t}</option>
           ))}
@@ -58,7 +69,7 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
       <label>
         Sensor Name:&nbsp;
         <select value={sensorName} onChange={e => setSensorName(e.target.value)}>
-          {sensorNames.map(name => (
+          {filteredSensorNames.map(name => (
             <option key={name} value={name}>{name}</option>
           ))}
         </select>
@@ -66,9 +77,9 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
 
       &nbsp;&nbsp;
 
-      <button onClick={handleAdd}>➕ Add Sensor</button>
+      <button onClick={handleAdd}>➕ Add Widget</button>
     </div>
   )
 }
 
-export default SensorSelector
+export default SensorSelector;

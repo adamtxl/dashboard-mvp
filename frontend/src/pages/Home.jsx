@@ -11,8 +11,14 @@ function Home() {
   const [selectedSensors, setSelectedSensors] = useState([])
   const [alertConfigs, setAlertConfigs] = useState({})
   const [timeRange, setTimeRange] = useState("7d")
-  const sensorNames = [...new Set(rawData.map(entry => entry.sensor_name))]
-  const handleSensorRemove = (sensorToRemove) => {
+  const sensorNames = [...new Set(
+    rawData.map(entry => ({
+      sensor_name: entry.sensor_name,
+      facility: entry.facility,
+      type: entry.type
+    }))
+  )];
+    const handleSensorRemove = (sensorToRemove) => {
     setSelectedSensors(prev =>
       prev.filter(sensor =>
         !(sensor.facility === sensorToRemove.facility &&
