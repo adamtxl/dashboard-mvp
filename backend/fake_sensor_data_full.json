@@ -1,0 +1,5042 @@
+[
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-temperature",
+    "type": "temperature",
+    "value": 265.89,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-temperature",
+    "type": "temperature",
+    "value": 153.51,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-temperature",
+    "type": "temperature",
+    "value": 388.29,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-temperature",
+    "type": "temperature",
+    "value": 99.71,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-temperature",
+    "type": "temperature",
+    "value": 310.29,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-temperature",
+    "type": "temperature",
+    "value": 69.95,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-temperature",
+    "type": "temperature",
+    "value": 235.45,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-humidity",
+    "type": "humidity",
+    "value": 41.82,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-humidity",
+    "type": "humidity",
+    "value": 52.37,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-humidity",
+    "type": "humidity",
+    "value": 54.03,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-humidity",
+    "type": "humidity",
+    "value": 53.92,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-humidity",
+    "type": "humidity",
+    "value": 35.91,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-humidity",
+    "type": "humidity",
+    "value": 39.52,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-humidity",
+    "type": "humidity",
+    "value": 36.38,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-pressure",
+    "type": "pressure",
+    "value": 10.17,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-pressure",
+    "type": "pressure",
+    "value": 9.95,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-pressure",
+    "type": "pressure",
+    "value": 9.71,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-pressure",
+    "type": "pressure",
+    "value": 10.17,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-pressure",
+    "type": "pressure",
+    "value": 9.79,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-pressure",
+    "type": "pressure",
+    "value": 9.96,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-pressure",
+    "type": "pressure",
+    "value": 10.48,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-amperage",
+    "type": "amperage",
+    "value": 29.75,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-amperage",
+    "type": "amperage",
+    "value": 23.3,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-amperage",
+    "type": "amperage",
+    "value": 29.76,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-amperage",
+    "type": "amperage",
+    "value": 24.36,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-amperage",
+    "type": "amperage",
+    "value": 2.26,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-amperage",
+    "type": "amperage",
+    "value": 3.83,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-amperage",
+    "type": "amperage",
+    "value": 26.04,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-voltage",
+    "type": "voltage",
+    "value": 208.89,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-voltage",
+    "type": "voltage",
+    "value": 182.22,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-voltage",
+    "type": "voltage",
+    "value": 130.61,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-voltage",
+    "type": "voltage",
+    "value": 193.61,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-voltage",
+    "type": "voltage",
+    "value": 177.2,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-voltage",
+    "type": "voltage",
+    "value": 155.35,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-voltage",
+    "type": "voltage",
+    "value": 140.02,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-co2",
+    "type": "co2",
+    "value": 500.97,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-co2",
+    "type": "co2",
+    "value": 790.65,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-co2",
+    "type": "co2",
+    "value": 599.29,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-co2",
+    "type": "co2",
+    "value": 498.8,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-co2",
+    "type": "co2",
+    "value": 471.79,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-co2",
+    "type": "co2",
+    "value": 902.8,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-co2",
+    "type": "co2",
+    "value": 490.19,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-vibration",
+    "type": "vibration",
+    "value": 0.34,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-vibration",
+    "type": "vibration",
+    "value": 2.97,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-vibration",
+    "type": "vibration",
+    "value": 1.73,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-vibration",
+    "type": "vibration",
+    "value": 1.25,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-vibration",
+    "type": "vibration",
+    "value": 0.77,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-vibration",
+    "type": "vibration",
+    "value": 0.59,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-vibration",
+    "type": "vibration",
+    "value": 2.95,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-light",
+    "type": "light",
+    "value": 150.52,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-light",
+    "type": "light",
+    "value": 968.98,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-light",
+    "type": "light",
+    "value": 613.94,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-light",
+    "type": "light",
+    "value": 288.18,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-light",
+    "type": "light",
+    "value": 759.5,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-light",
+    "type": "light",
+    "value": 240.37,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-light",
+    "type": "light",
+    "value": 550.45,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-sound",
+    "type": "sound",
+    "value": 35.59,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-sound",
+    "type": "sound",
+    "value": 43.15,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-sound",
+    "type": "sound",
+    "value": 65.97,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-sound",
+    "type": "sound",
+    "value": 64.96,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-sound",
+    "type": "sound",
+    "value": 34.09,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-sound",
+    "type": "sound",
+    "value": 64.36,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Kitchen - Fryer",
+    "sensor_id": "bu-kitchen-sound",
+    "type": "sound",
+    "value": 30.71,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-temperature",
+    "type": "temperature",
+    "value": 331.24,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-temperature",
+    "type": "temperature",
+    "value": 360.8,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-temperature",
+    "type": "temperature",
+    "value": 351.78,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-temperature",
+    "type": "temperature",
+    "value": 66.93,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-temperature",
+    "type": "temperature",
+    "value": 63.27,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-temperature",
+    "type": "temperature",
+    "value": 94.61,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-temperature",
+    "type": "temperature",
+    "value": 231.36,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-humidity",
+    "type": "humidity",
+    "value": 48.26,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-humidity",
+    "type": "humidity",
+    "value": 32.52,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-humidity",
+    "type": "humidity",
+    "value": 50.83,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-humidity",
+    "type": "humidity",
+    "value": 50.75,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-humidity",
+    "type": "humidity",
+    "value": 54.36,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-humidity",
+    "type": "humidity",
+    "value": 36.41,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-humidity",
+    "type": "humidity",
+    "value": 41.49,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-pressure",
+    "type": "pressure",
+    "value": 10.47,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-pressure",
+    "type": "pressure",
+    "value": 9.84,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-pressure",
+    "type": "pressure",
+    "value": 9.99,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-pressure",
+    "type": "pressure",
+    "value": 10.11,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-pressure",
+    "type": "pressure",
+    "value": 10.06,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-pressure",
+    "type": "pressure",
+    "value": 10.36,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-pressure",
+    "type": "pressure",
+    "value": 10.27,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-amperage",
+    "type": "amperage",
+    "value": 4.21,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-amperage",
+    "type": "amperage",
+    "value": 21.37,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-amperage",
+    "type": "amperage",
+    "value": 16.27,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-amperage",
+    "type": "amperage",
+    "value": 5.35,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-amperage",
+    "type": "amperage",
+    "value": 7.12,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-amperage",
+    "type": "amperage",
+    "value": 25.15,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-amperage",
+    "type": "amperage",
+    "value": 11.26,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-voltage",
+    "type": "voltage",
+    "value": 128.97,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-voltage",
+    "type": "voltage",
+    "value": 182.58,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-voltage",
+    "type": "voltage",
+    "value": 118.88,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-voltage",
+    "type": "voltage",
+    "value": 160.13,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-voltage",
+    "type": "voltage",
+    "value": 216.5,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-voltage",
+    "type": "voltage",
+    "value": 200.92,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-voltage",
+    "type": "voltage",
+    "value": 191.38,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-co2",
+    "type": "co2",
+    "value": 627.73,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-co2",
+    "type": "co2",
+    "value": 433.42,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-co2",
+    "type": "co2",
+    "value": 564.8,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-co2",
+    "type": "co2",
+    "value": 662.33,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-co2",
+    "type": "co2",
+    "value": 642.73,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-co2",
+    "type": "co2",
+    "value": 998.43,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-co2",
+    "type": "co2",
+    "value": 430.77,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-vibration",
+    "type": "vibration",
+    "value": 0.47,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-vibration",
+    "type": "vibration",
+    "value": 1.02,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-vibration",
+    "type": "vibration",
+    "value": 2.15,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-vibration",
+    "type": "vibration",
+    "value": 0.72,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-vibration",
+    "type": "vibration",
+    "value": 1.03,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-vibration",
+    "type": "vibration",
+    "value": 0.26,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-vibration",
+    "type": "vibration",
+    "value": 1.65,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-light",
+    "type": "light",
+    "value": 272.54,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-light",
+    "type": "light",
+    "value": 465.85,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-light",
+    "type": "light",
+    "value": 661.97,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-light",
+    "type": "light",
+    "value": 419.99,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-light",
+    "type": "light",
+    "value": 527.2,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-light",
+    "type": "light",
+    "value": 384.04,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-light",
+    "type": "light",
+    "value": 838.22,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-sound",
+    "type": "sound",
+    "value": 32.4,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-sound",
+    "type": "sound",
+    "value": 85.3,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-sound",
+    "type": "sound",
+    "value": 77.98,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-sound",
+    "type": "sound",
+    "value": 71.86,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-sound",
+    "type": "sound",
+    "value": 34.61,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-sound",
+    "type": "sound",
+    "value": 55.15,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Dining Room - Exit",
+    "sensor_id": "bu-dining-sound",
+    "type": "sound",
+    "value": 38.55,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-temperature",
+    "type": "temperature",
+    "value": 181.41,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-temperature",
+    "type": "temperature",
+    "value": 140.07,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-temperature",
+    "type": "temperature",
+    "value": 154.91,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-temperature",
+    "type": "temperature",
+    "value": 321.7,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-temperature",
+    "type": "temperature",
+    "value": 383.64,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-temperature",
+    "type": "temperature",
+    "value": 87.51,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-temperature",
+    "type": "temperature",
+    "value": 388.14,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-humidity",
+    "type": "humidity",
+    "value": 35.0,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-humidity",
+    "type": "humidity",
+    "value": 32.54,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-humidity",
+    "type": "humidity",
+    "value": 33.52,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-humidity",
+    "type": "humidity",
+    "value": 55.94,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-humidity",
+    "type": "humidity",
+    "value": 55.72,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-humidity",
+    "type": "humidity",
+    "value": 41.66,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-humidity",
+    "type": "humidity",
+    "value": 38.6,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-pressure",
+    "type": "pressure",
+    "value": 9.7,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-pressure",
+    "type": "pressure",
+    "value": 10.35,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-pressure",
+    "type": "pressure",
+    "value": 9.59,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-pressure",
+    "type": "pressure",
+    "value": 10.46,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-pressure",
+    "type": "pressure",
+    "value": 10.15,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-pressure",
+    "type": "pressure",
+    "value": 9.85,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-pressure",
+    "type": "pressure",
+    "value": 9.61,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-amperage",
+    "type": "amperage",
+    "value": 11.98,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-amperage",
+    "type": "amperage",
+    "value": 19.83,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-amperage",
+    "type": "amperage",
+    "value": 3.77,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-amperage",
+    "type": "amperage",
+    "value": 20.68,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-amperage",
+    "type": "amperage",
+    "value": 19.56,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-amperage",
+    "type": "amperage",
+    "value": 9.5,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-amperage",
+    "type": "amperage",
+    "value": 24.64,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-voltage",
+    "type": "voltage",
+    "value": 171.4,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-voltage",
+    "type": "voltage",
+    "value": 168.73,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-voltage",
+    "type": "voltage",
+    "value": 232.28,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-voltage",
+    "type": "voltage",
+    "value": 125.39,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-voltage",
+    "type": "voltage",
+    "value": 169.03,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-voltage",
+    "type": "voltage",
+    "value": 206.74,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-voltage",
+    "type": "voltage",
+    "value": 201.55,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-co2",
+    "type": "co2",
+    "value": 422.23,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-co2",
+    "type": "co2",
+    "value": 995.91,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-co2",
+    "type": "co2",
+    "value": 467.53,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-co2",
+    "type": "co2",
+    "value": 771.25,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-co2",
+    "type": "co2",
+    "value": 571.83,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-co2",
+    "type": "co2",
+    "value": 843.18,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-co2",
+    "type": "co2",
+    "value": 600.78,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-vibration",
+    "type": "vibration",
+    "value": 0.78,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-vibration",
+    "type": "vibration",
+    "value": 2.68,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-vibration",
+    "type": "vibration",
+    "value": 0.46,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-vibration",
+    "type": "vibration",
+    "value": 1.41,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-vibration",
+    "type": "vibration",
+    "value": 0.47,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-vibration",
+    "type": "vibration",
+    "value": 2.13,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-vibration",
+    "type": "vibration",
+    "value": 1.46,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-light",
+    "type": "light",
+    "value": 400.11,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-light",
+    "type": "light",
+    "value": 903.27,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-light",
+    "type": "light",
+    "value": 390.08,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-light",
+    "type": "light",
+    "value": 772.94,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-light",
+    "type": "light",
+    "value": 312.24,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-light",
+    "type": "light",
+    "value": 147.61,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-light",
+    "type": "light",
+    "value": 829.95,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-sound",
+    "type": "sound",
+    "value": 37.2,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-sound",
+    "type": "sound",
+    "value": 63.03,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-sound",
+    "type": "sound",
+    "value": 46.79,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-sound",
+    "type": "sound",
+    "value": 31.54,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-sound",
+    "type": "sound",
+    "value": 61.82,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-sound",
+    "type": "sound",
+    "value": 89.37,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Freezer - North",
+    "sensor_id": "bu-freezer-sound",
+    "type": "sound",
+    "value": 73.22,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-temperature",
+    "type": "temperature",
+    "value": 191.24,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-temperature",
+    "type": "temperature",
+    "value": 130.45,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-temperature",
+    "type": "temperature",
+    "value": 383.25,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-temperature",
+    "type": "temperature",
+    "value": 310.06,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-temperature",
+    "type": "temperature",
+    "value": 131.86,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-temperature",
+    "type": "temperature",
+    "value": 114.76,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-temperature",
+    "type": "temperature",
+    "value": 254.28,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-humidity",
+    "type": "humidity",
+    "value": 53.63,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-humidity",
+    "type": "humidity",
+    "value": 53.02,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-humidity",
+    "type": "humidity",
+    "value": 38.66,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-humidity",
+    "type": "humidity",
+    "value": 43.26,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-humidity",
+    "type": "humidity",
+    "value": 44.3,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-humidity",
+    "type": "humidity",
+    "value": 34.71,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-humidity",
+    "type": "humidity",
+    "value": 48.15,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-pressure",
+    "type": "pressure",
+    "value": 9.77,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-pressure",
+    "type": "pressure",
+    "value": 10.42,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-pressure",
+    "type": "pressure",
+    "value": 9.74,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-pressure",
+    "type": "pressure",
+    "value": 9.52,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-pressure",
+    "type": "pressure",
+    "value": 10.31,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-pressure",
+    "type": "pressure",
+    "value": 9.69,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-pressure",
+    "type": "pressure",
+    "value": 10.06,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-amperage",
+    "type": "amperage",
+    "value": 28.62,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-amperage",
+    "type": "amperage",
+    "value": 16.66,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-amperage",
+    "type": "amperage",
+    "value": 15.73,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-amperage",
+    "type": "amperage",
+    "value": 18.48,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-amperage",
+    "type": "amperage",
+    "value": 6.33,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-amperage",
+    "type": "amperage",
+    "value": 23.01,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-amperage",
+    "type": "amperage",
+    "value": 27.66,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-voltage",
+    "type": "voltage",
+    "value": 196.41,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-voltage",
+    "type": "voltage",
+    "value": 176.49,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-voltage",
+    "type": "voltage",
+    "value": 139.7,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-voltage",
+    "type": "voltage",
+    "value": 125.55,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-voltage",
+    "type": "voltage",
+    "value": 195.0,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-voltage",
+    "type": "voltage",
+    "value": 228.78,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-voltage",
+    "type": "voltage",
+    "value": 132.72,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-co2",
+    "type": "co2",
+    "value": 415.17,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-co2",
+    "type": "co2",
+    "value": 502.1,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-co2",
+    "type": "co2",
+    "value": 456.24,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-co2",
+    "type": "co2",
+    "value": 422.01,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-co2",
+    "type": "co2",
+    "value": 679.18,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-co2",
+    "type": "co2",
+    "value": 851.41,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-co2",
+    "type": "co2",
+    "value": 345.65,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-vibration",
+    "type": "vibration",
+    "value": 1.09,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-vibration",
+    "type": "vibration",
+    "value": 2.85,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-vibration",
+    "type": "vibration",
+    "value": 1.53,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-vibration",
+    "type": "vibration",
+    "value": 0.36,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-vibration",
+    "type": "vibration",
+    "value": 1.27,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-vibration",
+    "type": "vibration",
+    "value": 0.9,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-vibration",
+    "type": "vibration",
+    "value": 2.95,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-light",
+    "type": "light",
+    "value": 645.48,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-light",
+    "type": "light",
+    "value": 302.32,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-light",
+    "type": "light",
+    "value": 644.87,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-light",
+    "type": "light",
+    "value": 455.69,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-light",
+    "type": "light",
+    "value": 162.3,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-light",
+    "type": "light",
+    "value": 125.81,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-light",
+    "type": "light",
+    "value": 670.78,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-sound",
+    "type": "sound",
+    "value": 53.0,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-sound",
+    "type": "sound",
+    "value": 35.75,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-sound",
+    "type": "sound",
+    "value": 56.04,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-sound",
+    "type": "sound",
+    "value": 63.76,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-sound",
+    "type": "sound",
+    "value": 75.57,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-sound",
+    "type": "sound",
+    "value": 53.98,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Kitchen - Grill",
+    "sensor_id": "ta-kitchen-sound",
+    "type": "sound",
+    "value": 40.02,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-temperature",
+    "type": "temperature",
+    "value": 103.43,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-temperature",
+    "type": "temperature",
+    "value": 347.85,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-temperature",
+    "type": "temperature",
+    "value": 276.53,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-temperature",
+    "type": "temperature",
+    "value": 39.11,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-temperature",
+    "type": "temperature",
+    "value": 71.96,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-temperature",
+    "type": "temperature",
+    "value": 372.94,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-temperature",
+    "type": "temperature",
+    "value": 116.84,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-humidity",
+    "type": "humidity",
+    "value": 31.8,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-humidity",
+    "type": "humidity",
+    "value": 34.23,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-humidity",
+    "type": "humidity",
+    "value": 45.03,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-humidity",
+    "type": "humidity",
+    "value": 53.25,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-humidity",
+    "type": "humidity",
+    "value": 50.01,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-humidity",
+    "type": "humidity",
+    "value": 50.02,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-humidity",
+    "type": "humidity",
+    "value": 51.61,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-pressure",
+    "type": "pressure",
+    "value": 10.11,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-pressure",
+    "type": "pressure",
+    "value": 9.92,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-pressure",
+    "type": "pressure",
+    "value": 9.65,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-pressure",
+    "type": "pressure",
+    "value": 10.13,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-pressure",
+    "type": "pressure",
+    "value": 10.17,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-pressure",
+    "type": "pressure",
+    "value": 9.82,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-pressure",
+    "type": "pressure",
+    "value": 10.19,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-amperage",
+    "type": "amperage",
+    "value": 16.31,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-amperage",
+    "type": "amperage",
+    "value": 3.75,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-amperage",
+    "type": "amperage",
+    "value": 9.33,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-amperage",
+    "type": "amperage",
+    "value": 1.08,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-amperage",
+    "type": "amperage",
+    "value": 7.39,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-amperage",
+    "type": "amperage",
+    "value": 0.65,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-amperage",
+    "type": "amperage",
+    "value": 26.37,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-voltage",
+    "type": "voltage",
+    "value": 150.73,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-voltage",
+    "type": "voltage",
+    "value": 145.73,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-voltage",
+    "type": "voltage",
+    "value": 131.07,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-voltage",
+    "type": "voltage",
+    "value": 196.14,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-voltage",
+    "type": "voltage",
+    "value": 163.42,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-voltage",
+    "type": "voltage",
+    "value": 224.27,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-voltage",
+    "type": "voltage",
+    "value": 237.79,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-co2",
+    "type": "co2",
+    "value": 418.61,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-co2",
+    "type": "co2",
+    "value": 953.95,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-co2",
+    "type": "co2",
+    "value": 459.21,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-co2",
+    "type": "co2",
+    "value": 668.28,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-co2",
+    "type": "co2",
+    "value": 948.63,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-co2",
+    "type": "co2",
+    "value": 615.22,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-co2",
+    "type": "co2",
+    "value": 875.87,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-vibration",
+    "type": "vibration",
+    "value": 0.39,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-vibration",
+    "type": "vibration",
+    "value": 0.67,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-vibration",
+    "type": "vibration",
+    "value": 2.14,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-vibration",
+    "type": "vibration",
+    "value": 2.67,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-vibration",
+    "type": "vibration",
+    "value": 2.5,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-vibration",
+    "type": "vibration",
+    "value": 0.34,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-vibration",
+    "type": "vibration",
+    "value": 2.28,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-light",
+    "type": "light",
+    "value": 852.43,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-light",
+    "type": "light",
+    "value": 848.14,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-light",
+    "type": "light",
+    "value": 583.94,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-light",
+    "type": "light",
+    "value": 451.87,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-light",
+    "type": "light",
+    "value": 253.58,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-light",
+    "type": "light",
+    "value": 293.56,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-light",
+    "type": "light",
+    "value": 206.12,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-sound",
+    "type": "sound",
+    "value": 41.92,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-sound",
+    "type": "sound",
+    "value": 67.56,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-sound",
+    "type": "sound",
+    "value": 81.41,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-sound",
+    "type": "sound",
+    "value": 73.32,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-sound",
+    "type": "sound",
+    "value": 80.35,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-sound",
+    "type": "sound",
+    "value": 80.03,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Dining Area - Center",
+    "sensor_id": "ta-dining-sound",
+    "type": "sound",
+    "value": 71.6,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-temperature",
+    "type": "temperature",
+    "value": 178.18,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-temperature",
+    "type": "temperature",
+    "value": 357.09,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-temperature",
+    "type": "temperature",
+    "value": 221.66,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-temperature",
+    "type": "temperature",
+    "value": 151.58,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-temperature",
+    "type": "temperature",
+    "value": 221.22,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-temperature",
+    "type": "temperature",
+    "value": 63.71,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-temperature",
+    "type": "temperature",
+    "value": 355.74,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-humidity",
+    "type": "humidity",
+    "value": 39.2,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-humidity",
+    "type": "humidity",
+    "value": 33.73,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-humidity",
+    "type": "humidity",
+    "value": 57.1,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-humidity",
+    "type": "humidity",
+    "value": 46.51,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-humidity",
+    "type": "humidity",
+    "value": 32.47,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-humidity",
+    "type": "humidity",
+    "value": 34.37,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-humidity",
+    "type": "humidity",
+    "value": 56.85,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-pressure",
+    "type": "pressure",
+    "value": 10.27,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-pressure",
+    "type": "pressure",
+    "value": 9.96,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-pressure",
+    "type": "pressure",
+    "value": 10.08,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-pressure",
+    "type": "pressure",
+    "value": 9.75,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-pressure",
+    "type": "pressure",
+    "value": 9.7,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-pressure",
+    "type": "pressure",
+    "value": 10.24,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-pressure",
+    "type": "pressure",
+    "value": 9.73,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-amperage",
+    "type": "amperage",
+    "value": 22.64,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-amperage",
+    "type": "amperage",
+    "value": 25.29,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-amperage",
+    "type": "amperage",
+    "value": 8.94,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-amperage",
+    "type": "amperage",
+    "value": 1.9,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-amperage",
+    "type": "amperage",
+    "value": 12.71,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-amperage",
+    "type": "amperage",
+    "value": 2.78,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-amperage",
+    "type": "amperage",
+    "value": 8.26,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-voltage",
+    "type": "voltage",
+    "value": 191.63,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-voltage",
+    "type": "voltage",
+    "value": 162.12,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-voltage",
+    "type": "voltage",
+    "value": 144.2,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-voltage",
+    "type": "voltage",
+    "value": 201.84,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-voltage",
+    "type": "voltage",
+    "value": 215.09,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-voltage",
+    "type": "voltage",
+    "value": 147.0,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-voltage",
+    "type": "voltage",
+    "value": 144.65,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-co2",
+    "type": "co2",
+    "value": 829.52,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-co2",
+    "type": "co2",
+    "value": 375.59,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-co2",
+    "type": "co2",
+    "value": 528.15,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-co2",
+    "type": "co2",
+    "value": 509.38,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-co2",
+    "type": "co2",
+    "value": 416.08,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-co2",
+    "type": "co2",
+    "value": 681.64,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-co2",
+    "type": "co2",
+    "value": 328.23,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-vibration",
+    "type": "vibration",
+    "value": 1.44,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-vibration",
+    "type": "vibration",
+    "value": 0.92,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-vibration",
+    "type": "vibration",
+    "value": 1.05,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-vibration",
+    "type": "vibration",
+    "value": 1.74,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-vibration",
+    "type": "vibration",
+    "value": 1.39,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-vibration",
+    "type": "vibration",
+    "value": 1.57,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-vibration",
+    "type": "vibration",
+    "value": 0.21,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-light",
+    "type": "light",
+    "value": 688.99,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-light",
+    "type": "light",
+    "value": 491.87,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-light",
+    "type": "light",
+    "value": 238.49,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-light",
+    "type": "light",
+    "value": 749.99,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-light",
+    "type": "light",
+    "value": 860.65,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-light",
+    "type": "light",
+    "value": 477.89,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-light",
+    "type": "light",
+    "value": 348.43,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-sound",
+    "type": "sound",
+    "value": 60.92,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-sound",
+    "type": "sound",
+    "value": 47.8,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-sound",
+    "type": "sound",
+    "value": 33.48,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-sound",
+    "type": "sound",
+    "value": 81.24,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-sound",
+    "type": "sound",
+    "value": 44.16,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-sound",
+    "type": "sound",
+    "value": 89.09,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Taco Tower",
+    "sensor_name": "Cooler - South",
+    "sensor_id": "ta-cooler-sound",
+    "type": "sound",
+    "value": 47.18,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-temperature",
+    "type": "temperature",
+    "value": 120.33,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-temperature",
+    "type": "temperature",
+    "value": 298.11,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-temperature",
+    "type": "temperature",
+    "value": 372.98,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-temperature",
+    "type": "temperature",
+    "value": 67.19,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-temperature",
+    "type": "temperature",
+    "value": 144.54,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-temperature",
+    "type": "temperature",
+    "value": 234.92,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-temperature",
+    "type": "temperature",
+    "value": 293.82,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-humidity",
+    "type": "humidity",
+    "value": 53.49,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-humidity",
+    "type": "humidity",
+    "value": 36.24,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-humidity",
+    "type": "humidity",
+    "value": 57.64,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-humidity",
+    "type": "humidity",
+    "value": 48.98,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-humidity",
+    "type": "humidity",
+    "value": 51.85,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-humidity",
+    "type": "humidity",
+    "value": 34.02,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-humidity",
+    "type": "humidity",
+    "value": 43.09,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-pressure",
+    "type": "pressure",
+    "value": 10.14,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-pressure",
+    "type": "pressure",
+    "value": 10.45,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-pressure",
+    "type": "pressure",
+    "value": 9.86,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-pressure",
+    "type": "pressure",
+    "value": 9.81,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-pressure",
+    "type": "pressure",
+    "value": 9.86,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-pressure",
+    "type": "pressure",
+    "value": 10.39,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-pressure",
+    "type": "pressure",
+    "value": 10.29,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-amperage",
+    "type": "amperage",
+    "value": 26.34,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-amperage",
+    "type": "amperage",
+    "value": 17.76,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-amperage",
+    "type": "amperage",
+    "value": 11.58,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-amperage",
+    "type": "amperage",
+    "value": 15.6,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-amperage",
+    "type": "amperage",
+    "value": 10.51,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-amperage",
+    "type": "amperage",
+    "value": 6.66,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-amperage",
+    "type": "amperage",
+    "value": 26.72,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-voltage",
+    "type": "voltage",
+    "value": 148.48,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-voltage",
+    "type": "voltage",
+    "value": 139.08,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-voltage",
+    "type": "voltage",
+    "value": 201.62,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-voltage",
+    "type": "voltage",
+    "value": 216.78,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-voltage",
+    "type": "voltage",
+    "value": 236.87,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-voltage",
+    "type": "voltage",
+    "value": 160.72,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-voltage",
+    "type": "voltage",
+    "value": 134.36,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-co2",
+    "type": "co2",
+    "value": 656.63,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-co2",
+    "type": "co2",
+    "value": 573.52,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-co2",
+    "type": "co2",
+    "value": 680.94,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-co2",
+    "type": "co2",
+    "value": 973.67,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-co2",
+    "type": "co2",
+    "value": 481.74,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-co2",
+    "type": "co2",
+    "value": 451.81,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-co2",
+    "type": "co2",
+    "value": 472.92,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-vibration",
+    "type": "vibration",
+    "value": 2.14,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-vibration",
+    "type": "vibration",
+    "value": 1.35,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-vibration",
+    "type": "vibration",
+    "value": 2.72,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-vibration",
+    "type": "vibration",
+    "value": 0.19,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-vibration",
+    "type": "vibration",
+    "value": 1.53,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-vibration",
+    "type": "vibration",
+    "value": 2.55,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-vibration",
+    "type": "vibration",
+    "value": 2.69,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-light",
+    "type": "light",
+    "value": 338.61,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-light",
+    "type": "light",
+    "value": 501.52,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-light",
+    "type": "light",
+    "value": 210.0,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-light",
+    "type": "light",
+    "value": 319.84,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-light",
+    "type": "light",
+    "value": 174.2,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-light",
+    "type": "light",
+    "value": 632.15,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-light",
+    "type": "light",
+    "value": 225.47,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-sound",
+    "type": "sound",
+    "value": 84.16,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-sound",
+    "type": "sound",
+    "value": 74.21,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-sound",
+    "type": "sound",
+    "value": 61.7,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-sound",
+    "type": "sound",
+    "value": 52.7,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-sound",
+    "type": "sound",
+    "value": 53.82,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-sound",
+    "type": "sound",
+    "value": 65.59,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Prep - Sink",
+    "sensor_id": "sa-prep-sound",
+    "type": "sound",
+    "value": 75.59,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-temperature",
+    "type": "temperature",
+    "value": 254.39,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-temperature",
+    "type": "temperature",
+    "value": 181.28,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-temperature",
+    "type": "temperature",
+    "value": 391.22,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-temperature",
+    "type": "temperature",
+    "value": 274.41,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-temperature",
+    "type": "temperature",
+    "value": 393.11,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-temperature",
+    "type": "temperature",
+    "value": 353.74,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-temperature",
+    "type": "temperature",
+    "value": 220.54,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-humidity",
+    "type": "humidity",
+    "value": 47.39,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-humidity",
+    "type": "humidity",
+    "value": 39.86,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-humidity",
+    "type": "humidity",
+    "value": 34.76,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-humidity",
+    "type": "humidity",
+    "value": 50.38,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-humidity",
+    "type": "humidity",
+    "value": 47.18,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-humidity",
+    "type": "humidity",
+    "value": 57.67,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-humidity",
+    "type": "humidity",
+    "value": 50.91,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-pressure",
+    "type": "pressure",
+    "value": 10.03,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-pressure",
+    "type": "pressure",
+    "value": 9.64,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-pressure",
+    "type": "pressure",
+    "value": 9.96,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-pressure",
+    "type": "pressure",
+    "value": 10.44,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-pressure",
+    "type": "pressure",
+    "value": 10.1,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-pressure",
+    "type": "pressure",
+    "value": 9.97,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-pressure",
+    "type": "pressure",
+    "value": 9.68,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-amperage",
+    "type": "amperage",
+    "value": 8.8,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-amperage",
+    "type": "amperage",
+    "value": 0.03,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-amperage",
+    "type": "amperage",
+    "value": 14.91,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-amperage",
+    "type": "amperage",
+    "value": 22.13,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-amperage",
+    "type": "amperage",
+    "value": 13.84,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-amperage",
+    "type": "amperage",
+    "value": 14.54,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-amperage",
+    "type": "amperage",
+    "value": 3.02,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-voltage",
+    "type": "voltage",
+    "value": 201.82,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-voltage",
+    "type": "voltage",
+    "value": 229.35,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-voltage",
+    "type": "voltage",
+    "value": 155.96,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-voltage",
+    "type": "voltage",
+    "value": 205.04,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-voltage",
+    "type": "voltage",
+    "value": 187.8,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-voltage",
+    "type": "voltage",
+    "value": 204.75,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-voltage",
+    "type": "voltage",
+    "value": 168.15,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-co2",
+    "type": "co2",
+    "value": 361.84,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-co2",
+    "type": "co2",
+    "value": 353.74,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-co2",
+    "type": "co2",
+    "value": 343.61,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-co2",
+    "type": "co2",
+    "value": 643.83,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-co2",
+    "type": "co2",
+    "value": 508.59,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-co2",
+    "type": "co2",
+    "value": 778.82,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-co2",
+    "type": "co2",
+    "value": 977.33,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-vibration",
+    "type": "vibration",
+    "value": 0.79,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-vibration",
+    "type": "vibration",
+    "value": 2.37,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-vibration",
+    "type": "vibration",
+    "value": 0.59,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-vibration",
+    "type": "vibration",
+    "value": 1.7,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-vibration",
+    "type": "vibration",
+    "value": 2.63,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-vibration",
+    "type": "vibration",
+    "value": 2.21,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-vibration",
+    "type": "vibration",
+    "value": 0.52,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-light",
+    "type": "light",
+    "value": 345.95,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-light",
+    "type": "light",
+    "value": 675.33,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-light",
+    "type": "light",
+    "value": 838.0,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-light",
+    "type": "light",
+    "value": 405.6,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-light",
+    "type": "light",
+    "value": 961.53,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-light",
+    "type": "light",
+    "value": 835.45,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-light",
+    "type": "light",
+    "value": 433.5,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-sound",
+    "type": "sound",
+    "value": 82.4,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-sound",
+    "type": "sound",
+    "value": 41.28,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-sound",
+    "type": "sound",
+    "value": 63.36,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-sound",
+    "type": "sound",
+    "value": 62.3,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-sound",
+    "type": "sound",
+    "value": 74.75,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-sound",
+    "type": "sound",
+    "value": 68.2,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Display Case",
+    "sensor_id": "sa-display-sound",
+    "type": "sound",
+    "value": 72.69,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-temperature",
+    "type": "temperature",
+    "value": 356.25,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-temperature",
+    "type": "temperature",
+    "value": 393.56,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-temperature",
+    "type": "temperature",
+    "value": 36.21,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-temperature",
+    "type": "temperature",
+    "value": 233.34,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-temperature",
+    "type": "temperature",
+    "value": 60.59,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-temperature",
+    "type": "temperature",
+    "value": 142.61,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-temperature",
+    "type": "temperature",
+    "value": 338.49,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-humidity",
+    "type": "humidity",
+    "value": 54.36,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-humidity",
+    "type": "humidity",
+    "value": 43.46,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-humidity",
+    "type": "humidity",
+    "value": 54.16,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-humidity",
+    "type": "humidity",
+    "value": 55.27,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-humidity",
+    "type": "humidity",
+    "value": 49.13,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-humidity",
+    "type": "humidity",
+    "value": 39.81,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-humidity",
+    "type": "humidity",
+    "value": 58.51,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-pressure",
+    "type": "pressure",
+    "value": 9.84,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-pressure",
+    "type": "pressure",
+    "value": 10.32,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-pressure",
+    "type": "pressure",
+    "value": 10.23,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-pressure",
+    "type": "pressure",
+    "value": 9.97,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-pressure",
+    "type": "pressure",
+    "value": 9.85,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-pressure",
+    "type": "pressure",
+    "value": 9.88,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-pressure",
+    "type": "pressure",
+    "value": 9.75,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-amperage",
+    "type": "amperage",
+    "value": 18.6,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-amperage",
+    "type": "amperage",
+    "value": 11.55,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-amperage",
+    "type": "amperage",
+    "value": 14.32,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-amperage",
+    "type": "amperage",
+    "value": 24.4,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-amperage",
+    "type": "amperage",
+    "value": 11.91,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-amperage",
+    "type": "amperage",
+    "value": 25.28,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-amperage",
+    "type": "amperage",
+    "value": 17.61,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-voltage",
+    "type": "voltage",
+    "value": 213.0,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-voltage",
+    "type": "voltage",
+    "value": 166.84,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-voltage",
+    "type": "voltage",
+    "value": 132.52,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-voltage",
+    "type": "voltage",
+    "value": 228.86,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-voltage",
+    "type": "voltage",
+    "value": 131.37,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-voltage",
+    "type": "voltage",
+    "value": 192.43,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-voltage",
+    "type": "voltage",
+    "value": 188.81,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-co2",
+    "type": "co2",
+    "value": 415.93,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-co2",
+    "type": "co2",
+    "value": 824.33,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-co2",
+    "type": "co2",
+    "value": 902.04,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-co2",
+    "type": "co2",
+    "value": 885.59,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-co2",
+    "type": "co2",
+    "value": 977.04,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-co2",
+    "type": "co2",
+    "value": 891.1,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-co2",
+    "type": "co2",
+    "value": 366.99,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-vibration",
+    "type": "vibration",
+    "value": 1.22,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-vibration",
+    "type": "vibration",
+    "value": 1.03,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-vibration",
+    "type": "vibration",
+    "value": 1.24,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-vibration",
+    "type": "vibration",
+    "value": 0.93,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-vibration",
+    "type": "vibration",
+    "value": 0.37,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-vibration",
+    "type": "vibration",
+    "value": 1.23,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-vibration",
+    "type": "vibration",
+    "value": 2.56,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-water_leak",
+    "type": "water_leak",
+    "value": 0,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-water_leak",
+    "type": "water_leak",
+    "value": 1,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-light",
+    "type": "light",
+    "value": 553.03,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-light",
+    "type": "light",
+    "value": 489.19,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-light",
+    "type": "light",
+    "value": 632.21,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-light",
+    "type": "light",
+    "value": 966.63,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-light",
+    "type": "light",
+    "value": 586.28,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-light",
+    "type": "light",
+    "value": 239.77,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-light",
+    "type": "light",
+    "value": 438.59,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-sound",
+    "type": "sound",
+    "value": 89.17,
+    "timestamp": "2025-04-15T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-sound",
+    "type": "sound",
+    "value": 61.91,
+    "timestamp": "2025-04-14T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-sound",
+    "type": "sound",
+    "value": 81.45,
+    "timestamp": "2025-04-13T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-sound",
+    "type": "sound",
+    "value": 42.8,
+    "timestamp": "2025-04-12T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-sound",
+    "type": "sound",
+    "value": 42.01,
+    "timestamp": "2025-04-11T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-sound",
+    "type": "sound",
+    "value": 34.41,
+    "timestamp": "2025-04-10T13:20:18.373466Z"
+  },
+  {
+    "facility": "Salad Station",
+    "sensor_name": "Storage - Back",
+    "sensor_id": "sa-storage-sound",
+    "type": "sound",
+    "value": 48.3,
+    "timestamp": "2025-04-09T13:20:18.373466Z"
+  }
+]
