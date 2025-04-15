@@ -1,37 +1,60 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react';
 
 function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
-  const [location, setLocation] = useState('')
-  const [type, setType] = useState('')
-  const [sensorName, setSensorName] = useState('')
+  const [location, setLocation] = useState('');
+  const [type, setType] = useState('');
+  const [sensorName, setSensorName] = useState('');
 
+  // Dynamically filter sensor names based on both facility and type
+  const filteredSensorNames = useMemo(() => {
+    return sensorNames
+      .filter(obj =>
+        (!location || obj.facility === location) &&
+        (!type || obj.type === type)
+      )
+      .reduce((acc, obj) => {
+        if (!acc.includes(obj.sensor_name)) {
+          acc.push(obj.sensor_name);
+        }
+        return acc;
+      }, []);
+  }, [sensorNames, location, type]);
+  
+
+  // Set default location and type on first load
   useEffect(() => {
     if (locations.length > 0 && !location) {
-      setLocation(locations[0])
+      setLocation(locations[0]);
     }
     if (sensorTypes.length > 0 && !type) {
-      setType(sensorTypes[0])
+      setType(sensorTypes[0]);
     }
-    if (sensorNames.length > 0 && !sensorName) {
-      setSensorName(sensorNames[0])
+  }, [locations, sensorTypes]);
+
+  // 🧼 Reset sensor name when location or type changes
+  useEffect(() => {
+    if (filteredSensorNames.length > 0) {
+      setSensorName(filteredSensorNames[0]);
+    } else {
+      setSensorName('');
     }
-  }, [locations, sensorTypes, sensorNames])
+  }, [filteredSensorNames]);
 
   const handleAdd = () => {
     if (location && type && sensorName) {
       onAddSensor({
         facility: location,
         type,
-        sensor_name: sensorName
-      })
+        sensor_name: sensorName,
+      });
     } else {
-      alert("Please select a facility, sensor type, and sensor name.")
+      alert('Please select a facility, sensor type, and sensor name.');
     }
-  }
+  };
 
   return (
     <div style={{ marginBottom: '1rem', borderBottom: '1px solid #ccc', paddingBottom: '1rem' }}>
-      <h2>Add a Sensor</h2>
+      <h2>Add a Widget</h2>
 
       <label>
         Facility:&nbsp;
@@ -58,7 +81,7 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
       <label>
         Sensor Name:&nbsp;
         <select value={sensorName} onChange={e => setSensorName(e.target.value)}>
-          {sensorNames.map(name => (
+          {filteredSensorNames.map(name => (
             <option key={name} value={name}>{name}</option>
           ))}
         </select>
@@ -66,9 +89,9 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
 
       &nbsp;&nbsp;
 
-      <button onClick={handleAdd}>➕ Add Sensor</button>
+      <button onClick={handleAdd}>➕ Add Widget</button>
     </div>
-  )
+  );
 }
 
-export default SensorSelector
+export default SensorSelector;

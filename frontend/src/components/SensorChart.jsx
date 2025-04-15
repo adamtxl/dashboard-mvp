@@ -1,8 +1,9 @@
 import { useState, useMemo } from "react";
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   LineElement,
+  BarElement,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -12,6 +13,7 @@ import {
 
 ChartJS.register(
   LineElement,
+  BarElement,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -28,7 +30,26 @@ function SensorChart({
 }) {
   const { facility, sensor_name, type } = sensor;
   const [showConfig, setShowConfig] = useState(false);
+  const [customChartType, setCustomChartType] = useState("");
+
   const key = `${facility}|${sensor_name}|${type}`;
+
+  const chartTypeMap = {
+    temperature: "line",
+    humidity: "bar",
+    pressure: "bar",
+    amperage: "bar",
+    voltage: "line",
+    co2: "line",
+    flow_rate: "line",
+    vibration: "area", // line with fill
+    boolean: "status", // for future
+    runtime: "timeline", // for future
+    default: "line",
+  };
+
+  const resolvedChartType =
+    customChartType || chartTypeMap[type] || chartTypeMap.default;
 
   const filteredData = useMemo(() => {
     const base = rawData.filter(
@@ -37,18 +58,6 @@ function SensorChart({
         d.sensor_name === sensor_name &&
         d.type === type
     );
-    const handleSensorRemove = (sensorToRemove) => {
-      setSelectedSensors((prev) =>
-        prev.filter(
-          (sensor) =>
-            !(
-              sensor.facility === sensorToRemove.facility &&
-              sensor.sensor_name === sensorToRemove.sensor_name &&
-              sensor.type === sensorToRemove.type
-            )
-        )
-      );
-    };
 
     const cutoff = new Date();
     if (timeRange === "1h") cutoff.setHours(cutoff.getHours() - 1);
@@ -82,8 +91,10 @@ function SensorChart({
         label: `${type}`,
         data: filteredData.map((d) => d.value),
         borderColor: "#8884d8",
-        backgroundColor: "#8884d8",
-        tension: 0.4,
+        backgroundColor:
+          resolvedChartType === "bar" ? "#8884d8" : "rgba(136, 132, 216, 0.2)",
+        tension: resolvedChartType === "area" ? 0.4 : 0,
+        fill: resolvedChartType === "area",
       },
       {
         label: "Alert",
@@ -158,6 +169,18 @@ function SensorChart({
             />
           </label>
           <br />
+          <label>
+            Chart Type:
+            <select
+              value={customChartType || chartTypeMap[type]}
+              onChange={(e) => setCustomChartType(e.target.value)}
+            >
+              <option value="line">Line</option>
+              <option value="bar">Bar</option>
+              <option value="area">Area</option>
+            </select>
+          </label>
+          <br />
           <button
             onClick={() => setShowConfig(false)}
             style={{ marginTop: "0.5rem" }}
@@ -182,7 +205,11 @@ function SensorChart({
 
       {filteredData.length > 0 ? (
         <div style={{ height: 300, width: "100%" }}>
-          <Line data={chartData} options={chartOptions} />
+          {resolvedChartType === "bar" ? (
+            <Bar data={chartData} options={chartOptions} />
+          ) : (
+            <Line data={chartData} options={chartOptions} />
+          )}
         </div>
       ) : (
         <p>
