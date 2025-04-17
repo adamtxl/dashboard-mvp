@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import annotationPlugin from "chartjs-plugin-annotation";
 
 ChartJS.register(
   LineElement,
@@ -18,7 +19,8 @@ ChartJS.register(
   LinearScale,
   PointElement,
   Tooltip,
-  Legend
+  Legend,
+  annotationPlugin
 );
 
 function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }) {
@@ -76,9 +78,41 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
     });
   }, [rawData, facility, sensor_name, type, alertConfig, timeRange]);
 
-  const chartData = useMemo(() => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
+  const runtimeSegments = useMemo(() => {
+    if (type !== "amperage") return [];
+
+    const segments = [];
+    let start = null;
+
+    for (let i = 0; i < filteredData.length; i++) {
+      const point = filteredData[i];
+      const isOn = point.value > 0;
+      const time = new Date(point.timestamp);
+
+      if (isOn && !start) {
+        start = time;
+      } else if (!isOn && start) {
+        const duration = (time - start) / 1000;
+        if (duration > 20) {
+          segments.push({ start, end: time, duration: Math.round(duration) });
+        }
+        start = null;
+      }
+    }
+
+    if (start) {
+      const end = new Date(filteredData[filteredData.length - 1].timestamp);
+      const duration = (end - start) / 1000;
+      if (duration > 20) {
+        segments.push({ start, end, duration: Math.round(duration) });
+      }
+    }
+
+    return segments;
+  }, [filteredData, type]);
+
+  const chartData = (canvas) => {
+    const ctx = canvas?.getContext("2d");
 
     let gradientFill = "rgba(136, 132, 216, 0.2)";
     if (ctx && resolvedChartType === "area") {
@@ -88,14 +122,22 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
       gradientFill = gradient;
     }
 
-    const hasData = filteredData.length > 0;
+    if (!filteredData.length) {
+      return {
+        labels: [],
+        datasets: [{
+          label: "No data",
+          data: [],
+        }],
+      };
+    }
 
     return {
-      labels: hasData ? filteredData.map((d) => d.timestamp) : ["No Data"],
+      labels: filteredData.map((d) => d.timestamp),
       datasets: [
         {
           label: `${type}`,
-          data: hasData ? filteredData.map((d) => d.value) : [0],
+          data: filteredData.map((d) => d.value),
           borderColor: "#8884d8",
           backgroundColor:
             resolvedChartType === "bar"
@@ -108,7 +150,7 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         },
         {
           label: "Alert",
-          data: hasData ? filteredData.map((d) => (d.alert ? d.value : null)) : [null],
+          data: filteredData.map((d) => (d.alert ? d.value : null)),
           borderColor: "red",
           backgroundColor: "red",
           pointRadius: 16,
@@ -119,7 +161,7 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         },
       ],
     };
-  }, [filteredData, resolvedChartType, type]);
+  };
 
   const chartOptions = {
     responsive: true,
@@ -127,12 +169,33 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
     plugins: {
       legend: { position: "top" },
       tooltip: { mode: "index", intersect: false },
+      annotation: {
+        annotations: runtimeSegments.map((segment) => ({
+          type: "box",
+          xMin: segment.start.toISOString(),
+          xMax: segment.end.toISOString(),
+          backgroundColor: "rgba(255, 99, 132, 0.25)",
+          borderWidth: 0,
+          label: {
+            content: `${segment.duration}s`,
+            enabled: true,
+            position: "start",
+            color: "#fff",
+            backgroundColor: "rgba(255,0,0,0.6)",
+            callout: { display: false }, // Safe version
+          },
+        })),
+      },
     },
     scales: {
       x: {
         title: {
           display: true,
           text: "Timestamp",
+        },
+        ticks: {
+          autoSkip: true,
+          maxTicksLimit: 10,
         },
       },
       y: {
@@ -150,18 +213,8 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
   };
 
   return (
-    <div
-      style={{
-        marginBottom: "2rem",
-        padding: "1rem",
-        border: "1px solid #ddd",
-        width: "100%",
-        boxSizing: "border-box",
-      }}
-    >
-      <h3>
-        {facility} – {sensor_name} ({type})
-      </h3>
+    <div style={{ marginBottom: "2rem", padding: "1rem", border: "1px solid #ddd", width: "100%", boxSizing: "border-box" }}>
+      <h3>{facility} – {sensor_name} ({type})</h3>
 
       <button onClick={() => setShowConfig(!showConfig)}>⚙️ Configure Alerts</button>
 
@@ -169,61 +222,36 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         <div style={{ marginTop: "1rem" }}>
           <label>
             Low Threshold:
-            <input
-              type="number"
-              value={alertConfig.low || ""}
-              onChange={(e) => updateField("low", Number(e.target.value))}
-            />
+            <input type="number" value={alertConfig.low || ""} onChange={(e) => updateField("low", Number(e.target.value))} />
           </label>
           <br />
           <label>
             High Threshold:
-            <input
-              type="number"
-              value={alertConfig.high || ""}
-              onChange={(e) => updateField("high", Number(e.target.value))}
-            />
+            <input type="number" value={alertConfig.high || ""} onChange={(e) => updateField("high", Number(e.target.value))} />
           </label>
           <br />
           <label>
             Alert Email:
-            <input
-              type="email"
-              value={alertConfig.email || ""}
-              onChange={(e) => updateField("email", e.target.value)}
-            />
+            <input type="email" value={alertConfig.email || ""} onChange={(e) => updateField("email", e.target.value)} />
           </label>
           <br />
           <label>
             Chart Type:
-            <select
-              value={customChartType || chartTypeMap[type]}
-              onChange={(e) => setCustomChartType(e.target.value)}
-            >
+            <select value={customChartType || chartTypeMap[type]} onChange={(e) => setCustomChartType(e.target.value)}>
               <option value="line">Line</option>
               <option value="bar">Bar</option>
               <option value="area">Area</option>
             </select>
           </label>
           <br />
-          <button
-            onClick={() => setShowConfig(false)}
-            style={{ marginTop: "0.5rem" }}
-          >
+          <button onClick={() => setShowConfig(false)} style={{ marginTop: "0.5rem" }}>
             💾 Save & Close
           </button>
         </div>
       )}
 
       {filteredData.some((d) => d.alert) && (
-        <div
-          style={{
-            marginTop: "1rem",
-            backgroundColor: "red",
-            color: "white",
-            padding: "0.5rem",
-          }}
-        >
+        <div style={{ marginTop: "1rem", backgroundColor: "red", color: "white", padding: "0.5rem" }}>
           🚨 ALERT: {type} value out of range at {facility}
         </div>
       )}
