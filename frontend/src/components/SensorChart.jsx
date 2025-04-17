@@ -30,7 +30,6 @@ function SensorChart({
 }) {
   const { facility, sensor_name, type } = sensor;
   const [showConfig, setShowConfig] = useState(false);
-  const [customChartType, setCustomChartType] = useState("");
 
   const key = `${facility}|${sensor_name}|${type}`;
 
@@ -41,15 +40,11 @@ function SensorChart({
     amperage: "bar",
     voltage: "line",
     co2: "line",
-    flow_rate: "line",
-    vibration: "area", // line with fill
-    boolean: "status", // for future
-    runtime: "timeline", // for future
-    default: "line",
+    water: "bar",
+    default: "line"
   };
 
-  const resolvedChartType =
-    customChartType || chartTypeMap[type] || chartTypeMap.default;
+  const chartType = chartTypeMap[type] || chartTypeMap.default;
 
   const filteredData = useMemo(() => {
     const base = rawData.filter(
@@ -80,6 +75,8 @@ function SensorChart({
     });
   }, [rawData, facility, type, sensor_name, alertConfig, timeRange]);
 
+  const hasAlert = useMemo(() => filteredData.some((d) => d.alert), [filteredData]);
+
   const updateField = (field, value) => {
     onConfigChange({ [field]: value });
   };
@@ -91,10 +88,8 @@ function SensorChart({
         label: `${type}`,
         data: filteredData.map((d) => d.value),
         borderColor: "#8884d8",
-        backgroundColor:
-          resolvedChartType === "bar" ? "#8884d8" : "rgba(136, 132, 216, 0.2)",
-        tension: resolvedChartType === "area" ? 0.4 : 0,
-        fill: resolvedChartType === "area",
+        backgroundColor: "#8884d8",
+        tension: 0.4,
       },
       {
         label: "Alert",
@@ -122,16 +117,37 @@ function SensorChart({
     },
   };
 
+  const ChartComponent = chartType === "bar" ? Bar : Line;
+
   return (
     <div
+      className={`sensor-card ${hasAlert ? "alerting" : ""}`}
       style={{
         marginBottom: "2rem",
         padding: "1rem",
-        border: "1px solid #ddd",
+        border: hasAlert ? "2px solid red" : "1px solid #ddd",
+        backgroundColor: hasAlert ? "#ffe5e5" : "white",
         width: "100%",
         boxSizing: "border-box",
+        transition: "all 0.3s ease-in-out",
       }}
     >
+      {hasAlert && (
+        <div
+          style={{
+            marginBottom: "1rem",
+            backgroundColor: "red",
+            color: "white",
+            padding: "0.5rem",
+            fontWeight: "bold",
+            textAlign: "center",
+            borderRadius: "4px",
+          }}
+        >
+          🚨 ALERT: {type.toUpperCase()} value out of range at {facility}
+        </div>
+      )}
+
       <h3>
         {facility} – {sensor_name} ({type})
       </h3>
@@ -169,18 +185,6 @@ function SensorChart({
             />
           </label>
           <br />
-          <label>
-            Chart Type:
-            <select
-              value={customChartType || chartTypeMap[type]}
-              onChange={(e) => setCustomChartType(e.target.value)}
-            >
-              <option value="line">Line</option>
-              <option value="bar">Bar</option>
-              <option value="area">Area</option>
-            </select>
-          </label>
-          <br />
           <button
             onClick={() => setShowConfig(false)}
             style={{ marginTop: "0.5rem" }}
@@ -190,26 +194,9 @@ function SensorChart({
         </div>
       )}
 
-      {filteredData.some((d) => d.alert) && (
-        <div
-          style={{
-            marginTop: "1rem",
-            backgroundColor: "red",
-            color: "white",
-            padding: "0.5rem",
-          }}
-        >
-          🚨 ALERT: {type} value out of range at {facility}
-        </div>
-      )}
-
       {filteredData.length > 0 ? (
         <div style={{ height: 300, width: "100%" }}>
-          {resolvedChartType === "bar" ? (
-            <Bar data={chartData} options={chartOptions} />
-          ) : (
-            <Line data={chartData} options={chartOptions} />
-          )}
+          <ChartComponent data={chartData} options={chartOptions} />
         </div>
       ) : (
         <p>
