@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { Line, Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -21,17 +21,20 @@ ChartJS.register(
   Legend
 );
 
-function SensorChart({
-  sensor,
-  rawData,
-  timeRange,
-  alertConfig,
-  onConfigChange,
-}) {
+function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }) {
+  if (!sensor || !sensor.facility || !sensor.sensor_name || !sensor.type) {
+    return (
+      <div style={{ padding: "1rem", border: "1px solid #ccc", marginBottom: "1rem" }}>
+        <p>⚠️ Invalid sensor configuration. Please select a valid sensor.</p>
+      </div>
+    );
+  }
+  
   const { facility, sensor_name, type } = sensor;
-  const [showConfig, setShowConfig] = useState(false);
-
   const key = `${facility}|${sensor_name}|${type}`;
+  const [showConfig, setShowConfig] = useState(false);
+  const [customChartType, setCustomChartType] = useState("");
+  const chartRef = useRef(null);
 
   const chartTypeMap = {
     temperature: "line",
@@ -40,11 +43,14 @@ function SensorChart({
     amperage: "bar",
     voltage: "line",
     co2: "line",
-    water: "bar",
-    default: "line"
+    flow_rate: "line",
+    vibration: "area",
+    boolean: "status",
+    runtime: "timeline",
+    default: "line",
   };
 
-  const chartType = chartTypeMap[type] || chartTypeMap.default;
+  const resolvedChartType = customChartType || chartTypeMap[type] || chartTypeMap.default;
 
   const filteredData = useMemo(() => {
     const base = rawData.filter(
@@ -59,50 +65,97 @@ function SensorChart({
     else if (timeRange === "1d") cutoff.setDate(cutoff.getDate() - 1);
     else if (timeRange === "7d") cutoff.setDate(cutoff.getDate() - 7);
 
-    const ranged =
-      timeRange === "all"
-        ? base
-        : base.filter((d) => new Date(d.timestamp) >= cutoff);
+    const ranged = timeRange === "all"
+      ? base
+      : base.filter((d) => new Date(d.timestamp) >= cutoff);
 
     return ranged.map((d) => {
       const isAlert =
         (alertConfig.low && d.value < alertConfig.low) ||
         (alertConfig.high && d.value > alertConfig.high);
-      return {
-        ...d,
-        alert: isAlert,
-      };
+      return { ...d, alert: isAlert };
     });
   }, [rawData, facility, type, sensor_name, alertConfig, timeRange]);
-
-  const hasAlert = useMemo(() => filteredData.some((d) => d.alert), [filteredData]);
 
   const updateField = (field, value) => {
     onConfigChange({ [field]: value });
   };
 
-  const chartData = {
-    labels: filteredData.map((d) => d.timestamp),
-    datasets: [
-      {
-        label: `${type}`,
-        data: filteredData.map((d) => d.value),
-        borderColor: "#8884d8",
-        backgroundColor: "#8884d8",
-        tension: 0.4,
-      },
-      {
-        label: "Alert",
-        data: filteredData.map((d) => (d.alert ? d.value : null)),
-        borderColor: "red",
-        backgroundColor: "red",
-        pointRadius: 16,
-        pointHoverRadius: 10,
-        pointStyle: "star",
-        tension: 0.4,
-        showLine: false,
-      },
-    ],
+  const chartData = (canvas) => {
+    const ctx = canvas?.getContext("2d");
+    let gradientFill = "rgba(136, 132, 216, 0.2)";
+  
+    if (ctx && resolvedChartType === "area") {
+      const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+      gradient.addColorStop(0, "rgba(136, 132, 216, 0.5)");
+      gradient.addColorStop(1, "rgba(136, 132, 216, 0.05)");
+      gradientFill = gradient;
+    }
+  
+    const hasData = filteredData.length > 0;
+  
+    return {
+      labels: hasData ? filteredData.map((d) => d.timestamp) : ["No Data"],
+      datasets: [
+        {
+          label: `${type}`,
+          data: hasData ? filteredData.map((d) => d.value) : [0],
+          borderColor: "#8884d8",
+          backgroundColor:
+            resolvedChartType === "bar"
+              ? "#8884d8"
+              : resolvedChartType === "area"
+              ? gradientFill
+              : "transparent",
+          tension: resolvedChartType === "area" ? 0.4 : 0,
+          fill: resolvedChartType === "area",
+        },
+        {
+          label: "Alert",
+          data: hasData ? filteredData.map((d) => (d.alert ? d.value : null)) : [null],
+          borderColor: "red",
+          backgroundColor: "red",
+          pointRadius: 16,
+          pointHoverRadius: 10,
+          pointStyle: "star",
+          tension: 0.4,
+          showLine: false,
+        },
+      ],
+    };
+  };
+  
+    console.log("Chart Data:", chartData(document.createElement("canvas")));
+
+    return {
+      labels: filteredData.length ? filteredData.map(d => d.timestamp) : ["No Data"],
+      datasets: [
+        {
+          label: `${type}`,
+          data: filteredData.length ? filteredData.map(d => d.value) : [0],
+                    borderColor: "#8884d8",
+          backgroundColor:
+            resolvedChartType === "bar"
+              ? "#8884d8"
+              : resolvedChartType === "area"
+              ? gradientFill
+              : "transparent",
+          tension: resolvedChartType === "area" ? 0.4 : 0,
+          fill: resolvedChartType === "area",
+        },
+        {
+          label: "Alert",
+          data: filteredData.length ? filteredData.map((d) => d.alert ? d.value : null) : [null],
+                    borderColor: "red",
+          backgroundColor: "red",
+          pointRadius: 16,
+          pointHoverRadius: 10,
+          pointStyle: "star",
+          tension: 0.4,
+          showLine: false,
+        },
+      ],
+    };
   };
 
   const chartOptions = {
@@ -113,48 +166,37 @@ function SensorChart({
       tooltip: { mode: "index", intersect: false },
     },
     scales: {
-      y: { beginAtZero: true },
+      x: {
+        title: {
+          display: true,
+          text: "Timestamp",
+        },
+      },
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: "Value",
+        },
+      },
     },
   };
 
-  const ChartComponent = chartType === "bar" ? Bar : Line;
-
   return (
     <div
-      className={`sensor-card ${hasAlert ? "alerting" : ""}`}
       style={{
         marginBottom: "2rem",
         padding: "1rem",
-        border: hasAlert ? "2px solid red" : "1px solid #ddd",
-        backgroundColor: hasAlert ? "#ffe5e5" : "white",
+        border: "1px solid #ddd",
         width: "100%",
         boxSizing: "border-box",
-        transition: "all 0.3s ease-in-out",
       }}
     >
-      {hasAlert && (
-        <div
-          style={{
-            marginBottom: "1rem",
-            backgroundColor: "red",
-            color: "white",
-            padding: "0.5rem",
-            fontWeight: "bold",
-            textAlign: "center",
-            borderRadius: "4px",
-          }}
-        >
-          🚨 ALERT: {type.toUpperCase()} value out of range at {facility}
-        </div>
-      )}
-
       <h3>
         {facility} – {sensor_name} ({type})
       </h3>
 
-      <button onClick={() => setShowConfig(!showConfig)}>
-        ⚙️ Configure Alerts
-      </button>
+      <button onClick={() => setShowConfig(!showConfig)}>⚙️ Configure Alerts</button>
 
       {showConfig && (
         <div style={{ marginTop: "1rem" }}>
@@ -185,6 +227,18 @@ function SensorChart({
             />
           </label>
           <br />
+          <label>
+            Chart Type:
+            <select
+              value={customChartType || chartTypeMap[type]}
+              onChange={(e) => setCustomChartType(e.target.value)}
+            >
+              <option value="line">Line</option>
+              <option value="bar">Bar</option>
+              <option value="area">Area</option>
+            </select>
+          </label>
+          <br />
           <button
             onClick={() => setShowConfig(false)}
             style={{ marginTop: "0.5rem" }}
@@ -194,9 +248,30 @@ function SensorChart({
         </div>
       )}
 
+      {filteredData.some((d) => d.alert) && (
+        <div
+          style={{
+            marginTop: "1rem",
+            backgroundColor: "red",
+            color: "white",
+            padding: "0.5rem",
+          }}
+        >
+          🚨 ALERT: {type} value out of range at {facility}
+        </div>
+      )}
+
       {filteredData.length > 0 ? (
         <div style={{ height: 300, width: "100%" }}>
-          <ChartComponent data={chartData} options={chartOptions} />
+          {resolvedChartType === "bar" ? (
+            <Bar ref={chartRef} data={(canvas) => chartData(canvas)} options={chartOptions} />
+          ) : (
+            <Line
+              ref={chartRef}
+              data={(canvas) => chartData(canvas ?? document.createElement("canvas"))}
+              options={chartOptions}
+            />
+          )}
         </div>
       ) : (
         <p>
