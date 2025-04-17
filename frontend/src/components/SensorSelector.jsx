@@ -42,15 +42,18 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
 
   const handleAdd = () => {
     if (location && type && sensorName) {
-      onAddSensor({
+      const newSensor = {
         facility: location,
         type,
         sensor_name: sensorName,
-      });
+      };
+      console.log("🚀 Adding sensor:", newSensor);
+      onAddSensor(newSensor);
     } else {
-      alert('Please select a facility, sensor type, and sensor name.');
+      alert("Please select a facility, sensor type, and sensor name.");
     }
   };
+  
 
   return (
     <div style={{ marginBottom: '1rem', borderBottom: '1px solid #ccc', paddingBottom: '1rem' }}>

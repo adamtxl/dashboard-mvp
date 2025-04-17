@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { Line, Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -21,18 +21,19 @@ ChartJS.register(
   Legend
 );
 
-function SensorChart({
-  sensor,
-  rawData,
-  timeRange,
-  alertConfig,
-  onConfigChange,
-}) {
+function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }) {
+  if (!sensor || !sensor.facility || !sensor.sensor_name || !sensor.type) {
+    return (
+      <div style={{ padding: "1rem", border: "1px solid #ccc", marginBottom: "1rem" }}>
+        <p>⚠️ Invalid sensor configuration. Please select a valid sensor.</p>
+      </div>
+    );
+  }
+
   const { facility, sensor_name, type } = sensor;
   const [showConfig, setShowConfig] = useState(false);
   const [customChartType, setCustomChartType] = useState("");
-
-  const key = `${facility}|${sensor_name}|${type}`;
+  const chartRef = useRef(null);
 
   const chartTypeMap = {
     temperature: "line",
@@ -42,14 +43,13 @@ function SensorChart({
     voltage: "line",
     co2: "line",
     flow_rate: "line",
-    vibration: "area", // line with fill
-    boolean: "status", // for future
-    runtime: "timeline", // for future
+    vibration: "area",
+    boolean: "status",
+    runtime: "timeline",
     default: "line",
   };
 
-  const resolvedChartType =
-    customChartType || chartTypeMap[type] || chartTypeMap.default;
+  const resolvedChartType = customChartType || chartTypeMap[type] || chartTypeMap.default;
 
   const filteredData = useMemo(() => {
     const base = rawData.filter(
@@ -64,51 +64,62 @@ function SensorChart({
     else if (timeRange === "1d") cutoff.setDate(cutoff.getDate() - 1);
     else if (timeRange === "7d") cutoff.setDate(cutoff.getDate() - 7);
 
-    const ranged =
-      timeRange === "all"
-        ? base
-        : base.filter((d) => new Date(d.timestamp) >= cutoff);
+    const ranged = timeRange === "all"
+      ? base
+      : base.filter((d) => new Date(d.timestamp) >= cutoff);
 
     return ranged.map((d) => {
       const isAlert =
         (alertConfig.low && d.value < alertConfig.low) ||
         (alertConfig.high && d.value > alertConfig.high);
-      return {
-        ...d,
-        alert: isAlert,
-      };
+      return { ...d, alert: isAlert };
     });
-  }, [rawData, facility, type, sensor_name, alertConfig, timeRange]);
+  }, [rawData, facility, sensor_name, type, alertConfig, timeRange]);
 
-  const updateField = (field, value) => {
-    onConfigChange({ [field]: value });
-  };
+  const chartData = useMemo(() => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
 
-  const chartData = {
-    labels: filteredData.map((d) => d.timestamp),
-    datasets: [
-      {
-        label: `${type}`,
-        data: filteredData.map((d) => d.value),
-        borderColor: "#8884d8",
-        backgroundColor:
-          resolvedChartType === "bar" ? "#8884d8" : "rgba(136, 132, 216, 0.2)",
-        tension: resolvedChartType === "area" ? 0.4 : 0,
-        fill: resolvedChartType === "area",
-      },
-      {
-        label: "Alert",
-        data: filteredData.map((d) => (d.alert ? d.value : null)),
-        borderColor: "red",
-        backgroundColor: "red",
-        pointRadius: 16,
-        pointHoverRadius: 10,
-        pointStyle: "star",
-        tension: 0.4,
-        showLine: false,
-      },
-    ],
-  };
+    let gradientFill = "rgba(136, 132, 216, 0.2)";
+    if (ctx && resolvedChartType === "area") {
+      const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+      gradient.addColorStop(0, "rgba(136, 132, 216, 0.5)");
+      gradient.addColorStop(1, "rgba(136, 132, 216, 0.05)");
+      gradientFill = gradient;
+    }
+
+    const hasData = filteredData.length > 0;
+
+    return {
+      labels: hasData ? filteredData.map((d) => d.timestamp) : ["No Data"],
+      datasets: [
+        {
+          label: `${type}`,
+          data: hasData ? filteredData.map((d) => d.value) : [0],
+          borderColor: "#8884d8",
+          backgroundColor:
+            resolvedChartType === "bar"
+              ? "#8884d8"
+              : resolvedChartType === "area"
+              ? gradientFill
+              : "transparent",
+          tension: resolvedChartType === "area" ? 0.4 : 0,
+          fill: resolvedChartType === "area",
+        },
+        {
+          label: "Alert",
+          data: hasData ? filteredData.map((d) => (d.alert ? d.value : null)) : [null],
+          borderColor: "red",
+          backgroundColor: "red",
+          pointRadius: 16,
+          pointHoverRadius: 10,
+          pointStyle: "star",
+          tension: 0.4,
+          showLine: false,
+        },
+      ],
+    };
+  }, [filteredData, resolvedChartType, type]);
 
   const chartOptions = {
     responsive: true,
@@ -118,8 +129,24 @@ function SensorChart({
       tooltip: { mode: "index", intersect: false },
     },
     scales: {
-      y: { beginAtZero: true },
+      x: {
+        title: {
+          display: true,
+          text: "Timestamp",
+        },
+      },
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: "Value",
+        },
+      },
     },
+  };
+
+  const updateField = (field, value) => {
+    onConfigChange({ [field]: value });
   };
 
   return (
@@ -136,9 +163,7 @@ function SensorChart({
         {facility} – {sensor_name} ({type})
       </h3>
 
-      <button onClick={() => setShowConfig(!showConfig)}>
-        ⚙️ Configure Alerts
-      </button>
+      <button onClick={() => setShowConfig(!showConfig)}>⚙️ Configure Alerts</button>
 
       {showConfig && (
         <div style={{ marginTop: "1rem" }}>
@@ -203,19 +228,13 @@ function SensorChart({
         </div>
       )}
 
-      {filteredData.length > 0 ? (
-        <div style={{ height: 300, width: "100%" }}>
-          {resolvedChartType === "bar" ? (
-            <Bar data={chartData} options={chartOptions} />
-          ) : (
-            <Line data={chartData} options={chartOptions} />
-          )}
-        </div>
-      ) : (
-        <p>
-          No data found for {facility} – {type} in selected timeframe.
-        </p>
-      )}
+      <div style={{ height: 300, width: "100%" }}>
+        {resolvedChartType === "bar" ? (
+          <Bar ref={chartRef} data={chartData} options={chartOptions} />
+        ) : (
+          <Line ref={chartRef} data={chartData} options={chartOptions} />
+        )}
+      </div>
     </div>
   );
 }
