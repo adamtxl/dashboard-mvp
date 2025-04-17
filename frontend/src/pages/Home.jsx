@@ -11,24 +11,14 @@ function Home() {
   const [selectedSensors, setSelectedSensors] = useState([])
   const [alertConfigs, setAlertConfigs] = useState({})
   const [timeRange, setTimeRange] = useState("7d")
+
   const sensorNames = [...new Set(
     rawData.map(entry => ({
       sensor_name: entry.sensor_name,
       facility: entry.facility,
       type: entry.type
     }))
-  )];
-    const handleSensorRemove = (sensorToRemove) => {
-    setSelectedSensors(prev =>
-      prev.filter(sensor =>
-        !(sensor.facility === sensorToRemove.facility &&
-          sensor.sensor_name === sensorToRemove.sensor_name &&
-          sensor.type === sensorToRemove.type)
-      )
-    )
-  }
-  
-
+  )]
 
   useEffect(() => {
     axios.get('http://localhost:8000/data')
@@ -40,11 +30,22 @@ function Home() {
         setLocations(locs)
         setSensorTypes(types)
       })
-      .catch(err => console.error("Failed to fetch data:", err))
+      .catch(err => console.error("❌ Failed to fetch data:", err))
   }, [])
 
   const handleSensorAdd = (sensor) => {
+    console.log("🚀 Adding sensor:", sensor)
     setSelectedSensors(prev => [...prev, sensor])
+  }
+
+  const handleSensorRemove = (sensorToRemove) => {
+    setSelectedSensors(prev =>
+      prev.filter(sensor =>
+        !(sensor.facility === sensorToRemove.facility &&
+          sensor.sensor_name === sensorToRemove.sensor_name &&
+          sensor.type === sensorToRemove.type)
+      )
+    )
   }
 
   const handleAlertConfigUpdate = (key, config) => {
@@ -56,10 +57,9 @@ function Home() {
 
   return (
     <div style={{ padding: '.5rem' }}>
-
-
       <div style={{ marginBottom: '1rem' }}>
-        <label>Time Range:&nbsp;
+        <label>
+          Time Range:&nbsp;
           <select value={timeRange} onChange={e => setTimeRange(e.target.value)}>
             <option value="1h">Last Hour</option>
             <option value="1d">Last 24 Hours</option>
@@ -70,48 +70,65 @@ function Home() {
       </div>
 
       <SensorSelector
-  locations={locations}
-  sensorTypes={sensorTypes}
-  sensorNames={sensorNames}
-  onAddSensor={handleSensorAdd}
-/>
-
-
-<div className="sensor-grid">
-  {selectedSensors.map((sensor, index) => (
-    <div
-      key={`${sensor.facility}|${sensor.sensor_name}|${sensor.type}|${index}`}
-      className="sensor-card"
-    >
-      <button
-        onClick={() => handleSensorRemove(sensor)}
-        style={{
-          float: 'right',
-          backgroundColor: 'transparent',
-          border: 'none',
-          fontSize: '1.2rem',
-          cursor: 'pointer',
-          color: '#888'
-        }}
-        title="Remove Widget"
-      >
-        ❌
-      </button>
-
-      <SensorChart
-        sensor={sensor}
-        rawData={rawData}
-        timeRange={timeRange}
-        alertConfig={alertConfigs[`${sensor.facility}|${sensor.type}`] || {}}
-        onConfigChange={(config) =>
-          handleAlertConfigUpdate(`${sensor.facility}|${sensor.type}`, config)
-        }
+        locations={locations}
+        sensorTypes={sensorTypes}
+        sensorNames={sensorNames}
+        onAddSensor={handleSensorAdd}
       />
-    </div>
-  ))}
-</div>
 
+      {rawData.length === 0 ? (
+        <p>⏳ Loading sensor data...</p>
+      ) : (
+        <div className="sensor-grid">
+          {selectedSensors.map((sensor, index) => {
+            const isValid =
+              sensor &&
+              sensor.facility &&
+              sensor.sensor_name &&
+              sensor.type
 
+            if (!isValid) {
+              console.warn("⚠️ Skipping invalid sensor", sensor)
+              return null
+            }
+
+            const sensorKey = `${sensor.facility}|${sensor.type}`
+            const alertConfig = alertConfigs[sensorKey] || {}
+
+            return (
+              <div
+                key={`${sensor.facility}|${sensor.sensor_name}|${sensor.type}|${index}`}
+                className="sensor-card"
+              >
+                <button
+                  onClick={() => handleSensorRemove(sensor)}
+                  style={{
+                    float: 'right',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    fontSize: '1.2rem',
+                    cursor: 'pointer',
+                    color: '#888'
+                  }}
+                  title="Remove Widget"
+                >
+                  ❌
+                </button>
+
+                <SensorChart
+                  sensor={sensor}
+                  rawData={rawData}
+                  timeRange={timeRange}
+                  alertConfig={alertConfig}
+                  onConfigChange={(config) =>
+                    handleAlertConfigUpdate(sensorKey, config)
+                  }
+                />
+              </div>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

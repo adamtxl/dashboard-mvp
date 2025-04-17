@@ -24,6 +24,10 @@ ChartJS.register(
 );
 
 function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }) {
+  const chartRef = useRef(null);
+  const [showConfig, setShowConfig] = useState(false);
+  const [customChartType, setCustomChartType] = useState("");
+
   if (!sensor || !sensor.facility || !sensor.sensor_name || !sensor.type) {
     return (
       <div style={{ padding: "1rem", border: "1px solid #ccc", marginBottom: "1rem" }}>
@@ -33,9 +37,6 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
   }
 
   const { facility, sensor_name, type } = sensor;
-  const [showConfig, setShowConfig] = useState(false);
-  const [customChartType, setCustomChartType] = useState("");
-  const chartRef = useRef(null);
 
   const chartTypeMap = {
     temperature: "line",
@@ -101,7 +102,7 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
     }
 
     if (start) {
-      const end = new Date(filteredData[filteredData.length - 1].timestamp);
+      const end = new Date(filteredData[filteredData.length - 1]?.timestamp);
       const duration = (end - start) / 1000;
       if (duration > 20) {
         segments.push({ start, end, duration: Math.round(duration) });
@@ -111,110 +112,114 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
     return segments;
   }, [filteredData, type]);
 
-  const chartData = (canvas) => {
-    const ctx = canvas?.getContext("2d");
-
-    let gradientFill = "rgba(136, 132, 216, 0.2)";
-    if (ctx && resolvedChartType === "area") {
-      const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-      gradient.addColorStop(0, "rgba(136, 132, 216, 0.5)");
-      gradient.addColorStop(1, "rgba(136, 132, 216, 0.05)");
-      gradientFill = gradient;
-    }
-
-    if (!filteredData.length) {
-      return {
-        labels: [],
-        datasets: [{
-          label: "No data",
-          data: [],
-        }],
-      };
-    }
+  const chartData = useMemo(() => {
+    const hasData = filteredData.length > 0;
 
     return {
-      labels: filteredData.map((d) => d.timestamp),
-      datasets: [
-        {
-          label: `${type}`,
-          data: filteredData.map((d) => d.value),
-          borderColor: "#8884d8",
-          backgroundColor:
-            resolvedChartType === "bar"
-              ? "#8884d8"
-              : resolvedChartType === "area"
-              ? gradientFill
-              : "transparent",
-          tension: resolvedChartType === "area" ? 0.4 : 0,
-          fill: resolvedChartType === "area",
-        },
-        {
-          label: "Alert",
-          data: filteredData.map((d) => (d.alert ? d.value : null)),
-          borderColor: "red",
-          backgroundColor: "red",
-          pointRadius: 16,
-          pointHoverRadius: 10,
-          pointStyle: "star",
-          tension: 0.4,
-          showLine: false,
-        },
-      ],
+      labels: hasData ? filteredData.map((d) => d.timestamp) : [],
+      datasets: hasData
+        ? [
+            {
+              label: `${type}`,
+              data: filteredData.map((d) => d.value),
+              borderColor: "#8884d8",
+              backgroundColor:
+                resolvedChartType === "bar"
+                  ? "#8884d8"
+                  : resolvedChartType === "area"
+                  ? "rgba(136, 132, 216, 0.2)"
+                  : "transparent",
+              tension: resolvedChartType === "area" ? 0.4 : 0,
+              fill: resolvedChartType === "area",
+            },
+            {
+              label: "Alert",
+              data: filteredData.map((d) => (d.alert ? d.value : null)),
+              borderColor: "red",
+              backgroundColor: "red",
+              pointRadius: 16,
+              pointHoverRadius: 10,
+              pointStyle: "star",
+              tension: 0.4,
+              showLine: false,
+            },
+          ]
+        : [],
     };
-  };
+  }, [filteredData, resolvedChartType, type]);
 
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { position: "top" },
-      tooltip: { mode: "index", intersect: false },
-      annotation: {
-        annotations: runtimeSegments.map((segment) => ({
-          type: "box",
-          xMin: segment.start.toISOString(),
-          xMax: segment.end.toISOString(),
-          backgroundColor: "rgba(255, 99, 132, 0.25)",
-          borderWidth: 0,
-          label: {
-            content: `${segment.duration}s`,
-            enabled: true,
-            position: "start",
-            color: "#fff",
-            backgroundColor: "rgba(255,0,0,0.6)",
-            callout: { display: false }, // Safe version
+  const chartOptions = useMemo(() => {
+    const annotations =
+      type === "amperage"
+        ? Object.fromEntries(
+            runtimeSegments.map((segment, i) => [
+              `runtime-${i}`,
+              {
+                type: "box",
+                xMin: segment?.start?.toISOString?.() || "",
+                xMax: segment?.end?.toISOString?.() || "",
+                backgroundColor: "rgba(255, 99, 132, 0.25)",
+                borderWidth: 0,
+                label: {
+                  content: `${segment.duration}s`,
+                  enabled: true,
+                  position: "start",
+                  color: "#fff",
+                  backgroundColor: "rgba(255,0,0,0.6)",
+                  callout: false, // ✅ true fix here
+                },
+              },
+            ])
+          )
+        : {};
+
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "top" },
+        tooltip: { mode: "index", intersect: false },
+        annotation: { annotations },
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: "Timestamp",
           },
-        })),
-      },
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Timestamp",
+          ticks: {
+            autoSkip: true,
+            maxTicksLimit: 10,
+          },
         },
-        ticks: {
-          autoSkip: true,
-          maxTicksLimit: 10,
-        },
-      },
-      y: {
-        beginAtZero: true,
-        title: {
-          display: true,
-          text: "Value",
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: "Value",
+          },
         },
       },
-    },
-  };
+    };
+  }, [runtimeSegments, type]);
 
   const updateField = (field, value) => {
     onConfigChange({ [field]: value });
   };
 
   return (
-    <div style={{ marginBottom: "2rem", padding: "1rem", border: "1px solid #ddd", width: "100%", boxSizing: "border-box" }}>
-      <h3>{facility} – {sensor_name} ({type})</h3>
+    <div
+      style={{
+        marginBottom: "2rem",
+        padding: "1rem",
+        border: "1px solid #ddd",
+        width: "100%",
+        boxSizing: "border-box",
+      }}
+    >
+      <h3>
+        {facility} – {sensor_name} ({type})
+      </h3>
 
       <button onClick={() => setShowConfig(!showConfig)}>⚙️ Configure Alerts</button>
 
@@ -222,36 +227,61 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         <div style={{ marginTop: "1rem" }}>
           <label>
             Low Threshold:
-            <input type="number" value={alertConfig.low || ""} onChange={(e) => updateField("low", Number(e.target.value))} />
+            <input
+              type="number"
+              value={alertConfig.low || ""}
+              onChange={(e) => updateField("low", Number(e.target.value))}
+            />
           </label>
           <br />
           <label>
             High Threshold:
-            <input type="number" value={alertConfig.high || ""} onChange={(e) => updateField("high", Number(e.target.value))} />
+            <input
+              type="number"
+              value={alertConfig.high || ""}
+              onChange={(e) => updateField("high", Number(e.target.value))}
+            />
           </label>
           <br />
           <label>
             Alert Email:
-            <input type="email" value={alertConfig.email || ""} onChange={(e) => updateField("email", e.target.value)} />
+            <input
+              type="email"
+              value={alertConfig.email || ""}
+              onChange={(e) => updateField("email", e.target.value)}
+            />
           </label>
           <br />
           <label>
             Chart Type:
-            <select value={customChartType || chartTypeMap[type]} onChange={(e) => setCustomChartType(e.target.value)}>
+            <select
+              value={customChartType || chartTypeMap[type]}
+              onChange={(e) => setCustomChartType(e.target.value)}
+            >
               <option value="line">Line</option>
               <option value="bar">Bar</option>
               <option value="area">Area</option>
             </select>
           </label>
           <br />
-          <button onClick={() => setShowConfig(false)} style={{ marginTop: "0.5rem" }}>
+          <button
+            onClick={() => setShowConfig(false)}
+            style={{ marginTop: "0.5rem" }}
+          >
             💾 Save & Close
           </button>
         </div>
       )}
 
       {filteredData.some((d) => d.alert) && (
-        <div style={{ marginTop: "1rem", backgroundColor: "red", color: "white", padding: "0.5rem" }}>
+        <div
+          style={{
+            marginTop: "1rem",
+            backgroundColor: "red",
+            color: "white",
+            padding: "0.5rem",
+          }}
+        >
           🚨 ALERT: {type} value out of range at {facility}
         </div>
       )}
