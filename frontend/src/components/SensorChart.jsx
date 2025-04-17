@@ -29,9 +29,8 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
       </div>
     );
   }
-  
+
   const { facility, sensor_name, type } = sensor;
-  const key = `${facility}|${sensor_name}|${type}`;
   const [showConfig, setShowConfig] = useState(false);
   const [customChartType, setCustomChartType] = useState("");
   const chartRef = useRef(null);
@@ -75,25 +74,22 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         (alertConfig.high && d.value > alertConfig.high);
       return { ...d, alert: isAlert };
     });
-  }, [rawData, facility, type, sensor_name, alertConfig, timeRange]);
+  }, [rawData, facility, sensor_name, type, alertConfig, timeRange]);
 
-  const updateField = (field, value) => {
-    onConfigChange({ [field]: value });
-  };
+  const chartData = useMemo(() => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
 
-  const chartData = (canvas) => {
-    const ctx = canvas?.getContext("2d");
     let gradientFill = "rgba(136, 132, 216, 0.2)";
-  
     if (ctx && resolvedChartType === "area") {
       const gradient = ctx.createLinearGradient(0, 0, 0, 300);
       gradient.addColorStop(0, "rgba(136, 132, 216, 0.5)");
       gradient.addColorStop(1, "rgba(136, 132, 216, 0.05)");
       gradientFill = gradient;
     }
-  
+
     const hasData = filteredData.length > 0;
-  
+
     return {
       labels: hasData ? filteredData.map((d) => d.timestamp) : ["No Data"],
       datasets: [
@@ -123,40 +119,7 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         },
       ],
     };
-  };
-  
-    console.log("Chart Data:", chartData(document.createElement("canvas")));
-
-    return {
-      labels: filteredData.length ? filteredData.map(d => d.timestamp) : ["No Data"],
-      datasets: [
-        {
-          label: `${type}`,
-          data: filteredData.length ? filteredData.map(d => d.value) : [0],
-                    borderColor: "#8884d8",
-          backgroundColor:
-            resolvedChartType === "bar"
-              ? "#8884d8"
-              : resolvedChartType === "area"
-              ? gradientFill
-              : "transparent",
-          tension: resolvedChartType === "area" ? 0.4 : 0,
-          fill: resolvedChartType === "area",
-        },
-        {
-          label: "Alert",
-          data: filteredData.length ? filteredData.map((d) => d.alert ? d.value : null) : [null],
-                    borderColor: "red",
-          backgroundColor: "red",
-          pointRadius: 16,
-          pointHoverRadius: 10,
-          pointStyle: "star",
-          tension: 0.4,
-          showLine: false,
-        },
-      ],
-    };
-  };
+  }, [filteredData, resolvedChartType, type]);
 
   const chartOptions = {
     responsive: true,
@@ -180,6 +143,10 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         },
       },
     },
+  };
+
+  const updateField = (field, value) => {
+    onConfigChange({ [field]: value });
   };
 
   return (
@@ -261,23 +228,13 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         </div>
       )}
 
-      {filteredData.length > 0 ? (
-        <div style={{ height: 300, width: "100%" }}>
-          {resolvedChartType === "bar" ? (
-            <Bar ref={chartRef} data={(canvas) => chartData(canvas)} options={chartOptions} />
-          ) : (
-            <Line
-              ref={chartRef}
-              data={(canvas) => chartData(canvas ?? document.createElement("canvas"))}
-              options={chartOptions}
-            />
-          )}
-        </div>
-      ) : (
-        <p>
-          No data found for {facility} – {type} in selected timeframe.
-        </p>
-      )}
+      <div style={{ height: 300, width: "100%" }}>
+        {resolvedChartType === "bar" ? (
+          <Bar ref={chartRef} data={chartData} options={chartOptions} />
+        ) : (
+          <Line ref={chartRef} data={chartData} options={chartOptions} />
+        )}
+      </div>
     </div>
   );
 }
