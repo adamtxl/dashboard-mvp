@@ -129,7 +129,11 @@ function Home() {
           })}
         </div>
       )}
+ <div className="min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-6">
+  🌈 Tailwind is working!
+</div>
     </div>
+    
   )
 }
 

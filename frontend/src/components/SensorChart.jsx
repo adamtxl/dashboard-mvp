@@ -1,3 +1,4 @@
+
 import { useState, useMemo, useRef, useEffect } from "react";
 import { Line, Bar } from "react-chartjs-2";
 import 'chartjs-adapter-date-fns';
@@ -15,7 +16,6 @@ import {
 import annotationPlugin from 'chartjs-plugin-annotation';
 import 'chartjs-adapter-date-fns';
 
-// 💣 Register everything manually
 ChartJS.register(
   LineElement,
   BarElement,
@@ -27,8 +27,6 @@ ChartJS.register(
   CategoryScale,
   annotationPlugin
 );
-
-
 
 function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }) {
   const chartRef = useRef(null);
@@ -43,12 +41,10 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
       }
     };
   }, []);
-  
-  
 
   if (!sensor?.facility || !sensor.sensor_name || !sensor.type) {
     return (
-      <div style={{ padding: "1rem", border: "1px solid #ccc", marginBottom: "1rem" }}>
+      <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
         <p>⚠️ Invalid sensor configuration. Please select a valid sensor.</p>
       </div>
     );
@@ -86,7 +82,6 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
     else if (timeRange === "7d") cutoff.setDate(cutoff.getDate() - 7);
 
     const ranged = timeRange === "all" ? base : base.filter((d) => new Date(d.timestamp) >= cutoff);
-
     const sorted = ranged.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
     return sorted.map((d) => {
@@ -99,15 +94,12 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
 
   const runtimeSegments = useMemo(() => {
     if (type !== "amperage") return [];
-
     const segments = [];
     let start = null;
-
     for (let i = 0; i < filteredData.length; i++) {
       const point = filteredData[i];
       const isOn = point.value > 0;
       const time = new Date(point.timestamp);
-
       if (isOn && !start) {
         start = time;
       } else if (!isOn && start) {
@@ -118,7 +110,6 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         start = null;
       }
     }
-
     if (start) {
       const end = new Date(filteredData[filteredData.length - 1].timestamp);
       const duration = (end - start) / 1000;
@@ -126,49 +117,12 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
         segments.push({ start, end, duration: Math.round(duration) });
       }
     }
-
     return segments;
   }, [filteredData, type]);
 
   const chartData = useMemo(() => {
-    const hasData = filteredData.length > 0;
-
-    const chartData = {
-      datasets: [
-        {
-          label: 'Sample Time Data',
-          data: [
-            { x: new Date('2025-01-01T00:00:00Z'), y: 5 },
-            { x: new Date('2025-01-01T01:00:00Z'), y: 10 },
-            { x: new Date('2025-01-01T02:00:00Z'), y: 7 },
-          ],
-          borderColor: 'blue',
-          backgroundColor: 'rgba(0, 0, 255, 0.3)',
-        }
-      ]
-    };
-    
-    const chartOptions = {
-      responsive: true,
-      plugins: {
-        legend: { position: 'top' },
-      },
-      scales: {
-        x: {
-          type: 'time',
-          time: {
-            unit: 'hour'
-          }
-        },
-        y: {
-          beginAtZero: true
-        }
-      }
-    };
-    
-
     return {
-      datasets: hasData
+      datasets: filteredData.length
         ? [
             {
               label: `${type}`,
@@ -237,8 +191,7 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
       plugins: {
         legend: { position: "top" },
         tooltip: { mode: "index", intersect: false },
-        // annotation: { annotations },  // TEMP removed for debug
-
+        // annotation: { annotations },
       },
       scales: {
         x: {
@@ -272,55 +225,51 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
   };
 
   return (
-    <div
-      style={{
-        marginBottom: "2rem",
-        padding: "1rem",
-        border: "1px solid #ddd",
-        width: "100%",
-        boxSizing: "border-box",
-        maxWidth: "100%",
-        overflowX: "auto",
-      }}
-    >
-      <h3>
+    <div className="bg-gradient-to-br from-blue-50 to-blue-100 shadow-2xl rounded-3xl ring-1 ring-blue-300 p-6 mb-6 border border-blue-200 w-full max-w-4xl mx-auto transition hover:shadow-blue-300 transition-transform transform hover:-translate-y-1">
+      <h3 className="text-xl font-semibold mb-4 text-blue-900">
         {facility} – {sensor_name} ({type})
       </h3>
 
-      <button onClick={() => setShowConfig(!showConfig)}>⚙️ Configure Alerts</button>
+      <button
+        className="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700 transition"
+        onClick={() => setShowConfig(!showConfig)}
+      >
+        ⚙️ Configure Alerts
+      </button>
 
       {showConfig && (
-        <div style={{ marginTop: "1rem" }}>
-          <label>
+        <div className="mt-4 space-y-2 border-t border-gray-300 pt-4">
+          <label className="block font-medium text-blue-800">
             Low Threshold:
             <input
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-500"
               type="number"
               value={alertConfig.low || ""}
               onChange={(e) => updateField("low", Number(e.target.value))}
             />
           </label>
-          <br />
-          <label>
+          <label className="block font-medium text-blue-800">
             High Threshold:
             <input
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-500"
               type="number"
               value={alertConfig.high || ""}
               onChange={(e) => updateField("high", Number(e.target.value))}
             />
           </label>
-          <br />
-          <label>
+          <label className="block font-medium text-blue-800">
             Alert Email:
             <input
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-500"
               type="email"
               value={alertConfig.email || ""}
               onChange={(e) => updateField("email", e.target.value)}
             />
           </label>
-          <br />
-          <label>
+          <label className="block font-medium text-blue-800">
             Chart Type:
             <select
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-500"
               value={customChartType || chartTypeMap[type]}
               onChange={(e) => setCustomChartType(e.target.value)}
             >
@@ -329,44 +278,20 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
               <option value="area">Area</option>
             </select>
           </label>
-          <br />
-          <button
-            onClick={() => setShowConfig(false)}
-            style={{ marginTop: "0.5rem" }}
-          >
-            💾 Save & Close
-          </button>
         </div>
       )}
 
       {filteredData.some((d) => d.alert) && (
-        <div
-          style={{
-            marginTop: "1rem",
-            backgroundColor: "red",
-            color: "white",
-            padding: "0.5rem",
-          }}
-        >
+        <div className="bg-red-500 text-white px-3 py-2 rounded mt-4">
           🚨 ALERT: {type} value out of range at {facility}
         </div>
       )}
 
-      <div style={{ height: 300, width: "100%", maxWidth: "100%" }}>
+      <div className="h-[300px] w-full max-w-full mt-6">
         {resolvedChartType === "bar" ? (
-          <Bar
-          key={`bar-${facility}-${sensor_name}-${type}-${timeRange}`}
-            ref={chartRef}
-  data={chartData}
-  options={chartOptions}
-/>
+          <Bar key={`bar-${facility}-${sensor_name}-${type}-${timeRange}`} ref={chartRef} data={chartData} options={chartOptions} />
         ) : (
-          <Line
-          key={`line-${facility}-${sensor_name}-${type}-${timeRange}`}
-                      ref={chartRef}
-            data={chartData}
-            options={chartOptions}
-          />
+          <Line key={`line-${facility}-${sensor_name}-${type}-${timeRange}`} ref={chartRef} data={chartData} options={chartOptions} />
         )}
       </div>
     </div>
