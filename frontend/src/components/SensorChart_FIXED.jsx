@@ -1,34 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { Line, Bar } from "react-chartjs-2";
-import 'chartjs-adapter-date-fns';
-import {
-  Chart as ChartJS,
-  LineElement,
-  BarElement,
-  TimeScale,
-  LinearScale,
-  PointElement,
-  Tooltip,
-  Legend,
-  CategoryScale,
-} from 'chart.js';
-import annotationPlugin from 'chartjs-plugin-annotation';
-import 'chartjs-adapter-date-fns';
-
-// 💣 Register everything manually
-ChartJS.register(
-  LineElement,
-  BarElement,
-  TimeScale,
-  LinearScale,
-  PointElement,
-  Tooltip,
-  Legend,
-  CategoryScale,
-  annotationPlugin
-);
-
-
 
 function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }) {
   const chartRef = useRef(null);
@@ -43,7 +14,6 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
       }
     };
   }, []);
-  
   
 
   if (!sensor?.facility || !sensor.sensor_name || !sensor.type) {
@@ -132,40 +102,6 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange }
 
   const chartData = useMemo(() => {
     const hasData = filteredData.length > 0;
-
-    const chartData = {
-      datasets: [
-        {
-          label: 'Sample Time Data',
-          data: [
-            { x: new Date('2025-01-01T00:00:00Z'), y: 5 },
-            { x: new Date('2025-01-01T01:00:00Z'), y: 10 },
-            { x: new Date('2025-01-01T02:00:00Z'), y: 7 },
-          ],
-          borderColor: 'blue',
-          backgroundColor: 'rgba(0, 0, 255, 0.3)',
-        }
-      ]
-    };
-    
-    const chartOptions = {
-      responsive: true,
-      plugins: {
-        legend: { position: 'top' },
-      },
-      scales: {
-        x: {
-          type: 'time',
-          time: {
-            unit: 'hour'
-          }
-        },
-        y: {
-          beginAtZero: true
-        }
-      }
-    };
-    
 
     return {
       datasets: hasData
