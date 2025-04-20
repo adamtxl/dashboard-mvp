@@ -241,6 +241,30 @@
   },
   {
     "facility": "Burger Barn",
+    "sensor_name": "Basement Sump Pump",
+    "sensor_id": "bb-sump-amp",
+    "type": "amperage",
+    "value": 5,
+    "timestamp": "2025-04-17T12:00:00Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Basement Sump Pump",
+    "sensor_id": "bb-sump-amp",
+    "type": "amperage",
+    "value": 5,
+    "timestamp": "2025-04-17T12:00:30Z"
+  },
+  {
+    "facility": "Burger Barn",
+    "sensor_name": "Basement Sump Pump",
+    "sensor_id": "bb-sump-amp",
+    "type": "amperage",
+    "value": 0,
+    "timestamp": "2025-04-17T12:01:00Z"
+  },
+  {
+    "facility": "Burger Barn",
     "sensor_name": "Kitchen - Fryer",
     "sensor_id": "bu-kitchen-voltage",
     "type": "voltage",

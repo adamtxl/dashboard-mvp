@@ -1,0 +1,351 @@
+.
+├── backend
+│   ├── fake_data.json
+│   ├── fake_sensor_data_full.json
+│   ├── main.py
+│   ├── __pycache__
+│   │   └── main.cpython-312.pyc
+│   └── requirements.txt
+├── frontend
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── node_modules
+│   │   ├── acorn
+│   │   ├── acorn-jsx
+│   │   ├── ajv
+│   │   ├── @alloc
+│   │   ├── @ampproject
+│   │   ├── ansi-styles
+│   │   ├── argparse
+│   │   ├── asynckit
+│   │   ├── autoprefixer
+│   │   ├── axios
+│   │   ├── @babel
+│   │   ├── balanced-match
+│   │   ├── brace-expansion
+│   │   ├── browserslist
+│   │   ├── call-bind-apply-helpers
+│   │   ├── callsites
+│   │   ├── caniuse-lite
+│   │   ├── chalk
+│   │   ├── chart.js
+│   │   ├── chartjs-adapter-date-fns
+│   │   ├── chartjs-adapter-luxon
+│   │   ├── chartjs-plugin-annotation
+│   │   ├── color-convert
+│   │   ├── color-name
+│   │   ├── combined-stream
+│   │   ├── concat-map
+│   │   ├── convert-source-map
+│   │   ├── cookie
+│   │   ├── cross-spawn
+│   │   ├── csstype
+│   │   ├── date-fns
+│   │   ├── debug
+│   │   ├── deep-is
+│   │   ├── delayed-stream
+│   │   ├── detect-libc
+│   │   ├── dunder-proto
+│   │   ├── electron-to-chromium
+│   │   ├── enhanced-resolve
+│   │   ├── @esbuild
+│   │   ├── esbuild
+│   │   ├── escalade
+│   │   ├── escape-string-regexp
+│   │   ├── es-define-property
+│   │   ├── es-errors
+│   │   ├── @eslint
+│   │   ├── eslint
+│   │   ├── @eslint-community
+│   │   ├── eslint-plugin-react-hooks
+│   │   ├── eslint-plugin-react-refresh
+│   │   ├── eslint-scope
+│   │   ├── eslint-visitor-keys
+│   │   ├── es-object-atoms
+│   │   ├── espree
+│   │   ├── esquery
+│   │   ├── esrecurse
+│   │   ├── es-set-tostringtag
+│   │   ├── estraverse
+│   │   ├── esutils
+│   │   ├── fast-deep-equal
+│   │   ├── fast-json-stable-stringify
+│   │   ├── fast-levenshtein
+│   │   ├── fdir
+│   │   ├── file-entry-cache
+│   │   ├── find-up
+│   │   ├── flat-cache
+│   │   ├── flatted
+│   │   ├── follow-redirects
+│   │   ├── form-data
+│   │   ├── fraction.js
+│   │   ├── function-bind
+│   │   ├── gensync
+│   │   ├── get-intrinsic
+│   │   ├── get-proto
+│   │   ├── globals
+│   │   ├── glob-parent
+│   │   ├── gopd
+│   │   ├── graceful-fs
+│   │   ├── has-flag
+│   │   ├── hasown
+│   │   ├── has-symbols
+│   │   ├── has-tostringtag
+│   │   ├── @humanfs
+│   │   ├── @humanwhocodes
+│   │   ├── ignore
+│   │   ├── import-fresh
+│   │   ├── imurmurhash
+│   │   ├── isexe
+│   │   ├── is-extglob
+│   │   ├── is-glob
+│   │   ├── jiti
+│   │   ├── @jridgewell
+│   │   ├── jsesc
+│   │   ├── json5
+│   │   ├── json-buffer
+│   │   ├── json-schema-traverse
+│   │   ├── json-stable-stringify-without-jsonify
+│   │   ├── js-tokens
+│   │   ├── js-yaml
+│   │   ├── keyv
+│   │   ├── @kurkle
+│   │   ├── levn
+│   │   ├── lightningcss
+│   │   ├── lightningcss-linux-x64-gnu
+│   │   ├── lightningcss-linux-x64-musl
+│   │   ├── locate-path
+│   │   ├── lodash.merge
+│   │   ├── lru-cache
+│   │   ├── luxon
+│   │   ├── math-intrinsics
+│   │   ├── mime-db
+│   │   ├── mime-types
+│   │   ├── minimatch
+│   │   ├── ms
+│   │   ├── nanoid
+│   │   ├── natural-compare
+│   │   ├── node-releases
+│   │   ├── normalize-range
+│   │   ├── optionator
+│   │   ├── parent-module
+│   │   ├── path-exists
+│   │   ├── path-key
+│   │   ├── picocolors
+│   │   ├── picomatch
+│   │   ├── p-limit
+│   │   ├── p-locate
+│   │   ├── postcss
+│   │   ├── postcss-value-parser
+│   │   ├── prelude-ls
+│   │   ├── proxy-from-env
+│   │   ├── punycode
+│   │   ├── react
+│   │   ├── react-chartjs-2
+│   │   ├── react-dom
+│   │   ├── react-refresh
+│   │   ├── react-router
+│   │   ├── react-router-dom
+│   │   ├── resolve-from
+│   │   ├── @rollup
+│   │   ├── rollup
+│   │   ├── scheduler
+│   │   ├── semver
+│   │   ├── set-cookie-parser
+│   │   ├── shebang-command
+│   │   ├── shebang-regex
+│   │   ├── source-map-js
+│   │   ├── strip-json-comments
+│   │   ├── supports-color
+│   │   ├── @swc
+│   │   ├── @tailwindcss
+│   │   ├── tailwindcss
+│   │   ├── tapable
+│   │   ├── tinyglobby
+│   │   ├── turbo-stream
+│   │   ├── type-check
+│   │   ├── @types
+│   │   ├── update-browserslist-db
+│   │   ├── uri-js
+│   │   ├── vite
+│   │   ├── @vitejs
+│   │   ├── which
+│   │   ├── word-wrap
+│   │   ├── yallist
+│   │   └── yocto-queue
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   ├── public
+│   │   └── vite.svg
+│   ├── README.md
+│   ├── src
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── assets
+│   │   ├── chartConfig.js
+│   │   ├── components
+│   │   ├── index.css
+│   │   ├── index.js
+│   │   ├── main.jsx
+│   │   └── pages
+│   ├── src.zip
+│   ├── tailwind.config.js
+│   └── vite.config.js
+├── frontend-working
+│   ├── index.html
+│   ├── node_modules
+│   │   ├── @alloc
+│   │   ├── ansi-regex
+│   │   ├── ansi-styles
+│   │   ├── anymatch
+│   │   ├── any-promise
+│   │   ├── arg
+│   │   ├── autoprefixer
+│   │   ├── balanced-match
+│   │   ├── binary-extensions
+│   │   ├── brace-expansion
+│   │   ├── braces
+│   │   ├── browserslist
+│   │   ├── camelcase-css
+│   │   ├── caniuse-lite
+│   │   ├── chokidar
+│   │   ├── color-convert
+│   │   ├── color-name
+│   │   ├── commander
+│   │   ├── cross-spawn
+│   │   ├── cssesc
+│   │   ├── didyoumean
+│   │   ├── dlv
+│   │   ├── eastasianwidth
+│   │   ├── electron-to-chromium
+│   │   ├── emoji-regex
+│   │   ├── @esbuild
+│   │   ├── esbuild
+│   │   ├── escalade
+│   │   ├── fast-glob
+│   │   ├── fastq
+│   │   ├── fill-range
+│   │   ├── foreground-child
+│   │   ├── fraction.js
+│   │   ├── function-bind
+│   │   ├── glob
+│   │   ├── glob-parent
+│   │   ├── hasown
+│   │   ├── @isaacs
+│   │   ├── is-binary-path
+│   │   ├── is-core-module
+│   │   ├── isexe
+│   │   ├── is-extglob
+│   │   ├── is-fullwidth-code-point
+│   │   ├── is-glob
+│   │   ├── is-number
+│   │   ├── jackspeak
+│   │   ├── jiti
+│   │   ├── @jridgewell
+│   │   ├── js-tokens
+│   │   ├── lilconfig
+│   │   ├── lines-and-columns
+│   │   ├── loose-envify
+│   │   ├── lru-cache
+│   │   ├── merge2
+│   │   ├── micromatch
+│   │   ├── minimatch
+│   │   ├── minipass
+│   │   ├── mz
+│   │   ├── nanoid
+│   │   ├── @nodelib
+│   │   ├── node-releases
+│   │   ├── normalize-path
+│   │   ├── normalize-range
+│   │   ├── object-assign
+│   │   ├── object-hash
+│   │   ├── package-json-from-dist
+│   │   ├── path-key
+│   │   ├── path-parse
+│   │   ├── path-scurry
+│   │   ├── picocolors
+│   │   ├── picomatch
+│   │   ├── pify
+│   │   ├── pirates
+│   │   ├── @pkgjs
+│   │   ├── postcss
+│   │   ├── postcss-import
+│   │   ├── postcss-js
+│   │   ├── postcss-load-config
+│   │   ├── postcss-nested
+│   │   ├── postcss-selector-parser
+│   │   ├── postcss-value-parser
+│   │   ├── queue-microtask
+│   │   ├── react
+│   │   ├── react-dom
+│   │   ├── read-cache
+│   │   ├── readdirp
+│   │   ├── resolve
+│   │   ├── reusify
+│   │   ├── rollup
+│   │   ├── run-parallel
+│   │   ├── scheduler
+│   │   ├── shebang-command
+│   │   ├── shebang-regex
+│   │   ├── signal-exit
+│   │   ├── source-map-js
+│   │   ├── string-width
+│   │   ├── string-width-cjs
+│   │   ├── strip-ansi
+│   │   ├── strip-ansi-cjs
+│   │   ├── sucrase
+│   │   ├── supports-preserve-symlinks-flag
+│   │   ├── tailwindcss
+│   │   ├── thenify
+│   │   ├── thenify-all
+│   │   ├── to-regex-range
+│   │   ├── ts-interface-checker
+│   │   ├── update-browserslist-db
+│   │   ├── util-deprecate
+│   │   ├── vite
+│   │   ├── which
+│   │   ├── wrap-ansi
+│   │   ├── wrap-ansi-cjs
+│   │   └── yaml
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   ├── src
+│   │   ├── index.css
+│   │   └── main.jsx
+│   └── tailwind.config.js
+├── frontend-working.zip
+├── frontend.zip
+├── index.html
+├── package.json
+├── postcss.config.js
+├── project-structure.txt
+├── README.md
+├── requirements.txt
+├── src
+│   ├── index.css
+│   └── main.jsx
+├── tailwind.config.js
+└── venv
+    ├── bin
+    │   ├── activate
+    │   ├── activate.csh
+    │   ├── activate.fish
+    │   ├── Activate.ps1
+    │   ├── fastapi
+    │   ├── pip
+    │   ├── pip3
+    │   ├── pip3.12
+    │   ├── python -> python3
+    │   ├── python3 -> /usr/bin/python3
+    │   ├── python3.12 -> python3
+    │   └── uvicorn
+    ├── include
+    │   └── python3.12
+    ├── lib
+    │   └── python3.12
+    ├── lib64 -> lib
+    └── pyvenv.cfg
+
+297 directories, 52 files
