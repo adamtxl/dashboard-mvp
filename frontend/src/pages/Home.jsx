@@ -24,7 +24,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/data")
+      .get("https://sensor-backend.fly.dev/data")
       .then((res) => {
         setRawData(res.data);
         setLocations([...new Set(res.data.map((entry) => entry.facility))]);
