@@ -26,6 +26,7 @@ function Home() {
     axios
       .get("https://sensor-backend.fly.dev/data")
       .then((res) => {
+        console.log("🧪 Fetched data count:", res.data.length);
         setRawData(res.data);
         setLocations([...new Set(res.data.map((entry) => entry.facility))]);
         setSensorTypes([...new Set(res.data.map((entry) => entry.type))]);
@@ -52,11 +53,12 @@ function Home() {
   };
 
   const handleAlertConfigUpdate = (key, config) => {
-    setAlertConfigs((prev) => ({
+    setAlertConfigs(prev => ({
       ...prev,
-      [key]: { ...prev[key], ...config },
-    }));
-  };
+      [key]: { ...prev[key], ...config }
+    }))
+  }
+  
 
   return (
     <div
@@ -100,8 +102,8 @@ function Home() {
                 sensor && sensor.facility && sensor.sensor_name && sensor.type;
               if (!isValid) return null;
 
-              const sensorKey = `${sensor.facility}|${sensor.type}`;
-              const alertConfig = alertConfigs[sensorKey] || {};
+              const sensorKey = `${sensor.facility}|${sensor.sensor_name}|${sensor.type}`;
+              const alertConfig = alertConfigs[sensorKey] || { showAverage: false };
 
               return (
                 <div

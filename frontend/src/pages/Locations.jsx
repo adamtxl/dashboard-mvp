@@ -13,7 +13,7 @@ function Locations() {
   const [alertConfigs, setAlertConfigs] = useState({})
 
   useEffect(() => {
-    axios.get('http://localhost:8000/data')
+    axios.get("https://sensor-backend.fly.dev/data")
       .then(res => {
         setRawData(res.data)
         const locs = [...new Set(res.data.map(entry => entry.facility))]

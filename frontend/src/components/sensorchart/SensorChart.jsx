@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Line, Bar } from "react-chartjs-2";
-import "chartjs-adapter-date-fns";
+import 'chartjs-adapter-date-fns';
 import {
   Chart as ChartJS,
   LineElement,
@@ -11,8 +11,8 @@ import {
   Tooltip,
   Legend,
   CategoryScale,
-} from "chart.js";
-import annotationPlugin from "chartjs-plugin-annotation";
+} from 'chart.js';
+import annotationPlugin from 'chartjs-plugin-annotation';
 
 ChartJS.register(
   LineElement,
@@ -26,14 +26,7 @@ ChartJS.register(
   annotationPlugin
 );
 
-function SensorChart({
-  sensor,
-  rawData,
-  timeRange,
-  alertConfig,
-  onConfigChange,
-  onRemove,
-}) {
+function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, onRemove }) {
   const [showConfig, setShowConfig] = useState(false);
   const [customChartType, setCustomChartType] = useState("");
 
@@ -52,15 +45,11 @@ function SensorChart({
   };
 
   const { facility, sensor_name, type } = sensor || {};
-  const resolvedChartType =
-    customChartType || chartTypeMap[type] || chartTypeMap.default;
+  const resolvedChartType = customChartType || chartTypeMap[type] || chartTypeMap.default;
 
   const filteredData = useMemo(() => {
     const base = rawData.filter(
-      (d) =>
-        d.facility === facility &&
-        d.sensor_name === sensor_name &&
-        d.type === type
+      (d) => d.facility === facility && d.sensor_name === sensor_name && d.type === type
     );
 
     const cutoff = new Date();
@@ -68,13 +57,8 @@ function SensorChart({
     else if (timeRange === "1d") cutoff.setDate(cutoff.getDate() - 1);
     else if (timeRange === "7d") cutoff.setDate(cutoff.getDate() - 7);
 
-    const ranged =
-      timeRange === "all"
-        ? base
-        : base.filter((d) => new Date(d.timestamp) >= cutoff);
-    const sorted = ranged.sort(
-      (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
-    );
+    const ranged = timeRange === "all" ? base : base.filter((d) => new Date(d.timestamp) >= cutoff);
+    const sorted = ranged.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
     return sorted.map((d) => {
       const isAlert =
@@ -84,45 +68,66 @@ function SensorChart({
     });
   }, [rawData, facility, sensor_name, type, alertConfig, timeRange]);
 
+  const averageValue = useMemo(() => {
+    if (filteredData.length === 0) return null;
+    const total = filteredData.reduce((acc, curr) => acc + curr.value, 0);
+    return total / filteredData.length;
+  }, [filteredData]);
+
   const chartData = useMemo(() => {
-    return {
-      datasets: filteredData.length
-        ? [
-            {
-              label: `${type}`,
-              data: filteredData.map((d) => ({
-                x: new Date(d.timestamp),
-                y: d.value,
-              })),
-              borderColor: "#36a2eb",
-              backgroundColor:
-                resolvedChartType === "bar"
-                  ? "#36a2eb"
-                  : resolvedChartType === "area"
-                  ? "rgba(54, 162, 235, 0.2)"
-                  : "transparent",
-              tension: resolvedChartType === "area" ? 0.4 : 0,
-              fill: resolvedChartType === "area",
-            },
-            {
-              label: "Alert",
-              data: filteredData
-                .filter((d) => d.alert)
-                .map((d) => ({
-                  x: new Date(d.timestamp),
-                  y: d.value,
-                })),
-              borderColor: "red",
-              backgroundColor: "red",
-              pointRadius: 10,
-              pointHoverRadius: 10,
-              pointStyle: "star",
-              showLine: false,
-            },
-          ]
-        : [],
-    };
-  }, [filteredData, resolvedChartType, type]);
+    const datasets = [];
+
+    if (filteredData.length) {
+      datasets.push({
+        label: `${type}`,
+        data: filteredData.map((d) => ({
+          x: new Date(d.timestamp),
+          y: d.value,
+        })),
+        borderColor: "#36a2eb",
+        backgroundColor:
+          resolvedChartType === "bar"
+            ? "#36a2eb"
+            : resolvedChartType === "area"
+            ? "rgba(54, 162, 235, 0.2)"
+            : "transparent",
+        tension: resolvedChartType === "area" ? 0.4 : 0,
+        fill: resolvedChartType === "area",
+      });
+
+      datasets.push({
+        label: "Alert",
+        data: filteredData
+          .filter((d) => d.alert)
+          .map((d) => ({
+            x: new Date(d.timestamp),
+            y: d.value,
+          })),
+        borderColor: "red",
+        backgroundColor: "red",
+        pointRadius: 10,
+        pointHoverRadius: 10,
+        pointStyle: "star",
+        showLine: false,
+      });
+
+      if (alertConfig.showAverage && averageValue !== null) {
+        datasets.push({
+          label: "Average",
+          data: filteredData.map((d) => ({
+            x: new Date(d.timestamp),
+            y: averageValue,
+          })),
+          borderColor: "orange",
+          borderDash: [6, 6],
+          pointRadius: 0,
+          fill: false,
+        });
+      }
+    }
+
+    return { datasets };
+  }, [filteredData, resolvedChartType, type, averageValue, alertConfig]);
 
   const chartOptions = {
     responsive: true,
@@ -138,21 +143,12 @@ function SensorChart({
           unit: "minute",
           tooltipFormat: "MMM dd, yyyy HH:mm",
         },
-        title: {
-          display: true,
-          text: "Timestamp",
-        },
-        ticks: {
-          autoSkip: true,
-          maxTicksLimit: 10,
-        },
+        title: { display: true, text: "Timestamp" },
+        ticks: { autoSkip: true, maxTicksLimit: 10 },
       },
       y: {
         beginAtZero: true,
-        title: {
-          display: true,
-          text: "Value",
-        },
+        title: { display: true, text: "Value" },
       },
     },
   };
@@ -160,13 +156,14 @@ function SensorChart({
   const updateField = (field, value) => {
     onConfigChange({ [field]: value });
   };
+  const showAverage = alertConfig?.showAverage || false;
 
+  console.log("⚙️ alertConfig:", alertConfig);
+  console.log("⚙️ filteredData:", filteredData);
   return (
-    <div className="card shadow border border-primary bg-dark text-white mb-4">
-      <div className="card-header d-flex justify-content-between align-items-center">
-        <h5 className="mb-0">
-          {facility} – {sensor_name} ({type})
-        </h5>
+    <div className="card bg-secondary text-white shadow-lg h-100">
+      <div className="card-header bg-dark d-flex justify-content-between align-items-center">
+        <h5 className="mb-0">{facility} – {sensor_name} ({type})</h5>
         <div className="d-flex gap-2">
           <button
             className="btn btn-sm btn-outline-info"
@@ -177,7 +174,7 @@ function SensorChart({
           </button>
           <button
             className="btn btn-sm btn-outline-danger"
-            onClick={() => onRemove?.(sensor)}
+            onClick={() => onRemove(sensor)}
             title="Remove"
           >
             ❌
@@ -185,16 +182,15 @@ function SensorChart({
         </div>
       </div>
 
-      <div
-        className={`card-body ${showConfig ? "d-none" : ""}`}
-        style={{ height: "300px" }}
-      >
-        {resolvedChartType === "bar" ? (
-          <Bar data={chartData} options={chartOptions} />
-        ) : (
-          <Line data={chartData} options={chartOptions} />
-        )}
-      </div>
+      {!showConfig && (
+        <div className="card-body" style={{ height: "300px" }}>
+          {resolvedChartType === "bar" ? (
+            <Bar data={chartData} options={chartOptions} />
+          ) : (
+            <Line data={chartData} options={chartOptions} />
+          )}
+        </div>
+      )}
 
       {showConfig && (
         <div className="card-body bg-secondary text-white animate__animated animate__fadeIn">
@@ -237,10 +233,19 @@ function SensorChart({
               <option value="area">Area</option>
             </select>
           </div>
-          <button
-            className="btn btn-success w-100"
-            onClick={() => setShowConfig(false)}
-          >
+          <div className="form-check form-switch mb-3">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="showAverage"
+              checked={alertConfig.showAverage || false}
+              onChange={(e) => updateField("showAverage", e.target.checked)}
+            />
+            <label className="form-check-label" htmlFor="showAverage">
+              Show Average Line
+            </label>
+          </div>
+          <button className="btn btn-success w-100" onClick={() => setShowConfig(false)}>
             💾 Save & Close
           </button>
         </div>
