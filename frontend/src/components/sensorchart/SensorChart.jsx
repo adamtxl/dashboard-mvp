@@ -46,6 +46,28 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
 
   const { facility, sensor_name, type } = sensor || {};
   const resolvedChartType = customChartType || chartTypeMap[type] || chartTypeMap.default;
+  const pairedTempSensors = sensor_name === "Air Intake" || sensor_name === "Air Output";
+
+  const pairedData = useMemo(() => {
+    if (!pairedTempSensors) return null;
+
+    const intakeData = rawData
+      .filter(d => d.facility === facility && d.sensor_name === "Air Intake" && d.type === "temperature")
+      .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+    const outputData = rawData
+      .filter(d => d.facility === facility && d.sensor_name === "Air Output" && d.type === "temperature")
+      .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+    const minLength = Math.min(intakeData.length, outputData.length);
+
+    return Array.from({ length: minLength }, (_, i) => ({
+      timestamp: intakeData[i].timestamp,
+      intake: intakeData[i].value,
+      output: outputData[i].value,
+      delta: outputData[i].value - intakeData[i].value
+    }));
+  }, [rawData, facility, sensor_name, type]);
 
   const filteredData = useMemo(() => {
     const base = rawData.filter(
@@ -75,6 +97,67 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
   }, [filteredData]);
 
   const chartData = useMemo(() => {
+    if (pairedTempSensors && pairedData) {
+      return {
+        datasets: [
+          {
+            label: "Air Intake Temp (°F)",
+            data: pairedData.map(d => ({ x: new Date(d.timestamp), y: d.intake })),
+            borderColor: "#36a2eb",
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            tension: 0.3,
+            fill: false
+          },
+          {
+            label: "Air Output Temp (°F)",
+            data: pairedData.map(d => ({ x: new Date(d.timestamp), y: d.output })),
+            borderColor: "#ff6384",
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            tension: 0.3,
+            fill: false
+          },
+          {
+            label: "Delta (Output - Intake)",
+            data: pairedData.map(d => ({ x: new Date(d.timestamp), y: d.delta })),
+            borderColor: "#ffa726",
+            borderDash: [4, 4],
+            pointRadius: 0,
+            fill: false
+          }
+        ]
+      };
+    }
+    const rawData = [
+      {
+        timestamp: "2025-04-21T10:00:00Z",
+        facility: "Burger Barn",
+        sensor_name: "Air Intake",
+        type: "temperature",
+        value: 72.5,
+      },
+      {
+        timestamp: "2025-04-21T10:00:00Z",
+        facility: "Burger Barn",
+        sensor_name: "Air Output",
+        type: "temperature",
+        value: 123.7,
+      },
+      {
+        timestamp: "2025-04-21T10:01:00Z",
+        facility: "Burger Barn",
+        sensor_name: "Air Intake",
+        type: "temperature",
+        value: 73.1,
+      },
+      {
+        timestamp: "2025-04-21T10:01:00Z",
+        facility: "Burger Barn",
+        sensor_name: "Air Output",
+        type: "temperature",
+        value: 124.2,
+      }
+    ];
+    
     const datasets = [];
 
     if (filteredData.length) {
@@ -127,7 +210,7 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
     }
 
     return { datasets };
-  }, [filteredData, resolvedChartType, type, averageValue, alertConfig]);
+  }, [filteredData, resolvedChartType, type, averageValue, alertConfig, pairedTempSensors, pairedData]);
 
   const chartOptions = {
     responsive: true,
@@ -158,12 +241,12 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
   };
   const showAverage = alertConfig?.showAverage || false;
 
-  console.log("⚙️ alertConfig:", alertConfig);
-  console.log("⚙️ filteredData:", filteredData);
   return (
     <div className="card bg-secondary text-white shadow-lg h-100">
       <div className="card-header bg-dark d-flex justify-content-between align-items-center">
-        <h5 className="mb-0">{facility} – {sensor_name} ({type})</h5>
+        <h5 className="mb-0">
+          {facility} – {pairedTempSensors ? "Air Intake vs Output (temperature)" : `${sensor_name} (${type})`}
+        </h5>
         <div className="d-flex gap-2">
           <button
             className="btn btn-sm btn-outline-info"

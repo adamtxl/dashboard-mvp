@@ -11,6 +11,7 @@ function Home() {
   const [selectedSensors, setSelectedSensors] = useState([]);
   const [alertConfigs, setAlertConfigs] = useState({});
   const [timeRange, setTimeRange] = useState("7d");
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const sensorNames = [
     ...new Set(
@@ -24,7 +25,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("https://sensor-backend.fly.dev/data")
+      .get(`${API_BASE_URL}/data`)
       .then((res) => {
         console.log("🧪 Fetched data count:", res.data.length);
         setRawData(res.data);

@@ -2,7 +2,12 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Locations from './pages/Locations'
 
+
+
 function App() {
+
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100 bg-black">
