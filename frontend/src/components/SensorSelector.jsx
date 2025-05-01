@@ -5,7 +5,6 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
   const [type, setType] = useState("");
   const [sensorName, setSensorName] = useState("");
 
-  // Filter sensor names based on selected location and type
   const filteredSensorNames = useMemo(() => {
     return sensorNames.filter(
       (obj) =>
@@ -32,10 +31,12 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
 
   const handleAdd = () => {
     if (location && type && sensorName) {
+      const selected = filteredSensorNames.find(s => s.sensor_id === sensorName);
       const newSensor = {
         facility: location,
         type,
         sensor_id: sensorName,
+        display_name: selected?.display_name || sensorName,
       };
       console.log("🚀 Adding sensor:", newSensor);
       onAddSensor(newSensor);
@@ -43,8 +44,6 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
       alert("Please select a facility, sensor type, and sensor name.");
     }
   };
-
-  console.log("🧪 sensorNames:", sensorNames);
 
   return (
     <div className="card bg-secondary text-white shadow-sm mb-4">
@@ -91,7 +90,7 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
             >
               {filteredSensorNames.map((sensor) => (
                 <option key={sensor.sensor_id} value={sensor.sensor_id}>
-                  {sensor.display_name || sensor.name || sensor.sensor_id}
+                  {sensor.display_name || sensor.sensor_id}
                 </option>
               ))}
             </select>
