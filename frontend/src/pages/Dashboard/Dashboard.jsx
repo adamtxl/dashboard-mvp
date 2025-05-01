@@ -3,7 +3,6 @@ import {
   fetchReadings,
   fetchSensors,
   fetchLocations,
-  fetchFranchises,
 } from "../../services/api";
 import SensorChart from "../../components/sensorchart/SensorChart";
 import SensorSelector from "../../components/SensorSelector";
@@ -12,34 +11,44 @@ function Dashboard() {
   const [rawData, setRawData] = useState([]);
   const [locations, setLocations] = useState([]);
   const [sensorTypes, setSensorTypes] = useState([]);
+  const [sensorNames, setSensorNames] = useState([]);
   const [selectedSensors, setSelectedSensors] = useState([]);
   const [alertConfigs, setAlertConfigs] = useState({});
   const [timeRange, setTimeRange] = useState("7d");
 
-  const sensorNames = [
-    ...new Map(
-      rawData.map(entry => [
-        `${entry.facility}|${entry.sensor_name}|${entry.type}`,
-        {
-          sensor_name: entry.sensor_name,
-          facility: entry.facility,
-          type: entry.type
-        }
-      ])
-    ).values()
-  ];
-  
-
   useEffect(() => {
-    fetchReadings().then(setRawData);
-    fetchLocations().then(setLocations);
-    fetchSensors().then(data => {
-        console.log("Fetched sensors:", data);
-        const types = [...new Set(data.map(sensor => sensor.type))];
-        console.log("Extracted types:", types);
-        setSensorTypes(types);
-      });
-    fetchFranchises(); // if you want to store them later
+    async function loadData() {
+      const [fetchedLocs, fetchedSensors, enrichedReadings] = await Promise.all([
+        fetchLocations(),
+        fetchSensors(),
+        fetchReadings(), // this now points to `/enriched`
+      ]);
+
+      setLocations(fetchedLocs);
+      setRawData(enrichedReadings);
+
+      // Match sensors with their location names
+      const validSensorNames = fetchedSensors.map((sensor) => {
+        const match = fetchedLocs.find((loc) => loc.id === sensor.location_id);
+        return match
+          ? {
+              sensor_id: sensor.sensor_id,
+              type: sensor.type,
+              facility: match.name,
+            }
+          : null;
+      }).filter(Boolean);
+
+      setSensorNames(validSensorNames);
+
+      const types = [...new Set(validSensorNames.map((s) => s.type))];
+      setSensorTypes(types);
+
+      console.log("🚨 rawData loaded", enrichedReadings);
+      console.log("🧪 sensorNames (final):", validSensorNames);
+    }
+
+    loadData();
   }, []);
 
   const handleSensorAdd = (sensor) => {
@@ -52,7 +61,7 @@ function Dashboard() {
         (sensor) =>
           !(
             sensor.facility === sensorToRemove.facility &&
-            sensor.sensor_name === sensorToRemove.sensor_name &&
+            sensor.sensor_id === sensorToRemove.sensor_id &&
             sensor.type === sensorToRemove.type
           )
       )
@@ -98,17 +107,14 @@ function Dashboard() {
         <div className="row mt-4 gy-4">
           {selectedSensors.map((sensor, index) => {
             const isValid =
-              sensor && sensor.facility && sensor.sensor_name && sensor.type;
+              sensor && sensor.facility && sensor.sensor_id && sensor.type;
             if (!isValid) return null;
 
-            const sensorKey = `${sensor.facility}|${sensor.sensor_name}|${sensor.type}`;
+            const sensorKey = `${sensor.facility}|${sensor.sensor_id}|${sensor.type}`;
             const alertConfig = alertConfigs[sensorKey] || { showAverage: false };
 
             return (
-              <div
-                key={`${sensorKey}|${index}`}
-                className="col-md-6 col-lg-4"
-              >
+              <div key={`${sensorKey}|${index}`} className="col-md-6 col-lg-4">
                 <SensorChart
                   sensor={sensor}
                   rawData={rawData}

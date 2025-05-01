@@ -7,26 +7,24 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
 
   // Filter sensor names based on selected location and type
   const filteredSensorNames = useMemo(() => {
-    return sensorNames
-      .filter(
-        (obj) =>
-          (!location || obj.facility === location) &&
-          (!type || obj.type === type)
-      )
-      .reduce((acc, obj) => {
-        if (!acc.includes(obj.sensor_name)) acc.push(obj.sensor_name);
-        return acc;
-      }, []);
+    return sensorNames.filter(
+      (obj) =>
+        (!location || obj.facility === location) &&
+        (!type || obj.type === type)
+    );
   }, [sensorNames, location, type]);
 
   useEffect(() => {
-    if (locations.length > 0 && !location) setLocation(locations[0]);
+    if (sensorNames.length > 0 && !location) {
+      const defaultFacility = sensorNames[0].facility;
+      setLocation(defaultFacility);
+    }
     if (sensorTypes.length > 0 && !type) setType(sensorTypes[0]);
-  }, [locations, sensorTypes]);
+  }, [sensorNames, sensorTypes]);
 
   useEffect(() => {
     if (filteredSensorNames.length > 0) {
-      setSensorName(filteredSensorNames[0]);
+      setSensorName(filteredSensorNames[0].sensor_id);
     } else {
       setSensorName("");
     }
@@ -37,7 +35,7 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
       const newSensor = {
         facility: location,
         type,
-        sensor_name: sensorName,
+        sensor_id: sensorName,
       };
       console.log("🚀 Adding sensor:", newSensor);
       onAddSensor(newSensor);
@@ -45,6 +43,8 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
       alert("Please select a facility, sensor type, and sensor name.");
     }
   };
+
+  console.log("🧪 sensorNames:", sensorNames);
 
   return (
     <div className="card bg-secondary text-white shadow-sm mb-4">
@@ -89,9 +89,9 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
               value={sensorName}
               onChange={(e) => setSensorName(e.target.value)}
             >
-              {filteredSensorNames.map((name) => (
-                <option key={name} value={name}>
-                  {name}
+              {filteredSensorNames.map((sensor) => (
+                <option key={sensor.sensor_id} value={sensor.sensor_id}>
+                  {sensor.display_name || sensor.name || sensor.sensor_id}
                 </option>
               ))}
             </select>

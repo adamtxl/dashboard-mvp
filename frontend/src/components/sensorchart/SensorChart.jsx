@@ -26,53 +26,61 @@ ChartJS.register(
   annotationPlugin
 );
 
+const chartTypeMap = {
+  temperature: "line",
+  humidity: "bar",
+  pressure: "bar",
+  amperage: "bar",
+  voltage: "line",
+  co2: "line",
+  flow_rate: "line",
+  vibration: "area",
+  boolean: "status",
+  runtime: "timeline",
+  default: "line",
+};
+
+function normalize(str) {
+  return str?.toLowerCase().trim().replace(/\s+/g, " ");
+}
+
 function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, onRemove }) {
   const [showConfig, setShowConfig] = useState(false);
   const [customChartType, setCustomChartType] = useState("");
 
-  const chartTypeMap = {
-    temperature: "line",
-    humidity: "bar",
-    pressure: "bar",
-    amperage: "bar",
-    voltage: "line",
-    co2: "line",
-    flow_rate: "line",
-    vibration: "area",
-    boolean: "status",
-    runtime: "timeline",
-    default: "line",
-  };
-
-  const { facility, sensor_name, type } = sensor || {};
+  const { facility, sensor_id, type } = sensor || {};
   const resolvedChartType = customChartType || chartTypeMap[type] || chartTypeMap.default;
-  const pairedTempSensors = sensor_name === "Air Intake" || sensor_name === "Air Output";
-
-  const pairedData = useMemo(() => {
-    if (!pairedTempSensors) return null;
-
-    const intakeData = rawData
-      .filter(d => d.facility === facility && d.sensor_name === "Air Intake" && d.type === "temperature")
-      .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-
-    const outputData = rawData
-      .filter(d => d.facility === facility && d.sensor_name === "Air Output" && d.type === "temperature")
-      .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-
-    const minLength = Math.min(intakeData.length, outputData.length);
-
-    return Array.from({ length: minLength }, (_, i) => ({
-      timestamp: intakeData[i].timestamp,
-      intake: intakeData[i].value,
-      output: outputData[i].value,
-      delta: outputData[i].value - intakeData[i].value
-    }));
-  }, [rawData, facility, sensor_name, type]);
 
   const filteredData = useMemo(() => {
-    const base = rawData.filter(
-      (d) => d.facility === facility && d.sensor_name === sensor_name && d.type === type
-    );
+    const normalizedFacility = normalize(facility);
+
+    console.log("🧪 [SensorChart] Facility:", facility);
+    console.log("🧪 [SensorChart] Normalized Facility:", normalizedFacility);
+    console.log("🔎 Available keys in rawData[0]:", Object.keys(rawData[0]));
+    console.log("📦 Filtering with:", {
+      facility: normalize(facility),
+      sensor_id: normalize(sensor_id),
+      type: normalize(type)
+    });
+    
+    const base = rawData.filter((d) => {
+      const match =
+        normalize(d.facility) === normalize(facility) &&
+        normalize(d.sensor_id) === normalize(sensor_id) &&
+        normalize(d.type) === normalize(type);
+    
+      if (!match) {
+        console.log("⛔ Mismatch:", {
+          facilityMatch: normalize(d.facility) === normalize(facility),
+          sensorMatch: normalize(d.sensor_id) === normalize(sensor_id),
+          typeMatch: normalize(d.type) === normalize(type),
+          d
+        });
+      }
+    
+      return match;
+    });
+    
 
     const cutoff = new Date();
     if (timeRange === "1h") cutoff.setHours(cutoff.getHours() - 1);
@@ -82,87 +90,34 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
     const ranged = timeRange === "all" ? base : base.filter((d) => new Date(d.timestamp) >= cutoff);
     const sorted = ranged.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
-    return sorted.map((d) => {
-      const isAlert =
+    console.log("🧪 [SensorChart] Matching rawData:", base);
+    console.log("🧪 [SensorChart] Ranged data:", ranged);
+
+    return sorted.map((d) => ({
+      ...d,
+      alert:
         (alertConfig.low !== undefined && d.value < alertConfig.low) ||
-        (alertConfig.high !== undefined && d.value > alertConfig.high);
-      return { ...d, alert: isAlert };
-    });
-  }, [rawData, facility, sensor_name, type, alertConfig, timeRange]);
+        (alertConfig.high !== undefined && d.value > alertConfig.high),
+    }));
+  }, [rawData, facility, sensor_id, type, timeRange, alertConfig]);
 
   const averageValue = useMemo(() => {
-    if (filteredData.length === 0) return null;
-    const total = filteredData.reduce((acc, curr) => acc + curr.value, 0);
+    if (!filteredData.length) return null;
+    const total = filteredData.reduce((sum, d) => sum + d.value, 0);
     return total / filteredData.length;
   }, [filteredData]);
 
   const chartData = useMemo(() => {
-    if (pairedTempSensors && pairedData) {
-      return {
-        datasets: [
-          {
-            label: "Air Intake Temp (°F)",
-            data: pairedData.map(d => ({ x: new Date(d.timestamp), y: d.intake })),
-            borderColor: "#36a2eb",
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            tension: 0.3,
-            fill: false
-          },
-          {
-            label: "Air Output Temp (°F)",
-            data: pairedData.map(d => ({ x: new Date(d.timestamp), y: d.output })),
-            borderColor: "#ff6384",
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            tension: 0.3,
-            fill: false
-          },
-          {
-            label: "Delta (Output - Intake)",
-            data: pairedData.map(d => ({ x: new Date(d.timestamp), y: d.delta })),
-            borderColor: "#ffa726",
-            borderDash: [4, 4],
-            pointRadius: 0,
-            fill: false
-          }
-        ]
-      };
+    if (["status", "timeline"].includes(resolvedChartType)) {
+      console.warn(`Chart type "${resolvedChartType}" not supported yet.`);
+      return { datasets: [] };
     }
-    const rawData = [
-      {
-        timestamp: "2025-04-21T10:00:00Z",
-        facility: "Burger Barn",
-        sensor_name: "Air Intake",
-        type: "temperature",
-        value: 72.5,
-      },
-      {
-        timestamp: "2025-04-21T10:00:00Z",
-        facility: "Burger Barn",
-        sensor_name: "Air Output",
-        type: "temperature",
-        value: 123.7,
-      },
-      {
-        timestamp: "2025-04-21T10:01:00Z",
-        facility: "Burger Barn",
-        sensor_name: "Air Intake",
-        type: "temperature",
-        value: 73.1,
-      },
-      {
-        timestamp: "2025-04-21T10:01:00Z",
-        facility: "Burger Barn",
-        sensor_name: "Air Output",
-        type: "temperature",
-        value: 124.2,
-      }
-    ];
-    
+
     const datasets = [];
 
     if (filteredData.length) {
       datasets.push({
-        label: `${type}`,
+        label: type,
         data: filteredData.map((d) => ({
           x: new Date(d.timestamp),
           y: d.value,
@@ -180,12 +135,10 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
 
       datasets.push({
         label: "Alert",
-        data: filteredData
-          .filter((d) => d.alert)
-          .map((d) => ({
-            x: new Date(d.timestamp),
-            y: d.value,
-          })),
+        data: filteredData.filter(d => d.alert).map(d => ({
+          x: new Date(d.timestamp),
+          y: d.value,
+        })),
         borderColor: "red",
         backgroundColor: "red",
         pointRadius: 10,
@@ -209,10 +162,16 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
       }
     }
 
-    return { datasets };
-  }, [filteredData, resolvedChartType, type, averageValue, alertConfig, pairedTempSensors, pairedData]);
+    return {
+      datasets: datasets.length ? datasets : [{
+        label: "No Data",
+        data: [],
+        backgroundColor: "rgba(255,255,255,0.1)",
+      }]
+    };
+  }, [filteredData, resolvedChartType, type, averageValue, alertConfig]);
 
-  const chartOptions = {
+  const chartOptions = useMemo(() => ({
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -234,32 +193,23 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
         title: { display: true, text: "Value" },
       },
     },
-  };
+  }), []);
 
   const updateField = (field, value) => {
     onConfigChange({ [field]: value });
   };
-  const showAverage = alertConfig?.showAverage || false;
 
   return (
     <div className="card bg-secondary text-white shadow-lg h-100">
       <div className="card-header bg-dark d-flex justify-content-between align-items-center">
         <h5 className="mb-0">
-          {facility} – {pairedTempSensors ? "Air Intake vs Output (temperature)" : `${sensor_name} (${type})`}
-        </h5>
+        {facility} – {(sensor.display_name || sensor_id)} ({type})
+                </h5>
         <div className="d-flex gap-2">
-          <button
-            className="btn btn-sm btn-outline-info"
-            onClick={() => setShowConfig(!showConfig)}
-            title="Configure"
-          >
+          <button className="btn btn-sm btn-outline-info" onClick={() => setShowConfig(!showConfig)} title="Configure">
             {showConfig ? "🔙 Back" : "⚙️"}
           </button>
-          <button
-            className="btn btn-sm btn-outline-danger"
-            onClick={() => onRemove(sensor)}
-            title="Remove"
-          >
+          <button className="btn btn-sm btn-outline-danger" onClick={() => onRemove(sensor)} title="Remove">
             ❌
           </button>
         </div>
@@ -321,7 +271,7 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
               type="checkbox"
               className="form-check-input"
               id="showAverage"
-              checked={alertConfig.showAverage || false}
+              checked={alertConfig?.showAverage || false}
               onChange={(e) => updateField("showAverage", e.target.checked)}
             />
             <label className="form-check-label" htmlFor="showAverage">
