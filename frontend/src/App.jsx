@@ -5,7 +5,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
+  console.log("✅ API_BASE_URL is:", API_BASE_URL);
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100 bg-black">
