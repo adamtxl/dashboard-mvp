@@ -34,7 +34,7 @@ function Dashboard() {
           ? {
               sensor_id: sensor.sensor_id,
               display_name: sensor.display_name,
-              type: sensor.type,
+              type: sensor.sensor_type,
               facility: match.name,
             }
           : null;

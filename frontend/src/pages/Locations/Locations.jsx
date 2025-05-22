@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import axios from "axios";
+import { fetchReadings } from "../../services/api";
 import SensorChart from "../../components/sensorchart/SensorChart";
 
 function Locations() {
@@ -11,11 +11,10 @@ function Locations() {
   const [alertConfigs, setAlertConfigs] = useState({});
 
   useEffect(() => {
-    axios
-      .get("https://sensor-backend.fly.dev/data")
-      .then((res) => {
-        setRawData(res.data);
-        const locs = [...new Set(res.data.map((entry) => entry.facility))];
+    fetchReadings()
+      .then((data) => {
+        setRawData(data);
+        const locs = [...new Set(data.map((entry) => entry.facility))];
         setLocations(locs);
         if (locs.length > 0) setSelectedLocation(locs[0]);
       })
@@ -64,8 +63,8 @@ function Locations() {
               onChange={(e) => setSelectedLocation(e.target.value)}
             >
               {locations.map((loc) => (
-                <option key={loc.id} value={loc.id}>
-                  {loc.name} — {loc.city}, {loc.state}
+                <option key={loc} value={loc}>
+                  {loc}
                 </option>
               ))}
             </select>
