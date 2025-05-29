@@ -33,7 +33,7 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
     if (location && type && sensorName) {
       const selected = filteredSensorNames.find(s => s.sensor_id === sensorName);
       const newSensor = {
-        facility: location,
+        facility: selected?.facility,
         type,
         sensor_id: sensorName,
         display_name: selected?.display_name || sensorName,

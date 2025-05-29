@@ -13,6 +13,8 @@ import {
   CategoryScale,
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
+import { normalize } from "../../utils/normalize";
+
 
 ChartJS.register(
   LineElement,
@@ -40,9 +42,6 @@ const chartTypeMap = {
   default: "line",
 };
 
-function normalize(str) {
-  return str?.toLowerCase().trim().replace(/\s+/g, " ");
-}
 
 function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, onRemove }) {
   const [showConfig, setShowConfig] = useState(false);
@@ -52,46 +51,61 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
   const resolvedChartType = customChartType || chartTypeMap[type] || chartTypeMap.default;
 
   const filteredData = useMemo(() => {
-    const normalizedFacility = normalize(facility);
+    console.log("🔍 Raw data length:", rawData?.length);
+    if (!sensor || !rawData?.length) {
+      console.warn("⚠️ Missing sensor or rawData.");
+      return [];
+    }
 
-    console.log("🧪 [SensorChart] Facility:", facility);
-    console.log("🧪 [SensorChart] Normalized Facility:", normalizedFacility);
-    console.log("🔎 Available keys in rawData[0]:", Object.keys(rawData[0]));
-    console.log("📦 Filtering with:", {
-      facility: normalize(facility),
-      sensor_id: normalize(sensor_id),
-      type: normalize(type)
-    });
-    
-    const base = rawData.filter((d) => {
-      const match =
-        normalize(d.facility) === normalize(facility) &&
-        normalize(d.sensor_id) === normalize(sensor_id) &&
-        normalize(d.type) === normalize(type);
-    
-      if (!match) {
-        console.log("⛔ Mismatch:", {
-          facilityMatch: normalize(d.facility) === normalize(facility),
-          sensorMatch: normalize(d.sensor_id) === normalize(sensor_id),
-          typeMatch: normalize(d.type) === normalize(type),
-          d
+    const nfExpected = normalize(facility);
+    const nsExpected = normalize(String(sensor_id));
+    const ntExpected = normalize(type);
+
+    console.log("🧪 Sensor Info:", { facility, sensor_id, type });
+    console.log("🔧 Normalized Match Targets:", { nfExpected, nsExpected, ntExpected });
+
+    const base = rawData.filter((d, i) => {
+      const nf = normalize(d.facility);
+      const ns = normalize(String(d.sensor_id));
+      const nt = normalize(d.type);
+
+      const facilityMatch = nf === nfExpected;
+      const sensorMatch = ns === normalize(String(sensor_id));
+      const typeMatch = nt === ntExpected;
+
+      if (!facilityMatch || !sensorMatch || !typeMatch) {
+        console.log(`⛔ No Match [${i}]`, {
+          rawRecord: d,
+          nf, ns, nt,
+          facilityMatch, sensorMatch, typeMatch
         });
+      } else {
+        console.log(`✅ Match [${i}]`, { nf, ns, nt, value: d.value, timestamp: d.timestamp });
       }
-    
-      return match;
+
+      return facilityMatch && sensorMatch && typeMatch;
     });
-    
+
+    console.log("📦 Base matched data:", base.length);
 
     const cutoff = new Date();
     if (timeRange === "1h") cutoff.setHours(cutoff.getHours() - 1);
     else if (timeRange === "1d") cutoff.setDate(cutoff.getDate() - 1);
     else if (timeRange === "7d") cutoff.setDate(cutoff.getDate() - 7);
 
-    const ranged = timeRange === "all" ? base : base.filter((d) => new Date(d.timestamp) >= cutoff);
+    const ranged = timeRange === "all" ? base : base.filter((d) => {
+      const ts = new Date(d.timestamp);
+      const inRange = ts >= cutoff;
+      if (!inRange) {
+        console.log("🕒 Excluded due to time:", d.timestamp);
+      }
+      return inRange;
+    });
+
     const sorted = ranged.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
-    console.log("🧪 [SensorChart] Matching rawData:", base);
-    console.log("🧪 [SensorChart] Ranged data:", ranged);
+    console.log("⏱️ After time filter:", ranged.length);
+    console.log("🧪 Final sorted data:", sorted);
 
     return sorted.map((d) => ({
       ...d,
@@ -104,12 +118,14 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
   const averageValue = useMemo(() => {
     if (!filteredData.length) return null;
     const total = filteredData.reduce((sum, d) => sum + d.value, 0);
-    return total / filteredData.length;
+    const avg = total / filteredData.length;
+    console.log("📊 Calculated average:", avg);
+    return avg;
   }, [filteredData]);
 
   const chartData = useMemo(() => {
     if (["status", "timeline"].includes(resolvedChartType)) {
-      console.warn(`Chart type "${resolvedChartType}" not supported yet.`);
+      console.warn(`⚠️ Chart type "${resolvedChartType}" not supported yet.`);
       return { datasets: [] };
     }
 
@@ -160,6 +176,8 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
           fill: false,
         });
       }
+    } else {
+      console.log("📉 No data available to render.");
     }
 
     return {
@@ -203,8 +221,8 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
     <div className="card bg-secondary text-white shadow-lg h-100">
       <div className="card-header bg-dark d-flex justify-content-between align-items-center">
         <h5 className="mb-0">
-        {facility} – {(sensor.display_name || sensor_id)} ({type})
-                </h5>
+          {facility} – {(sensor.display_name || sensor_id)} ({type})
+        </h5>
         <div className="d-flex gap-2">
           <button className="btn btn-sm btn-outline-info" onClick={() => setShowConfig(!showConfig)} title="Configure">
             {showConfig ? "🔙 Back" : "⚙️"}

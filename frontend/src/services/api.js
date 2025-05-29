@@ -1,73 +1,68 @@
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const READINGS_API_KEY = import.meta.env.VITE_READINGS_API_KEY;
+const getToken = () => localStorage.getItem("token");
 
-// Mocked API functions for demo
 
-// Enriched Readings
 export const fetchReadings = async () => {
-  return Promise.resolve([
-    // Sensor ABC - Temperature
-    { id: 1, sensor_id: "sensor-abc", type: "temperature", value: 72.5, timestamp: "2024-05-20T14:00:00Z", facility: "Burger Barn" },
-    { id: 2, sensor_id: "sensor-abc", type: "temperature", value: 73.1, timestamp: "2024-05-20T14:05:00Z", facility: "Burger Barn" },
-    { id: 3, sensor_id: "sensor-abc", type: "temperature", value: 72.9, timestamp: "2024-05-20T14:10:00Z", facility: "Burger Barn" },
-    { id: 4, sensor_id: "sensor-abc", type: "temperature", value: 74.0, timestamp: "2024-05-20T14:15:00Z", facility: "Burger Barn" },
-    { id: 5, sensor_id: "sensor-abc", type: "temperature", value: 74.5, timestamp: "2024-05-20T14:20:00Z", facility: "Burger Barn" },
-    { id: 6, sensor_id: "sensor-abc", type: "temperature", value: 73.8, timestamp: "2024-05-20T14:25:00Z", facility: "Burger Barn" },
-
-    // Sensor DEF - Humidity
-    { id: 7, sensor_id: "sensor-def", type: "humidity", value: 45, timestamp: "2024-05-20T14:00:00Z", facility: "Burger Barn" },
-    { id: 8, sensor_id: "sensor-def", type: "humidity", value: 46, timestamp: "2024-05-20T14:05:00Z", facility: "Burger Barn" },
-    { id: 9, sensor_id: "sensor-def", type: "humidity", value: 47, timestamp: "2024-05-20T14:10:00Z", facility: "Burger Barn" },
-    { id: 10, sensor_id: "sensor-def", type: "humidity", value: 48, timestamp: "2024-05-20T14:15:00Z", facility: "Burger Barn" },
-    { id: 11, sensor_id: "sensor-def", type: "humidity", value: 47, timestamp: "2024-05-20T14:20:00Z", facility: "Burger Barn" },
-    { id: 12, sensor_id: "sensor-def", type: "humidity", value: 46, timestamp: "2024-05-20T14:25:00Z", facility: "Burger Barn" }
-  ]);
-};
-
-
-// Sensors
-export const fetchSensors = async () => {
-  return Promise.resolve([
-    {
-      id: 2,
-      sensor_id: "sensor-abc",
-      location_id: 1,
-      description: "Main dining room sensor",
-      installed_on: "2024-01-10T08:00:00Z",
-      display_name: "Dining Temp Sensor",
-      sensor_type: "temperature"
+  const response = await fetch(`${BASE_URL}/enriched`, {
+    headers: {
+      Authorization: `Bearer ${READINGS_API_KEY}`,
     },
-    {
-      id: 3,
-      sensor_id: "sensor-def",
-      location_id: 1,
-      description: "Kitchen humidity sensor",
-      installed_on: "2024-01-12T08:00:00Z",
-      display_name: "Kitchen Humidity",
-      sensor_type: "humidity"
-    }
-  ]);
+  });
+
+  if (!response.ok) throw new Error("Failed to fetch readings");
+  return response.json();
 };
 
-// Locations
+export const fetchSensors = async () => {
+  const response = await fetch(`${BASE_URL}/sensors`, {
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
+
+  if (!response.ok) throw new Error("Failed to fetch sensors");
+  return response.json();
+};
+
+
 export const fetchLocations = async () => {
-  return Promise.resolve([
-    {
-      id: 1,
-      name: "Burger Barn",
-      address: "123 Fry St",
-      city: "Frytown",
-      state: "ND",
-      zip: "58102",
-      franchise_id: 1
-    }
-  ]);
+  const response = await fetch(`${BASE_URL}/locations`, {
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
+
+  if (!response.ok) throw new Error("Failed to fetch locations");
+  return response.json();
 };
 
-// Franchises
+
 export const fetchFranchises = async () => {
-  return Promise.resolve([
-    {
-      name: "Burger Barn Franchises",
-      id: 1
-    }
-  ]);
+  const response = await fetch(`${BASE_URL}/franchises`, {
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
+
+  if (!response.ok) throw new Error("Failed to fetch franchises");
+  return response.json();
+};
+
+export const loginUser = async (username, password) => {
+  const response = await fetch(`${BASE_URL}/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({ username, password }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Invalid credentials");
+  }
+
+  const data = await response.json();
+  localStorage.setItem("token", data.access_token);
+  return data;
 };

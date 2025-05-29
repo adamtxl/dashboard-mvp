@@ -6,6 +6,7 @@ import {
 } from "../../services/api";
 import SensorChart from "../../components/sensorchart/SensorChart";
 import SensorSelector from "../../components/SensorSelector";
+import { normalize } from "../../utils/normalize";
 
 function Dashboard() {
   const [rawData, setRawData] = useState([]);
@@ -14,23 +15,21 @@ function Dashboard() {
   const [sensorNames, setSensorNames] = useState([]);
   const [selectedSensors, setSelectedSensors] = useState([]);
   const [alertConfigs, setAlertConfigs] = useState({});
-  const [timeRange, setTimeRange] = useState("7d");
+  const [timeRange, setTimeRange] = useState("all");
   const [sortBy, setSortBy] = useState("sensor_id");
 
   useEffect(() => {
     async function loadData() {
-      const [fetchedLocs, fetchedSensors, enrichedReadings] = await Promise.all(
-        [
-          fetchLocations(),
-          fetchSensors(),
-          fetchReadings(), // this now points to `/enriched`
-        ]
-      );
+      const [fetchedLocs, fetchedSensors, enrichedReadings] = await Promise.all([
+        fetchLocations(),
+        fetchSensors(),
+        fetchReadings(),
+      ]);
 
-      setLocations(fetchedLocs);
-      setRawData(enrichedReadings);
+      console.log("🏢 Locations fetched:", fetchedLocs);
+      console.log("📟 Sensors fetched:", fetchedSensors);
+      console.log("📡 Enriched Readings fetched:", enrichedReadings);
 
-      // Match sensors with their location names
       const validSensorNames = fetchedSensors
         .map((sensor) => {
           const match = fetchedLocs.find(
@@ -38,31 +37,76 @@ function Dashboard() {
           );
           return match
             ? {
-                sensor_id: sensor.sensor_id,
+                sensor_id: String(sensor.id),
                 display_name: sensor.display_name,
-                type: sensor.sensor_type,
-                facility: match.name,
+                type: String(sensor.type),
+                facility: String(match.name),
               }
             : null;
         })
         .filter(Boolean);
 
       setSensorNames(validSensorNames);
+      setSensorTypes([...new Set(validSensorNames.map((s) => s.type))]);
+      setRawData(enrichedReadings);
 
-      const types = [...new Set(validSensorNames.map((s) => s.type))];
-      setSensorTypes(types);
+      const normalizedSensorNames = validSensorNames.map((sensor) => ({
+        sensor_id: normalize(sensor.sensor_id),
+        type: normalize(sensor.type),
+        facility: normalize(sensor.facility),
+      }));
 
-      console.log("🚨 rawData loaded", enrichedReadings);
-      console.log("🧪 sensorNames (final):", validSensorNames);
+      console.log("✅ Normalized sensorNames:", normalizedSensorNames);
+
+      console.log("🧪 BEGIN Reading Match Checks");
+      enrichedReadings.forEach((reading) => {
+        const normReading = {
+          sensor_id: normalize(String(reading.sensor_id)),
+          type: normalize(String(reading.type)),
+          facility: normalize(String(reading.facility)),
+        };
+
+        const match = normalizedSensorNames.find(
+          (s) =>
+            s.sensor_id === normReading.sensor_id &&
+            s.type === normReading.type &&
+            s.facility === normReading.facility
+        );
+
+        if (!match) {
+          console.warn("⛔ MISMATCH in Enriched Reading", {
+            enrichedRecord: reading,
+            normalizedRecord: normReading,
+            availableSensors: normalizedSensorNames,
+          });
+        }
+      });
+
+      const enrichedFacilities = [...new Set(enrichedReadings.map((r) => normalize(r.facility)))];
+      const sensorFacilities = [...new Set(validSensorNames.map((s) => normalize(s.facility)))];
+      const combinedFacilityNames = [...new Set([...enrichedFacilities, ...sensorFacilities])];
+
+      const allFacilities = combinedFacilityNames.map((nf) => {
+        const match = fetchedLocs.find((loc) => normalize(loc.name) === nf);
+        return match ? match : { id: nf, name: nf };
+      });
+
+      console.log("📍 Final facilities available:", allFacilities);
+      console.log("🧭 Enriched Facilities:", enrichedFacilities);
+      console.log("🏗 Sensor Facilities:", sensorFacilities);
+      console.log(
+        "🚨 Facilities in Enriched not in Sensors:",
+        enrichedFacilities.filter((f) => !sensorFacilities.includes(f))
+      );
+
+      setLocations(allFacilities);
     }
 
     loadData();
   }, []);
 
-  const handleSensorAdd = (sensor) => {
+  const handleSensorAdd = (sensor) =>
     setSelectedSensors((prev) => [...prev, sensor]);
-  };
-
   const handleSensorRemove = (sensorToRemove) => {
     setSelectedSensors((prev) =>
       prev.filter(
@@ -82,23 +126,23 @@ function Dashboard() {
       [key]: { ...prev[key], ...config },
     }));
   };
-const sortedSensors = [...selectedSensors].sort((a, b) => {
-              if (sortBy === "value") {
-                // Get latest value from rawData
-                const aReading = rawData.find(
-                  (d) => d.sensor_id === a.sensor_id && d.type === a.type
-                );
-                const bReading = rawData.find(
-                  (d) => d.sensor_id === b.sensor_id && d.type === b.type
-                );
-                return (bReading?.value || 0) - (aReading?.value || 0);
-              } else {
-                const valA = a[sortBy]?.toString().toLowerCase() || "";
-                const valB = b[sortBy]?.toString().toLowerCase() || "";
-                return valA.localeCompare(valB);
-              }
-            });
-            
+
+  const sortedSensors = [...selectedSensors].sort((a, b) => {
+    if (sortBy === "value") {
+      const aReading = rawData.find(
+        (d) => d.sensor_id === a.sensor_id && d.type === a.type
+      );
+      const bReading = rawData.find(
+        (d) => d.sensor_id === b.sensor_id && d.type === b.type
+      );
+      return (bReading?.value || 0) - (aReading?.value || 0);
+    } else {
+      const valA = a[sortBy]?.toString().toLowerCase() || "";
+      const valB = b[sortBy]?.toString().toLowerCase() || "";
+      return valA.localeCompare(valB);
+    }
+  });
+
   return (
     <div className="container py-4 text-light">
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -117,6 +161,7 @@ const sortedSensors = [...selectedSensors].sort((a, b) => {
           </select>
         </div>
       </div>
+
       <label className="form-label mb-0 text-white">
         Sort By:
         <select
@@ -130,6 +175,7 @@ const sortedSensors = [...selectedSensors].sort((a, b) => {
           <option value="value">Latest Value</option>
         </select>
       </label>
+
       <SensorSelector
         locations={locations}
         sensorTypes={sensorTypes}
@@ -142,7 +188,6 @@ const sortedSensors = [...selectedSensors].sort((a, b) => {
       ) : (
         <div className="row mt-4 gy-4">
           {sortedSensors.map((sensor, index) => {
-
             const isValid =
               sensor && sensor.facility && sensor.sensor_id && sensor.type;
             if (!isValid) return null;
@@ -151,7 +196,6 @@ const sortedSensors = [...selectedSensors].sort((a, b) => {
             const alertConfig = alertConfigs[sensorKey] || {
               showAverage: false,
             };
-            
 
             return (
               <div key={`${sensorKey}|${index}`} className="col-md-6 col-lg-4">
