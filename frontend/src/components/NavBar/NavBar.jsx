@@ -42,7 +42,7 @@ const NavBar = () => {
                   window.location.href = "/login";
                 }}
               >
-                🔓 Logout
+                🔓 Login/Logout
               </button>
             </li>
           </ul>

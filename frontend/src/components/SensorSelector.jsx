@@ -8,8 +8,7 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
   const filteredSensorNames = useMemo(() => {
     return sensorNames.filter(
       (obj) =>
-        (!location || obj.facility === location) &&
-        (!type || obj.type === type)
+        (!location || obj.facility === location) && (!type || obj.type === type)
     );
   }, [sensorNames, location, type]);
 
@@ -31,7 +30,9 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
 
   const handleAdd = () => {
     if (location && type && sensorName) {
-      const selected = filteredSensorNames.find(s => s.sensor_id === sensorName);
+      const selected = filteredSensorNames.find(
+        (s) => s.sensor_id === sensorName
+      );
       const newSensor = {
         facility: selected?.facility,
         type,
@@ -50,58 +51,75 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
       <div className="card-body">
         <h5 className="card-title mb-4">➕ Add a Widget</h5>
 
-        <div className="row g-3 align-items-end">
-          <div className="col-md-4">
-            <label className="form-label">Facility</label>
-            <select
-              className="form-select form-select-sm bg-dark text-white border-light"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            >
-              {locations.map((loc) => (
-                <option key={loc.id} value={loc.name}>
-                  {loc.name}
-                </option>
-              ))}
-            </select>
+        {sensorNames.length === 0 || locations.length === 0 ? (
+          <div className="alert alert-warning mt-3">
+            ⚠️ No sensors or locations available. Please check backend data.
           </div>
+        ) : (
+          <div className="row g-3 align-items-end">
+            <div className="col-md-4">
+              <label className="form-label">Facility</label>
+              <select
+                className="form-select form-select-sm bg-dark text-white border-light"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              >
+                {locations.map((loc) => (
+                  <option key={loc.id} value={loc.name}>
+                    {loc.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div className="col-md-4">
-            <label className="form-label">Sensor Type</label>
-            <select
-              className="form-select form-select-sm bg-dark text-white border-light"
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-            >
-              {sensorTypes.filter(Boolean).map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-          </div>
+            <div className="col-md-4">
+              <label className="form-label">Sensor Type</label>
+              <select
+                className="form-select form-select-sm bg-dark text-white border-light"
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+              >
+                {sensorTypes.filter(Boolean).map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div className="col-md-4">
-            <label className="form-label">Sensor Name</label>
-            <select
-              className="form-select form-select-sm bg-dark text-white border-light"
-              value={sensorName}
-              onChange={(e) => setSensorName(e.target.value)}
-            >
-              {filteredSensorNames.map((sensor) => (
-                <option key={sensor.sensor_id} value={sensor.sensor_id}>
-                  {sensor.display_name || sensor.sensor_id}
-                </option>
-              ))}
-            </select>
-          </div>
+            <div className="col-md-4">
+              <label className="form-label">Sensor Name</label>
+              <select
+                className="form-select form-select-sm bg-dark text-white border-light"
+                value={sensorName}
+                onChange={(e) => setSensorName(e.target.value)}
+              >
+                {filteredSensorNames.map((sensor) => (
+                  <option key={sensor.sensor_id} value={sensor.sensor_id}>
+                    {sensor.display_name || sensor.sensor_id}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div className="col-12 text-end mt-3">
-            <button className="btn btn-info px-4" onClick={handleAdd}>
-              ➕ Add Widget
-            </button>
+            <div className="col-12 text-end mt-3">
+              <button
+                className="btn btn-info px-4 transition-all"
+                style={{ transition: "transform 0.15s ease-in-out" }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.transform = "scale(1.05)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.transform = "scale(1)")
+                }
+                onClick={handleAdd}
+                disabled={sensorNames.length === 0 || locations.length === 0}
+              >
+                ➕ Add Widget
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

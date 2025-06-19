@@ -1,54 +1,34 @@
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const READINGS_API_KEY = import.meta.env.VITE_READINGS_API_KEY;
+
 const getToken = () => localStorage.getItem("token");
 
+const getAuthHeader = () => {
+  const token = getToken();
+  return {
+    Authorization: `Bearer ${token || READINGS_API_KEY}`,
+  };
+};
 
-export const fetchReadings = async () => {
-  const response = await fetch(`${BASE_URL}/enriched`, {
+// Generic helper
+const fetchWithAuth = async (url, options = {}) => {
+  const response = await fetch(`${BASE_URL}${url}`, {
+    ...options,
     headers: {
-      Authorization: `Bearer ${READINGS_API_KEY}`,
+      ...getAuthHeader(),
+      ...(options.headers || {}),
     },
   });
 
-  if (!response.ok) throw new Error("Failed to fetch readings");
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Request failed: ${response.status} – ${errorText}`);
+  }
+
   return response.json();
 };
 
-export const fetchSensors = async () => {
-  const response = await fetch(`${BASE_URL}/sensors`, {
-    headers: {
-      Authorization: `Bearer ${getToken()}`,
-    },
-  });
-
-  if (!response.ok) throw new Error("Failed to fetch sensors");
-  return response.json();
-};
-
-
-export const fetchLocations = async () => {
-  const response = await fetch(`${BASE_URL}/locations`, {
-    headers: {
-      Authorization: `Bearer ${getToken()}`,
-    },
-  });
-
-  if (!response.ok) throw new Error("Failed to fetch locations");
-  return response.json();
-};
-
-
-export const fetchFranchises = async () => {
-  const response = await fetch(`${BASE_URL}/franchises`, {
-    headers: {
-      Authorization: `Bearer ${getToken()}`,
-    },
-  });
-
-  if (!response.ok) throw new Error("Failed to fetch franchises");
-  return response.json();
-};
-
+// Auth
 export const loginUser = async (username, password) => {
   const response = await fetch(`${BASE_URL}/login`, {
     method: "POST",
@@ -66,3 +46,9 @@ export const loginUser = async (username, password) => {
   localStorage.setItem("token", data.access_token);
   return data;
 };
+
+// Usage
+export const fetchReadings = () => fetchWithAuth("/enriched");
+export const fetchSensors = () => fetchWithAuth("/sensors");
+export const fetchLocations = () => fetchWithAuth("/locations");
+export const fetchFranchises = () => fetchWithAuth("/franchises");

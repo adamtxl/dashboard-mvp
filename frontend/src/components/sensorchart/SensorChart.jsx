@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Line, Bar } from "react-chartjs-2";
-import 'chartjs-adapter-date-fns';
+import "chartjs-adapter-date-fns";
 import {
   Chart as ChartJS,
   LineElement,
@@ -11,10 +11,9 @@ import {
   Tooltip,
   Legend,
   CategoryScale,
-} from 'chart.js';
-import annotationPlugin from 'chartjs-plugin-annotation';
+} from "chart.js";
+import annotationPlugin from "chartjs-plugin-annotation";
 import { normalize } from "../../utils/normalize";
-
 
 ChartJS.register(
   LineElement,
@@ -42,70 +41,65 @@ const chartTypeMap = {
   default: "line",
 };
 
+const sensorTypeIcons = {
+  temperature: "🌡️",
+  humidity: "💧",
+  pressure: "🧭",
+  amperage: "⚡",
+  voltage: "🔋",
+  co2: "🫁",
+  flow_rate: "🚰",
+  vibration: "🎛️",
+  boolean: "🔘",
+  runtime: "⏱️",
+  default: "📟",
+};
 
-function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, onRemove }) {
+function SensorChart({
+  sensor,
+  rawData,
+  timeRange,
+  alertConfig,
+  onConfigChange,
+  onRemove,
+}) {
   const [showConfig, setShowConfig] = useState(false);
   const [customChartType, setCustomChartType] = useState("");
 
   const { facility, sensor_id, type } = sensor || {};
-  const resolvedChartType = customChartType || chartTypeMap[type] || chartTypeMap.default;
+  const resolvedChartType =
+    customChartType || chartTypeMap[type] || chartTypeMap.default;
 
   const filteredData = useMemo(() => {
-    console.log("🔍 Raw data length:", rawData?.length);
-    if (!sensor || !rawData?.length) {
-      console.warn("⚠️ Missing sensor or rawData.");
-      return [];
-    }
+    if (!sensor || !rawData?.length) return [];
 
     const nfExpected = normalize(facility);
     const nsExpected = normalize(String(sensor_id));
     const ntExpected = normalize(type);
 
-    console.log("🧪 Sensor Info:", { facility, sensor_id, type });
-    console.log("🔧 Normalized Match Targets:", { nfExpected, nsExpected, ntExpected });
-
-    const base = rawData.filter((d, i) => {
+    const base = rawData.filter((d) => {
       const nf = normalize(d.facility);
       const ns = normalize(String(d.sensor_id));
       const nt = normalize(d.type);
-
-      const facilityMatch = nf === nfExpected;
-      const sensorMatch = ns === normalize(String(sensor_id));
-      const typeMatch = nt === ntExpected;
-
-      if (!facilityMatch || !sensorMatch || !typeMatch) {
-        console.log(`⛔ No Match [${i}]`, {
-          rawRecord: d,
-          nf, ns, nt,
-          facilityMatch, sensorMatch, typeMatch
-        });
-      } else {
-        console.log(`✅ Match [${i}]`, { nf, ns, nt, value: d.value, timestamp: d.timestamp });
-      }
-
-      return facilityMatch && sensorMatch && typeMatch;
+      return nf === nfExpected && ns === nsExpected && nt === ntExpected;
     });
-
-    console.log("📦 Base matched data:", base.length);
 
     const cutoff = new Date();
     if (timeRange === "1h") cutoff.setHours(cutoff.getHours() - 1);
     else if (timeRange === "1d") cutoff.setDate(cutoff.getDate() - 1);
     else if (timeRange === "7d") cutoff.setDate(cutoff.getDate() - 7);
 
-    const ranged = timeRange === "all" ? base : base.filter((d) => {
-      const ts = new Date(d.timestamp);
-      const inRange = ts >= cutoff;
-      if (!inRange) {
-        console.log("🕒 Excluded due to time:", d.timestamp);
-      }
-      return inRange;
-    });
+    const ranged =
+      timeRange === "all"
+        ? base
+        : base.filter((d) => {
+            const ts = new Date(d.timestamp);
+            return ts >= cutoff;
+          });
 
-    const sorted = ranged.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-
-    console.log("⏱️ After time filter:", ranged.length);
-    console.log("🧪 Final sorted data:", sorted);
+    const sorted = ranged.sort(
+      (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+    );
 
     return sorted.map((d) => ({
       ...d,
@@ -118,14 +112,11 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
   const averageValue = useMemo(() => {
     if (!filteredData.length) return null;
     const total = filteredData.reduce((sum, d) => sum + d.value, 0);
-    const avg = total / filteredData.length;
-    console.log("📊 Calculated average:", avg);
-    return avg;
+    return total / filteredData.length;
   }, [filteredData]);
 
   const chartData = useMemo(() => {
     if (["status", "timeline"].includes(resolvedChartType)) {
-      console.warn(`⚠️ Chart type "${resolvedChartType}" not supported yet.`);
       return { datasets: [] };
     }
 
@@ -151,10 +142,12 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
 
       datasets.push({
         label: "Alert",
-        data: filteredData.filter(d => d.alert).map(d => ({
-          x: new Date(d.timestamp),
-          y: d.value,
-        })),
+        data: filteredData
+          .filter((d) => d.alert)
+          .map((d) => ({
+            x: new Date(d.timestamp),
+            y: d.value,
+          })),
         borderColor: "red",
         backgroundColor: "red",
         pointRadius: 10,
@@ -176,42 +169,48 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
           fill: false,
         });
       }
-    } else {
-      console.log("📉 No data available to render.");
     }
 
     return {
-      datasets: datasets.length ? datasets : [{
-        label: "No Data",
-        data: [],
-        backgroundColor: "rgba(255,255,255,0.1)",
-      }]
+      datasets: datasets.length
+        ? datasets
+        : [
+            {
+              label: "No Data",
+              data: [],
+              backgroundColor: "rgba(255,255,255,0.1)",
+              
+            },
+          ],
     };
   }, [filteredData, resolvedChartType, type, averageValue, alertConfig]);
 
-  const chartOptions = useMemo(() => ({
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { position: "top" },
-      tooltip: { mode: "index", intersect: false },
-    },
-    scales: {
-      x: {
-        type: "time",
-        time: {
-          unit: "minute",
-          tooltipFormat: "MMM dd, yyyy HH:mm",
+  const chartOptions = useMemo(
+    () => ({
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "top" },
+        tooltip: { mode: "index", intersect: false },
+      },
+      scales: {
+        x: {
+          type: "time",
+          time: {
+            unit: "minute",
+            tooltipFormat: "MMM dd, yyyy HH:mm",
+          },
+          title: { display: true, text: "Timestamp" },
+          ticks: { autoSkip: true, maxTicksLimit: 10 },
         },
-        title: { display: true, text: "Timestamp" },
-        ticks: { autoSkip: true, maxTicksLimit: 10 },
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: "Value" },
+        },
       },
-      y: {
-        beginAtZero: true,
-        title: { display: true, text: "Value" },
-      },
-    },
-  }), []);
+    }),
+    []
+  );
 
   const updateField = (field, value) => {
     onConfigChange({ [field]: value });
@@ -221,29 +220,51 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
     <div className="card bg-secondary text-white shadow-lg h-100">
       <div className="card-header bg-dark d-flex justify-content-between align-items-center">
         <h5 className="mb-0">
-          {facility} – {(sensor.display_name || sensor_id)} ({type})
+          {facility} – {sensorTypeIcons[type] || sensorTypeIcons.default}{" "}
+          {sensor.display_name || sensor_id} ({type})
         </h5>
         <div className="d-flex gap-2">
-          <button className="btn btn-sm btn-outline-info" onClick={() => setShowConfig(!showConfig)} title="Configure">
+          <button
+            className="btn btn-sm btn-outline-info transition-all"
+            style={{ transition: "transform 0.15s ease-in-out" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.1)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onClick={() => setShowConfig(!showConfig)}
+            title="Configure"
+          >
             {showConfig ? "🔙 Back" : "⚙️"}
           </button>
-          <button className="btn btn-sm btn-outline-danger" onClick={() => onRemove(sensor)} title="Remove">
+
+          <button
+            className="btn btn-sm btn-outline-danger transition-all"
+            style={{ transition: "transform 0.15s ease-in-out" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.1)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onClick={() => onRemove(sensor)}
+            title="Remove"
+          >
             ❌
           </button>
         </div>
       </div>
 
-      {!showConfig && (
+      {!showConfig ? (
         <div className="card-body" style={{ height: "300px" }}>
-          {resolvedChartType === "bar" ? (
+          {filteredData.length === 0 ? (
+            <div className="d-flex align-items-center justify-content-center h-100 text-muted">
+              📭 No recent data available.
+            </div>
+          ) : resolvedChartType === "bar" ? (
             <Bar data={chartData} options={chartOptions} />
           ) : (
             <Line data={chartData} options={chartOptions} />
           )}
         </div>
-      )}
-
-      {showConfig && (
+      ) : (
         <div className="card-body bg-secondary text-white animate__animated animate__fadeIn">
           <div className="mb-3">
             <label className="form-label">Low Threshold:</label>
@@ -296,7 +317,10 @@ function SensorChart({ sensor, rawData, timeRange, alertConfig, onConfigChange, 
               Show Average Line
             </label>
           </div>
-          <button className="btn btn-success w-100" onClick={() => setShowConfig(false)}>
+          <button
+            className="btn btn-success w-100"
+            onClick={() => setShowConfig(false)}
+          >
             💾 Save & Close
           </button>
         </div>
