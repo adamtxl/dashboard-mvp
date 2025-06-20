@@ -1,0 +1,12 @@
+# Node
+node_modules/
+dist/
+.env
+.env.*  # covers things like .env.local, .env.production
+
+# Logs
+*.log
+
+# Editor/OS junk
+.DS_Store
+.vscode/
