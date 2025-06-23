@@ -66,23 +66,19 @@ function SensorChart({
   const [showConfig, setShowConfig] = useState(false);
   const [customChartType, setCustomChartType] = useState("");
 
-  const { facility, sensor_id, type } = sensor || {};
+  const { location, sensor_id, type } = sensor || {};
   const resolvedChartType =
     customChartType || chartTypeMap[type] || chartTypeMap.default;
 
   const filteredData = useMemo(() => {
     if (!sensor || !rawData?.length) return [];
 
-    const nfExpected = normalize(facility);
-    const nsExpected = normalize(String(sensor_id));
-    const ntExpected = normalize(type);
-
-    const base = rawData.filter((d) => {
-      const nf = normalize(d.facility);
-      const ns = normalize(String(d.sensor_id));
-      const nt = normalize(d.type);
-      return nf === nfExpected && ns === nsExpected && nt === ntExpected;
-    });
+    const base = rawData.filter(
+      (d) =>
+        String(d.sensor_id) === String(sensor_id) &&
+        d.type === type &&
+        normalize(d.facility) === normalize(location)
+    );
 
     const cutoff = new Date();
     if (timeRange === "1h") cutoff.setHours(cutoff.getHours() - 1);
@@ -92,10 +88,7 @@ function SensorChart({
     const ranged =
       timeRange === "all"
         ? base
-        : base.filter((d) => {
-            const ts = new Date(d.timestamp);
-            return ts >= cutoff;
-          });
+        : base.filter((d) => new Date(d.timestamp) >= cutoff);
 
     const sorted = ranged.sort(
       (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
@@ -107,7 +100,7 @@ function SensorChart({
         (alertConfig.low !== undefined && d.value < alertConfig.low) ||
         (alertConfig.high !== undefined && d.value > alertConfig.high),
     }));
-  }, [rawData, facility, sensor_id, type, timeRange, alertConfig]);
+  }, [rawData, location, sensor_id, type, timeRange, alertConfig]);
 
   const averageValue = useMemo(() => {
     if (!filteredData.length) return null;
@@ -179,7 +172,6 @@ function SensorChart({
               label: "No Data",
               data: [],
               backgroundColor: "rgba(255,255,255,0.1)",
-              
             },
           ],
     };
@@ -220,30 +212,18 @@ function SensorChart({
     <div className="card bg-secondary text-white shadow-lg h-100">
       <div className="card-header bg-dark d-flex justify-content-between align-items-center">
         <h5 className="mb-0">
-          {facility} – {sensorTypeIcons[type] || sensorTypeIcons.default}{" "}
-          {sensor.display_name || sensor_id} ({type})
+          {location} – {sensorTypeIcons[type] || sensorTypeIcons.default} {sensor.display_name || sensor_id} ({type})
         </h5>
         <div className="d-flex gap-2">
           <button
-            className="btn btn-sm btn-outline-info transition-all"
-            style={{ transition: "transform 0.15s ease-in-out" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            className="btn btn-sm btn-outline-info"
             onClick={() => setShowConfig(!showConfig)}
             title="Configure"
           >
             {showConfig ? "🔙 Back" : "⚙️"}
           </button>
-
           <button
-            className="btn btn-sm btn-outline-danger transition-all"
-            style={{ transition: "transform 0.15s ease-in-out" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            className="btn btn-sm btn-outline-danger"
             onClick={() => onRemove(sensor)}
             title="Remove"
           >
@@ -255,9 +235,14 @@ function SensorChart({
       {!showConfig ? (
         <div className="card-body" style={{ height: "300px" }}>
           {filteredData.length === 0 ? (
-            <div className="d-flex align-items-center justify-content-center h-100 text-muted">
-              📭 No recent data available.
-            </div>
+            <>
+              <div className="d-flex align-items-center justify-content-center h-100 text-muted">
+                📭 No recent data available.
+              </div>
+              <pre className="bg-dark text-white p-2 mt-3">
+                {JSON.stringify({ location, sensor_id, type }, null, 2)}
+              </pre>
+            </>
           ) : resolvedChartType === "bar" ? (
             <Bar data={chartData} options={chartOptions} />
           ) : (
@@ -328,7 +313,7 @@ function SensorChart({
 
       {filteredData.some((d) => d.alert) && !showConfig && (
         <div className="alert alert-danger m-3">
-          🚨 ALERT: {type} value out of range at {facility}
+          🚨 ALERT: {type} value out of range at {location}
         </div>
       )}
     </div>

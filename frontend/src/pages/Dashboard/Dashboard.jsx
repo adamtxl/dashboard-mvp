@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   fetchReadings,
-  fetchSensors,
   fetchLocations,
 } from "../../services/api";
 import SensorChart from "../../components/sensorchart/SensorChart";
 import SensorSelector from "../../components/SensorSelector";
 import { normalize } from "../../utils/normalize";
+import { fetchSensors, normalizeSensorMetadata } from "../../services/api/sensors";
+import { useAuth } from "../../AuthContext";
 
 function Dashboard() {
   const [rawData, setRawData] = useState([]);
@@ -18,70 +20,34 @@ function Dashboard() {
   const [timeRange, setTimeRange] = useState("all");
   const [sortBy, setSortBy] = useState("sensor_id");
   const [loadError, setLoadError] = useState(false);
+  const [sensors, setSensors] = useState([]);
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    async function loadData() {
+    const loadData = async () => {
       try {
-        const [fetchedLocs, fetchedSensors, enrichedReadings] =
-          await Promise.all([
-            fetchLocations(),
-            fetchSensors(),
-            fetchReadings(),
-          ]);
-
-        console.log("🏢 Locations fetched:", fetchedLocs);
-        console.log("📟 Sensors fetched:", fetchedSensors);
-        console.log("📡 Enriched Readings fetched:", enrichedReadings);
-
-        const validSensorNames = fetchedSensors
-          .map((sensor) => {
-            const match = fetchedLocs.find(
-              (loc) => loc.id === sensor.location_id
-            );
-            return match
-              ? {
-                  sensor_id: String(sensor.id),
-                  display_name: sensor.display_name,
-                  type: String(sensor.type),
-                  facility: String(match.name),
-                }
-              : null;
-          })
-          .filter(Boolean);
-
-        setSensorNames(validSensorNames);
-        setSensorTypes([...new Set(validSensorNames.map((s) => s.type))]);
-        setRawData(enrichedReadings);
-
-        const enrichedFacilities = [
-          ...new Set(enrichedReadings.map((r) => normalize(r.facility))),
-        ];
-        const sensorFacilities = [
-          ...new Set(validSensorNames.map((s) => normalize(s.facility))),
-        ];
-        const combinedFacilityNames = [
-          ...new Set([...enrichedFacilities, ...sensorFacilities]),
-        ];
-
-        const allFacilities = combinedFacilityNames.map((nf) => {
-          const match = fetchedLocs.find((loc) => normalize(loc.name) === nf);
-          return match ? match : { id: nf, name: nf };
-        });
-
-        setLocations(allFacilities);
-        setLoadError(false); // clear error if success
-      } catch (error) {
-        console.error("🔥 Failed to load dashboard data:", error);
-        setLoadError(true);
-        setRawData([]);
-        setLocations([]);
-        setSensorNames([]);
-        setSensorTypes([]);
+        const locs = await fetchLocations();
+        const rawSensors = await fetchSensors();
+        const readings = await fetchReadings();
+        setLocations(locs);
+        setSensors(rawSensors);
+        setRawData(readings);
+        setSensorTypes([...new Set(rawSensors.map(s => s.sensor_type_name))]);
+        setSensorNames(normalizeSensorMetadata(rawSensors, locs));
+      } catch (err) {
+        console.error("Failed to load dashboard data:", err);
       }
-    }
-
+    };
     loadData();
   }, []);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      alert("You must be logged in to view the dashboard.");
+      navigate("/login");
+    }
+  }, [isAuthenticated]);
 
   const handleSensorAdd = (sensor) =>
     setSelectedSensors((prev) => [...prev, sensor]);
@@ -91,7 +57,7 @@ function Dashboard() {
       prev.filter(
         (sensor) =>
           !(
-            sensor.facility === sensorToRemove.facility &&
+            sensor.location === sensorToRemove.location &&
             sensor.sensor_id === sensorToRemove.sensor_id &&
             sensor.type === sensorToRemove.type
           )
@@ -158,7 +124,7 @@ function Dashboard() {
           >
             <option value="sensor_id">Sensor Name</option>
             <option value="type">Type</option>
-            <option value="facility">Facility</option>
+            <option value="location">Location</option>
             <option value="value">Latest Value</option>
           </select>
         </label>
@@ -185,10 +151,10 @@ function Dashboard() {
           <div className="row mt-4 gy-4">
             {sortedSensors.map((sensor, index) => {
               const isValid =
-                sensor && sensor.facility && sensor.sensor_id && sensor.type;
+                sensor && sensor.location && sensor.sensor_id && sensor.type;
               if (!isValid) return null;
 
-              const sensorKey = `${sensor.facility}|${sensor.sensor_id}|${sensor.type}`;
+              const sensorKey = `${sensor.location}|${sensor.sensor_id}|${sensor.type}`;
               const alertConfig = alertConfigs[sensorKey] || {
                 showAverage: false,
               };

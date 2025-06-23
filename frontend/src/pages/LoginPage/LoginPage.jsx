@@ -1,22 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../services/api";
+import { loginUser } from "../../services/api/auth";
+import { useAuth } from "../../AuthContext";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      await loginUser(username, password);
-      navigate("/dashboard");
-    } catch (err) {
-      setError("Login failed. Please check your credentials.");
-    }
-  };
+const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
+    const data = await loginUser(username, password);
+    login(data.access_token); 
+    navigate("/dashboard");
+  } catch (err) {
+    setError("Login failed. Please check your credentials.");
+  }
+};
 
   return (
     <div className="p-4">
