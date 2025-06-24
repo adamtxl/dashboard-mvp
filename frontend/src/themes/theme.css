@@ -1,0 +1,37 @@
+:root {
+  --bg-color: #c1decf;
+  --card-color: #ffffff;
+  --text-color: #1e293b;
+  --border-color: #d1d5db;
+  --accent-color: #2563eb;
+
+  /* New gradient vars */
+  --gradient-start: #b0f2c2;
+  --gradient-mid: #E7ECFA;
+  --gradient-end: #ffffff;
+}
+
+body.dark-mode {
+  --bg-color: #0f172a;
+  --card-color: #1e293b;
+  --text-color: #f8fafc;
+  --border-color: #334155;
+  --accent-color: #3b82f6;
+
+  /* Dark mode gradient vars */
+  --gradient-start: #619a9a;
+  --gradient-mid: #1e293b;
+  --gradient-end: #28385d;
+}
+
+
+.themed-gradient {
+  background: linear-gradient(
+    to right bottom,
+    var(--gradient-start),
+    var(--gradient-mid),
+    var(--gradient-end)
+  );
+  color: var(--text-color);
+}
+
