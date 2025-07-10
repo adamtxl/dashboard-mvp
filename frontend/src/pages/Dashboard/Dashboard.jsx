@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SensorChart from '../../components/sensorchart/SensorChart';
+import GroupedSensorChart from '../../components/sensorchart/GroupedSensorChart';
 import SensorSelector from '../../components/SensorSelector';
 import { normalize } from '../../utils/normalize';
 import { fetchSensors, normalizeSensorMetadata } from '../../services/api/sensors';
@@ -24,6 +25,7 @@ function Dashboard() {
 	const [customStart, setCustomStart] = useState('');
 	const [customEnd, setCustomEnd] = useState('');
 	const [customRangeApplied, setCustomRangeApplied] = useState(false);
+	const [groupByType, setGroupByType] = useState(false);
 
 	useEffect(() => {
 		const loadData = async () => {
@@ -32,7 +34,6 @@ function Dashboard() {
 				const rawSensors = await fetchSensors();
 				setLocations(locs);
 				setSensors(rawSensors);
-
 				setSensorTypes([...new Set(rawSensors.map((s) => s.sensor_type_name))]);
 				setSensorNames(normalizeSensorMetadata(rawSensors, locs));
 			} catch (err) {
@@ -52,16 +53,8 @@ function Dashboard() {
 	const handleSensorAdd = async (sensor) => {
 		try {
 			const rawReadings = await fetchReadingsBySensor(sensor.sensor_id);
-
-			// Normalize 'type' to match what SensorChart expects (e.g., "Temperature")
-			const readings = rawReadings.map((r) => ({
-				...r,
-				type: sensor.type, // Override the API's lowercase type with the frontend's expected format
-			}));
-			console.log("Selected sensors:", selectedSensors);
-			console.log("Raw data:", rawData);
+			const readings = rawReadings.map((r) => ({ ...r, type: sensor.type }));
 			setSelectedSensors((prev) => [...prev, sensor]);
-
 			setRawData((prevData) => [...prevData, ...readings]);
 		} catch (err) {
 			console.error(`Failed to load readings for sensor ${sensor.sensor_id}:`, err);
@@ -100,6 +93,14 @@ function Dashboard() {
 			return valA.localeCompare(valB);
 		}
 	});
+
+	const groupedByType = useMemo(() => {
+		return selectedSensors.reduce((acc, sensor) => {
+			acc[sensor.type] = acc[sensor.type] || [];
+			acc[sensor.type].push(sensor);
+			return acc;
+		}, {});
+	}, [selectedSensors]);
 
 	return (
 		<>
@@ -149,7 +150,6 @@ function Dashboard() {
 						</button>
 					</div>
 				)}
-
 				<label className='form-label mb-0 text-white'>
 					<select className='form-select themed-select' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
 						<option value='sensor_id'>Sensor Name</option>
@@ -158,7 +158,15 @@ function Dashboard() {
 						<option value='value'>Latest Value</option>
 					</select>
 				</label>
-
+				<div className='form-check form-switch mb-3'>
+					<input
+						className='form-check-input'
+						type='checkbox'
+						checked={groupByType}
+						onChange={() => setGroupByType(!groupByType)}
+					/>
+					<label className='form-check-label'>Group Sensors by Type</label>
+				</div>
 				<SensorSelector
 					locations={locations}
 					sensorTypes={sensorTypes}
@@ -170,38 +178,49 @@ function Dashboard() {
 						➕ Use "Add a Widget" above to start building your dashboard!
 					</div>
 				)}
-
 				{loadError ? (
 					<div className='alert alert-danger mt-4'>🚨 Unable to load sensor data. Please try again later.</div>
 				) : rawData.length === 0 ? (
 					<div className='alert alert-info mt-4'>⏳ Loading sensor data...</div>
 				) : (
 					<div className='row mt-4 gy-4'>
-						{sortedSensors.map((sensor, index) => {
-							const isValid = sensor && sensor.location && sensor.sensor_id && sensor.type;
-							if (!isValid) return null;
+						{groupByType
+							? Object.entries(groupedByType).map(([type, sensorsOfType]) => (
+									<div key={type} className='col-12'>
+										<GroupedSensorChart
+											sensorType={type}
+											sensors={sensorsOfType}
+											rawData={rawData}
+											timeRange={timeRange}
+											customStart={customStart}
+											customEnd={customEnd}
+											customRangeApplied={customRangeApplied}
+										/>
+									</div>
+							  ))
+							: sortedSensors.map((sensor, index) => {
+									const isValid = sensor && sensor.location && sensor.sensor_id && sensor.type;
+									if (!isValid) return null;
 
-							const sensorKey = `${sensor.location}|${sensor.sensor_id}|${sensor.type}`;
-							const alertConfig = alertConfigs[sensorKey] || {
-								showAverage: false,
-							};
+									const sensorKey = `${sensor.location}|${sensor.sensor_id}|${sensor.type}`;
+									const alertConfig = alertConfigs[sensorKey] || { showAverage: false };
 
-							return (
-								<div key={`${sensorKey}|${index}`} className='col-md-6 col-lg-4 animate__animated animate__fadeIn'>
-									<SensorChart
-										sensor={sensor}
-										rawData={rawData}
-										timeRange={timeRange}
-										customStart={customStart}
-										customEnd={customEnd}
-										customRangeApplied={customRangeApplied}
-										alertConfig={alertConfig}
-										onConfigChange={(config) => handleAlertConfigUpdate(sensorKey, config)}
-										onRemove={handleSensorRemove}
-									/>
-								</div>
-							);
-						})}
+									return (
+										<div key={`${sensorKey}|${index}`} className='col-md-6 col-lg-4 animate__animated animate__fadeIn'>
+											<SensorChart
+												sensor={sensor}
+												rawData={rawData}
+												timeRange={timeRange}
+												customStart={customStart}
+												customEnd={customEnd}
+												customRangeApplied={customRangeApplied}
+												alertConfig={alertConfig}
+												onConfigChange={(config) => handleAlertConfigUpdate(sensorKey, config)}
+												onRemove={handleSensorRemove}
+											/>
+										</div>
+									);
+							  })}
 					</div>
 				)}
 			</div>
