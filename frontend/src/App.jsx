@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import LoginPage from './pages/LoginPage/LoginPage';
 import NavBar from './components/NavBar/NavBar';
 import RequireAuth from './components/RequireAuth';
+import SavedDashboardsPage from './pages/SavedDashboards/SavedDashboardsPage';
 import { AuthPollerWrapper } from './components/AuthPollWrapper/AuthPollerWrapper';
 
 import './themes/theme.css';
@@ -71,6 +72,14 @@ function App() {
 							element={
 								<RequireAuth>
 									<Dashboard />
+								</RequireAuth>
+							}
+						/>
+						<Route
+							path='/saved-dashboards'
+							element={
+								<RequireAuth>
+									<SavedDashboardsPage />
 								</RequireAuth>
 							}
 						/>

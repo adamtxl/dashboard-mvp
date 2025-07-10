@@ -30,6 +30,11 @@ const NavBar = () => {
                 📊 Dashboard
               </Link>
             </li>
+                        <li className="nav-item">
+              <Link className="nav-link" to="/saved-dashboards">
+                ⭐ Saved Dashboards
+              </Link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/locations">
                 📍 Locations

@@ -166,12 +166,10 @@ function Dashboard() {
 			<div className='container py-4 themed-gradient'>
 				<div className='d-flex justify-content-between align-items-center mb-4'>
 					<h1 className='themed-title d-flex align-items-center gap-2'>
-						<img src='src/assets/rjes-logo.png' alt='RJES Logo' height='50' />
+						<img src='/assets/rjes-logo.png' alt='RJES Logo' height='50' />
 						Sensor Dashboard
 					</h1>
-					<button className='btn btn-success ms-3' onClick={handleSaveDashboard}>
-						💾 Save Dashboard
-					</button>
+					
 					<div>
 						<label className='me-2'>Time Range:</label>
 						<select
@@ -228,6 +226,9 @@ function Dashboard() {
 						onChange={() => setGroupByType(!groupByType)}
 					/>
 					<label className='form-check-label'>Group Sensors by Type</label>
+					<button className='btn themed-btn ms-3' onClick={handleSaveDashboard}>
+						💾 Save Dashboard
+					</button>
 				</div>
 				<SensorSelector
 					locations={locations}

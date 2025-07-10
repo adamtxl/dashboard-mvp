@@ -59,3 +59,49 @@
 body.dark-mode .themed-select {
   background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
 }
+
+.themed-btn {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 0.35rem 0.75rem;  /* 🔹 Smaller padding */
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 0.875rem;       /* 🔹 Slightly smaller text (14px) */
+  line-height: 1.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.themed-btn:hover {
+  background-color: #1d4ed8; /* darken fallback */
+}
+
+.btn-view {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+}
+
+.btn-view:hover {
+  background-color: var(--accent-color-hover);
+}
+
+.btn-rename {
+  border: 1px solid var(--info-color);
+  color: var(--info-color);
+}
+
+.btn-rename:hover {
+  background-color: var(--info-color);
+  color: var(--bg-color);
+}
+
+.btn-delete {
+  border: 1px solid var(--danger-color);
+  color: var(--danger-color);
+}
+
+.btn-delete:hover {
+  background-color: var(--danger-color);
+  color: var(--bg-color);
+}
