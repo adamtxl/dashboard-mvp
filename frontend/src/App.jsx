@@ -66,6 +66,14 @@ function App() {
 								</RequireAuth>
 							}
 						/>
+						<Route
+							path='/dashboard/:dashboardId'
+							element={
+								<RequireAuth>
+									<Dashboard />
+								</RequireAuth>
+							}
+						/>
 					</Routes>
 				</div>
 

@@ -4,9 +4,9 @@ export const loginUser = async (username, password) => {
   const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/login`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",  // 👈 use JSON
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username, password }),  // 👈 serialize the object
+    body: JSON.stringify({ username, password }),
   });
 
   if (!response.ok) {
@@ -23,3 +23,13 @@ export const logoutUser = () => {
 };
 
 export const getToken = () => localStorage.getItem("token");
+
+// ✅ Add this helper
+export const getAuthHeaders = () => {
+  const token = getToken();
+  return token
+    ? {
+        Authorization: `Bearer ${token}`,
+      }
+    : {};
+};
