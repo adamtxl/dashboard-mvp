@@ -43,3 +43,19 @@
   background-color: #1e293b; /* Solid color for dark mode */
   color: var(--text-color);  /* Inherits the correct light text */
 }
+
+.themed-select {
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%231e293b' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+
+body.dark-mode .themed-select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+}

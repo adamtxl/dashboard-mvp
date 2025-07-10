@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchReadings, fetchLocations } from '../../services/api';
 import SensorChart from '../../components/sensorchart/SensorChart';
 import SensorSelector from '../../components/SensorSelector';
 import { normalize } from '../../utils/normalize';
 import { fetchSensors, normalizeSensorMetadata } from '../../services/api/sensors';
 import { useAuth } from '../../AuthContext';
+import { fetchReadingsBySensor } from '../../services/api/readings';
+import { fetchLocations } from '../../services/api/locations';
 
 function Dashboard() {
 	const [rawData, setRawData] = useState([]);
@@ -29,10 +30,9 @@ function Dashboard() {
 			try {
 				const locs = await fetchLocations();
 				const rawSensors = await fetchSensors();
-				const readings = await fetchReadings();
 				setLocations(locs);
 				setSensors(rawSensors);
-				setRawData(readings);
+
 				setSensorTypes([...new Set(rawSensors.map((s) => s.sensor_type_name))]);
 				setSensorNames(normalizeSensorMetadata(rawSensors, locs));
 			} catch (err) {
@@ -49,7 +49,25 @@ function Dashboard() {
 		}
 	}, [isAuthenticated]);
 
-	const handleSensorAdd = (sensor) => setSelectedSensors((prev) => [...prev, sensor]);
+	const handleSensorAdd = async (sensor) => {
+		try {
+			const rawReadings = await fetchReadingsBySensor(sensor.sensor_id);
+
+			// Normalize 'type' to match what SensorChart expects (e.g., "Temperature")
+			const readings = rawReadings.map((r) => ({
+				...r,
+				type: sensor.type, // Override the API's lowercase type with the frontend's expected format
+			}));
+			console.log("Selected sensors:", selectedSensors);
+			console.log("Raw data:", rawData);
+			setSelectedSensors((prev) => [...prev, sensor]);
+
+			setRawData((prevData) => [...prevData, ...readings]);
+		} catch (err) {
+			console.error(`Failed to load readings for sensor ${sensor.sensor_id}:`, err);
+			setLoadError(true);
+		}
+	};
 
 	const handleSensorRemove = (sensorToRemove) => {
 		setSelectedSensors((prev) =>
@@ -148,7 +166,7 @@ function Dashboard() {
 					onAddSensor={handleSensorAdd}
 				/>
 				{selectedSensors.length === 0 && !loadError && rawData.length > 0 && (
-					<div className='alert alert-info mt-4 text-center themed-bg shadow-lg'>
+					<div className='alert alert-info mt-4 text-center themed-gradient shadow-lg'>
 						➕ Use "Add a Widget" above to start building your dashboard!
 					</div>
 				)}

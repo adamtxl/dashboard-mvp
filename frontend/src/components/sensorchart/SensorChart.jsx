@@ -89,8 +89,8 @@ function SensorChart({
 		const base = rawData.filter((d) => {
 			const match =
 				String(d.sensor_id) === String(sensor.sensor_id) &&
-				d.type === sensor.type &&
-				normalize(d.facility || '') === normalizedSensorLocation;
+				d.type === sensor.type
+				
 			return match;
 		});
 
