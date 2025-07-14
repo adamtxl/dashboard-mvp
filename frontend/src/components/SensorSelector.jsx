@@ -1,104 +1,138 @@
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo } from 'react';
 
 function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
-  const [location, setLocation] = useState('')
-  const [type, setType] = useState('')
-  const [sensorName, setSensorName] = useState('')
+	const [location, setLocation] = useState('');
+	const [type, setType] = useState('');
+	const [sensorName, setSensorName] = useState('');
+	const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Filter sensor names based on selected location and type
-  const filteredSensorNames = useMemo(() => {
-    return sensorNames
-      .filter(obj =>
-        (!location || obj.facility === location) &&
-        (!type || obj.type === type)
-      )
-      .reduce((acc, obj) => {
-        if (!acc.includes(obj.sensor_name)) acc.push(obj.sensor_name)
-        return acc
-      }, [])
-  }, [sensorNames, location, type])
+	const filteredSensorNames = useMemo(() => {
+		return sensorNames.filter((obj) => (!location || obj.location === location) && (!type || obj.type === type));
+	}, [sensorNames, location, type]);
 
-  useEffect(() => {
-    if (locations.length > 0 && !location) setLocation(locations[0])
-    if (sensorTypes.length > 0 && !type) setType(sensorTypes[0])
-  }, [locations, sensorTypes])
+	useEffect(() => {
+		if (sensorNames.length > 0 && !location) {
+			const defaultLocation = sensorNames[0].location;
+			setLocation(defaultLocation);
+		}
+		if (sensorTypes.length > 0 && !type) setType(sensorTypes[0]);
+	}, [sensorNames, sensorTypes]);
 
-  useEffect(() => {
-    if (filteredSensorNames.length > 0) {
-      setSensorName(filteredSensorNames[0])
-    } else {
-      setSensorName('')
-    }
-  }, [filteredSensorNames])
+	useEffect(() => {
+		if (filteredSensorNames.length > 0) {
+			setSensorName(filteredSensorNames[0].sensor_id);
+		} else {
+			setSensorName('');
+		}
+	}, [filteredSensorNames]);
 
-  const handleAdd = () => {
-    if (location && type && sensorName) {
-      const newSensor = {
-        facility: location,
-        type,
-        sensor_name: sensorName,
-      }
-      console.log("🚀 Adding sensor:", newSensor)
-      onAddSensor(newSensor)
-    } else {
-      alert("Please select a facility, sensor type, and sensor name.")
-    }
-  }
+	useEffect(() => {
+		const observer = new MutationObserver(() => {
+			setIsDarkMode(document.body.classList.contains('dark-mode'));
+		});
 
-  return (
-    <div className="card bg-secondary text-white shadow-sm mb-4">
-      <div className="card-body">
-        <h5 className="card-title mb-4">➕ Add a Widget</h5>
+		observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
-        <div className="row g-3 align-items-end">
-          <div className="col-md-4">
-            <label className="form-label">Facility</label>
-            <select
-              className="form-select form-select-sm bg-dark text-white border-light"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            >
-              {locations.map(loc => (
-                <option key={loc} value={loc}>{loc}</option>
-              ))}
-            </select>
-          </div>
+		// Set initial state
+		setIsDarkMode(document.body.classList.contains('dark-mode'));
 
-          <div className="col-md-4">
-            <label className="form-label">Sensor Type</label>
-            <select
-              className="form-select form-select-sm bg-dark text-white border-light"
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-            >
-              {sensorTypes.map(t => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
-          </div>
+		return () => observer.disconnect();
+	}, []);
 
-          <div className="col-md-4">
-            <label className="form-label">Sensor Name</label>
-            <select
-              className="form-select form-select-sm bg-dark text-white border-light"
-              value={sensorName}
-              onChange={(e) => setSensorName(e.target.value)}
-            >
-              {filteredSensorNames.map(name => (
-                <option key={name} value={name}>{name}</option>
-              ))}
-            </select>
-          </div>
+	const handleAdd = () => {
+		if (location && type && sensorName) {
+			const selected = filteredSensorNames.find((s) => String(s.sensor_id) === String(sensorName));
+			const newSensor = {
+				location: selected?.location,
+				type,
+				sensor_id: sensorName,
+				display_name: selected?.display_name || sensorName,
+			};
+			console.log('🚀 Adding sensor:', newSensor);
+			onAddSensor(newSensor);
+		} else {
+			alert('Please select a location, sensor type, and sensor name.');
+		}
+	};
 
-          <div className="col-12 text-end mt-3">
-            <button className="btn btn-info px-4" onClick={handleAdd}>
-              ➕ Add Widget
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+	return (
+		<div className='card shadow-lg h-100 themed-bg themed-border themed-text'>
+			<div className='card-body themed-gradient themed-text'>
+				<h5 className='card-title mb-4'>➕ Add a Widget</h5>
+
+				{sensorNames.length === 0 || locations.length === 0 ? (
+					<div className='alert alert-warning mt-3'>
+						⚠️ No sensors or locations available. Please check backend data.
+					</div>
+				) : (
+					<div className='row g-3 align-items-end'>
+						<div className='col-md-4'>
+							<label className='form-label'>Location</label>
+							<select
+								className='form-select form-select-sm themed-select'
+								value={location}
+								onChange={(e) => setLocation(e.target.value)}
+							>
+								{locations.map((loc) => (
+									<option key={loc.id} value={loc.name}>
+										{loc.name}
+									</option>
+								))}
+							</select>
+						</div>
+
+						<div className='col-md-4 '>
+							<label className='form-label'>Sensor Type</label>
+							<select
+								className='form-select form-select-sm themed-select'
+								value={type}
+								onChange={(e) => setType(e.target.value)}
+							>
+								{sensorTypes.filter(Boolean).map((t) => (
+									<option key={t} value={t}>
+										{t}
+									</option>
+								))}
+							</select>
+						</div>
+
+						<div className='col-md-4'>
+							<label className='form-label'>Sensor Name</label>
+							<select
+								className='form-select form-select-sm themed-select'
+								value={sensorName}
+								onChange={(e) => setSensorName(e.target.value)}
+							>
+								{filteredSensorNames.map((sensor) => (
+									<option key={sensor.sensor_id} value={sensor.sensor_id}>
+										{sensor.display_name || sensor.sensor_id}
+									</option>
+								))}
+							</select>
+						</div>
+
+						<div className='col-12 text-end mt-3'>
+							<button
+								className='btn btn-info px-4 transition-all '
+								style={{
+									transition: 'transform 0.15s ease-in-out',
+									backgroundColor: isDarkMode ? '#4c777d' : 'rgba(15, 171, 93, 0.55)',
+									color: '#fff',
+									border: `solid 1px ${isDarkMode ? '#4c777d' : 'rgba(15, 171, 93, 0.55)'}`,
+								}}
+								onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+								onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+								onClick={handleAdd}
+								disabled={sensorNames.length === 0 || locations.length === 0}
+							>
+								+ Add Widget
+							</button>
+						</div>
+					</div>
+				)}
+			</div>
+		</div>
+	);
 }
 
-export default SensorSelector
+export default SensorSelector;
