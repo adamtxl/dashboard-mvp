@@ -7,8 +7,6 @@ export function normalize(value) {
     .replace(/\u00A0/g, ' ')
     .trim()
     .toLowerCase();
-  if (value !== result) {
-    console.log(`🔍 Normalized '${value}' => '${result}'`);
-  }
+  // Remove any non-alphanumeric characters except spaces
   return result;
 }
