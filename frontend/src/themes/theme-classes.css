@@ -80,6 +80,7 @@ body.dark-mode .themed-select {
   background-color: var(--accent-color);
   color: var(--bg-color);
   border: none;
+  margin: 0 0.25rem;
 }
 
 .btn-view:hover {
@@ -89,6 +90,7 @@ body.dark-mode .themed-select {
 .btn-rename {
   border: 1px solid var(--info-color);
   color: var(--info-color);
+  margin: 1 0.25rem ;
 }
 
 .btn-rename:hover {
@@ -99,6 +101,7 @@ body.dark-mode .themed-select {
 .btn-delete {
   border: 1px solid var(--danger-color);
   color: var(--danger-color);
+  margin: 0 0.25rem;
 }
 
 .btn-delete:hover {

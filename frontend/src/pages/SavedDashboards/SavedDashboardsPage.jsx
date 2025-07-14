@@ -88,7 +88,7 @@ function SavedDashboardsPage() {
 									<strong>{dashboard.name}</strong>
 									<div className='mt-2'>
 										<button className='btn btn-view btn-sm' onClick={() => navigate(`/dashboard/${dashboard.id}`)}>
-											🔍 View
+											🔍 View/Edit
 										</button>
 										<button
 											className='btn btn-secondary btn-sm me-2'

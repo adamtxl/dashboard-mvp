@@ -8,7 +8,13 @@ import { fetchSensors, normalizeSensorMetadata } from '../../services/api/sensor
 import { useAuth } from '../../AuthContext';
 import { fetchReadingsBySensor } from '../../services/api/readings';
 import { fetchLocations } from '../../services/api/locations';
-import { createDashboard, getDashboardById, getUserDashboards, getDashboard } from '../../services/api/dashboards';
+import {
+	createDashboard,
+	getDashboardById,
+	getUserDashboards,
+	getDashboard,
+	updateDashboard,
+} from '../../services/api/dashboards';
 
 function Dashboard() {
 	const [rawData, setRawData] = useState([]);
@@ -28,11 +34,16 @@ function Dashboard() {
 	const [customRangeApplied, setCustomRangeApplied] = useState(false);
 	const [groupByType, setGroupByType] = useState(false);
 	const { dashboardId } = useParams();
+	const isEditing = !!dashboardId; // truthy if editing, false if it's a blank dashboard
+	const [dashboardName, setDashboardName] = useState('');
+	const [toastMessage, setToastMessage] = useState(null);
+	const [toastType, setToastType] = useState('success');
+	const [isEditingName, setIsEditingName] = useState(false);
 
 	const loadDashboard = async (dashboardId, sensorMetadata) => {
 		try {
 			const data = await getDashboard(dashboardId);
-
+			setDashboardName(data.name);
 			const sensorList = data.sensor_ids
 				.map((id) => {
 					const match = sensorMetadata.find((s) => s.sensor_id === id);
@@ -54,13 +65,15 @@ function Dashboard() {
 						const rawReadings = await fetchReadingsBySensor(sensor.sensor_id);
 						return rawReadings.map((r) => ({ ...r, type: sensor.type }));
 					} catch (err) {
-						return [];
+						console.error('Failed to load dashboard', err);
 					}
 				})
 			);
 
 			setRawData(readings.flat());
-		} catch (err) {}
+		} catch (err) {
+			console.error('Failed to load dashboard', err);
+		}
 	};
 
 	useEffect(() => {
@@ -144,7 +157,8 @@ function Dashboard() {
 
 	const handleSaveDashboard = async () => {
 		const name = prompt('Enter a name for this dashboard:');
-		if (!name) return;
+		if (!selectedSensors.length) return alert('Please add sensors first.');
+		if (!name.trim()) return;
 
 		try {
 			const sensorIds = selectedSensors.map((s) => s.sensor_id);
@@ -155,21 +169,79 @@ function Dashboard() {
 				is_admin_only: false,
 			};
 			await createDashboard(payload);
-			alert('Dashboard saved!');
+			setToastType('success');
+			setToastMessage('Dashboard saved!');
+			setTimeout(() => setToastMessage(null), 3000);
 		} catch (err) {
 			alert('Could not save dashboard.');
 		}
 	};
 
+	const handleUpdateDashboard = async () => {
+		if (!dashboardId) return;
+		if (!selectedSensors.length) {
+			alert('Please add at least one sensor before saving.');
+			return;
+		}
+
+		if (!dashboardName || !dashboardName.trim()) {
+			alert('Dashboard name cannot be empty.');
+			return;
+		}
+		try {
+			const sensorIds = selectedSensors.map((s) => s.sensor_id);
+			await updateDashboard(dashboardId, { sensor_ids: sensorIds });
+			setToastType('success');
+			setToastMessage('Dashboard saved!');
+			setTimeout(() => setToastMessage(null), 3000);
+		} catch (err) {
+			alert('Could not update dashboard.');
+		}
+	};
+
 	return (
 		<>
+			{toastMessage && (
+				<div className={`alert alert-${toastType} position-fixed top-0 end-0 m-3 shadow`} role='alert'>
+					{toastMessage}
+				</div>
+			)}
 			<div className='container py-4 themed-gradient'>
 				<div className='d-flex justify-content-between align-items-center mb-4'>
-					<h1 className='themed-title d-flex align-items-center gap-2'>
-						<img src='/assets/rjes-logo.png' alt='RJES Logo' height='50' />
-						Sensor Dashboard
-					</h1>
-					
+					<div className='mb-4'>
+						<div className='d-flex align-items-center gap-2'>
+							<img src='/assets/rjes-logo.png' alt='RJES Logo' height='50' />
+							<h1 className='themed-title m-0'>Sensor Dashboard</h1>
+						</div>
+
+						{dashboardName &&
+							(isEditingName ? (
+								<input
+									className='form-control themed-input mt-2 ms-1'
+									value={dashboardName}
+									onChange={(e) => setDashboardName(e.target.value)}
+									onBlur={() => setIsEditingName(false)
+										
+									}
+									onKeyDown={(e) => {
+										if (e.key === 'Enter') {
+											setIsEditingName(false);
+										}
+									}}
+									autoFocus
+								/>
+							) : (
+								<h4
+									className='text-white mt-2 ms-1'
+									onClick={() => setIsEditingName(true)}
+									style={{ cursor: 'pointer', borderBottom: '1px dashed #ccc' }}
+									title='Click to edit name'
+								>
+									{dashboardName}
+								</h4>
+							))}
+					</div>
+
 					<div>
 						<label className='me-2'>Time Range:</label>
 						<select
@@ -208,6 +280,16 @@ function Dashboard() {
 						<button className='btn btn-info' onClick={() => setCustomRangeApplied(true)}>
 							Apply
 						</button>
+						<button
+							className='btn btn-secondary'
+							onClick={() => {
+								setCustomStart('');
+								setCustomEnd('');
+								setCustomRangeApplied(false);
+							}}
+						>
+							Clear
+						</button>
 					</div>
 				)}
 				<label className='form-label mb-0 text-white'>
@@ -226,8 +308,12 @@ function Dashboard() {
 						onChange={() => setGroupByType(!groupByType)}
 					/>
 					<label className='form-check-label'>Group Sensors by Type</label>
-					<button className='btn themed-btn ms-3' onClick={handleSaveDashboard}>
-						💾 Save Dashboard
+					<button
+						className='btn themed-btn ms-3'
+						disabled={!selectedSensors.length}
+						onClick={isEditing ? handleUpdateDashboard : handleSaveDashboard}
+					>
+						{isEditing ? '💾 Save Changes' : '💾 Save Dashboard'}
 					</button>
 				</div>
 				<SensorSelector
