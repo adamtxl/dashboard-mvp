@@ -5,6 +5,7 @@ import GroupedSensorChart from '../../components/sensorchart/GroupedSensorChart'
 import SensorSelector from '../../components/SensorSelector';
 import { useAuth } from '../../AuthContext';
 import { useDashboardData } from '../../hooks/useDashboardData';
+import { normalizeReadings } from '../../utils/normalizeReadings';
 
 function Dashboard() {
 	const [timeRange, setTimeRange] = useState('all');
@@ -21,6 +22,7 @@ function Dashboard() {
 	const [toastMessage, setToastMessage] = useState(null);
 	const [toastType, setToastType] = useState('success');
 	const [isEditingName, setIsEditingName] = useState(false);
+	const [tempUnit, setTempUnit] = useState('C');
 	const {
 		rawData,
 		locations,
@@ -75,6 +77,7 @@ function Dashboard() {
 		}
 	});
 
+	const normalizedData = useMemo(() => normalizeReadings(rawData, tempUnit), [rawData, tempUnit]);
 	const handleSaveDashboard = async () => {
 		const name = prompt('Enter a name for this dashboard:');
 		if (!selectedSensors.length) return alert('Please add sensors first.');
@@ -256,6 +259,19 @@ function Dashboard() {
 								onChange={() => setGroupByType(!groupByType)}
 							/>
 							<label className='form-check-label'>Group Sensors by Type</label>
+							<div className='form-check form-switch text-white ms-3'>
+								<input
+									className='form-check-input'
+									type='checkbox'
+									id='unitToggle'
+									checked={tempUnit === 'F'}
+									onChange={() => setTempUnit(tempUnit === 'C' ? 'F' : 'C')}
+								/>
+								<label className='form-check-label' htmlFor='unitToggle'>
+									°{tempUnit === 'C' ? 'C' : 'F'}
+								</label>
+							</div>
+
 							<button
 								className='btn themed-btn ms-3'
 								disabled={!selectedSensors.length}
@@ -287,11 +303,12 @@ function Dashboard() {
 												<GroupedSensorChart
 													sensorType={type}
 													sensors={sensorsOfType}
-													rawData={rawData}
+													rawData={normalizeReadings}
 													timeRange={timeRange}
 													customStart={customStart}
 													customEnd={customEnd}
 													customRangeApplied={customRangeApplied}
+													tempUnit={tempUnit}
 												/>
 											</div>
 									  ))
@@ -317,6 +334,7 @@ function Dashboard() {
 														alertConfig={alertConfig}
 														onConfigChange={(config) => handleAlertConfigUpdate(sensorKey, config)}
 														onRemove={handleSensorRemove}
+														tempUnit={tempUnit}
 													/>
 												</div>
 											);

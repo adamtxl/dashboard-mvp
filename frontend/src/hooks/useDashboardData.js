@@ -1,11 +1,12 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
-import { fetchSensors, normalizeSensorMetadata } from '../services/api/sensors';
+import { fetchSensors, normalizeSensorMetadata, normalizeSensorData } from '../services/api/sensors';
 import { fetchLocations } from '../services/api/locations';
 import { fetchReadingsBySensor } from '../services/api/readings';
 import { getDashboard } from '../services/api/dashboards';
 import { updateDashboard as apiUpdateDashboard } from '../services/api/dashboards';
+import { cToF } from '../utils/ctof';
 
 
 export const useDashboardData = () => {
@@ -40,7 +41,7 @@ export const useDashboardData = () => {
 			setLocations(locs);
 			setSensors(rawSensors);
 			setSensorTypes([...new Set(rawSensors.map((s) => s.sensor_type_name))]);
-			const normalized = normalizeSensorMetadata(rawSensors, locs);
+			const normalized = normalizeSensorData(rawSensors, locs);
 			setSensorNames(normalized);
 
 			if (dashboardId) {
@@ -71,6 +72,7 @@ export const useDashboardData = () => {
 						display_name: match.display_name,
 						location: match.location,
 						type: match.type,
+						unit: match.unit || 'C',
 					};
 				})
 				.filter(Boolean);

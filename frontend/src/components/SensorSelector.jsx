@@ -55,6 +55,7 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
 		}
 	};
 
+
 	return (
 		<div className='card shadow-lg h-100 themed-bg themed-border themed-text'>
 			<div className='card-body themed-gradient themed-text'>
@@ -103,11 +104,13 @@ function SensorSelector({ locations, sensorTypes, sensorNames, onAddSensor }) {
 								value={sensorName}
 								onChange={(e) => setSensorName(e.target.value)}
 							>
-								{filteredSensorNames.map((sensor) => (
-									<option key={sensor.sensor_id} value={sensor.sensor_id}>
-										{sensor.display_name || sensor.sensor_id}
-									</option>
-								))}
+								{filteredSensorNames
+									.filter((sensor) => sensor.sensor_id !== undefined)
+									.map((sensor) => (
+										<option key={sensor.sensor_id} value={sensor.sensor_id}>
+											{sensor.display_name || sensor.sensor_id}
+										</option>
+									))}
 							</select>
 						</div>
 

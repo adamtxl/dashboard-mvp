@@ -14,6 +14,7 @@ import {
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import { normalize } from '../../utils/normalize';
+import { cToF } from '../../utils/ctof';
 
 ChartJS.register(
 	LineElement,
@@ -65,10 +66,20 @@ function SensorChart({
 	customStart,
 	customEnd,
 	customRangeApplied,
+	tempUnit,
 }) {
 	const [showConfig, setShowConfig] = useState(false);
 	const [customChartType, setCustomChartType] = useState('');
 	const { location, sensor_id, type } = sensor || {};
+	console.log('Sensor object received by SensorChart:', sensor);
+
+const displayUnit = useMemo(() => {
+  if (type === 'temperature') {
+    return tempUnit === 'F' ? '°F' : '°C';
+  }
+  return sensor?.unit || '';
+}, [type, sensor?.unit, tempUnit]);
+
 	const resolvedChartType = customChartType || chartTypeMap[type] || chartTypeMap.default;
 	const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -87,10 +98,8 @@ function SensorChart({
 
 		const normalizedSensorLocation = normalize(sensor.location);
 		const base = rawData.filter((d) => {
-			const match =
-				String(d.sensor_id) === String(sensor.sensor_id) &&
-				d.type === sensor.type
-				
+			const match = String(d.sensor_id) === String(sensor.sensor_id) && d.type === sensor.type;
+
 			return match;
 		});
 
@@ -134,7 +143,10 @@ function SensorChart({
 		const datasets = [
 			{
 				label: type,
-				data: filteredData.map((d) => ({ x: new Date(d.timestamp), y: d.value })),
+				data: filteredData.map((d) => ({
+					x: new Date(d.timestamp),
+					y: sensor?.unit === '°C' && tempUnit === 'F' ? cToF(d.value) : d.value,
+				})),
 				borderColor: '#36a2eb',
 				backgroundColor:
 					resolvedChartType === 'bar'
@@ -147,7 +159,13 @@ function SensorChart({
 			},
 			{
 				label: 'Alert',
-				data: filteredData.filter((d) => d.alert).map((d) => ({ x: new Date(d.timestamp), y: d.value })),
+				data: filteredData
+					.filter((d) => d.alert)
+					.map((d) => ({
+						x: new Date(d.timestamp),
+						y: sensor?.unit === '°C' && tempUnit === 'F' ? cToF(d.value) : d.value,
+					})),
+
 				borderColor: 'red',
 				backgroundColor: 'red',
 				pointRadius: 10,
@@ -159,7 +177,10 @@ function SensorChart({
 		if (alertConfig.showAverage && averageValue !== null) {
 			datasets.push({
 				label: 'Average',
-				data: filteredData.map((d) => ({ x: new Date(d.timestamp), y: averageValue })),
+				data: filteredData.map((d) => ({
+					x: new Date(d.timestamp),
+					y: sensor?.unit === '°C' && tempUnit === 'F' ? cToF(averageValue) : averageValue,
+				})),
 				borderColor: 'orange',
 				borderDash: [6, 6],
 				pointRadius: 0,
@@ -218,8 +239,9 @@ function SensorChart({
 					max,
 					ticks: {
 						autoSkip: false,
-						maxTicksLimit: 12,
+						maxTicksLimit: 120,
 						color: isDarkMode ? '#fff' : '#1e293b',
+					
 					},
 					title: {
 						display: true,
@@ -231,10 +253,11 @@ function SensorChart({
 					beginAtZero: true,
 					ticks: {
 						color: isDarkMode ? '#fff' : '#1e293b',
+							callback: (value) => `${value}${displayUnit ? ` ${displayUnit}` : ''}`
 					},
 					title: {
 						display: true,
-						text: 'Value',
+						text: `Value`,
 						color: isDarkMode ? '#fff' : '#1e293b',
 					},
 				},
