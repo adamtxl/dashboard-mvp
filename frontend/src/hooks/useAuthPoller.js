@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext.jsx";
 
 
-export const useAuthPoller = (intervalMs = 300000) => { // default 5 min
+export const useAuthPoller = (intervalMs = 300000) => {
   const navigate = useNavigate();
   const { logout } = useAuth();
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("/users/me", {
+        const res = await fetch(`${API_BASE_URL}/users/me`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`,
           },
@@ -20,8 +21,8 @@ export const useAuthPoller = (intervalMs = 300000) => { // default 5 min
           if (res.status === 401 || res.status === 403) {
             console.warn("Session expired, logging out.");
             localStorage.removeItem("token");
-            logout(); // clear auth context
-            navigate("/login"); //redirect to a logout page
+            logout();
+            navigate("/login");
           }
         }
       } catch (err) {
@@ -30,8 +31,9 @@ export const useAuthPoller = (intervalMs = 300000) => { // default 5 min
     };
 
     const interval = setInterval(checkAuth, intervalMs);
-    checkAuth(); // run immediately on mount
+    checkAuth();
 
-    return () => clearInterval(interval); // cleanup
-  }, [navigate, intervalMs, logout]);
+    return () => clearInterval(interval);
+  }, [navigate, intervalMs, logout, API_BASE_URL]);
 };
+
