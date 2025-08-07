@@ -1,11 +1,10 @@
 import { getAuthHeaders } from './auth'; 
 
-const API_BASE = '/api/dashboards';
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const getUserDashboards = async () => {
     
-	const res = await fetch(`${BASE_URL}/dashboards`, {
+	const res = await fetch(`${BASE_URL}/dashboards/`, {
 		headers: getAuthHeaders(),
 	});
 
@@ -33,7 +32,7 @@ export const deleteDashboard = async (id) => {
 
 
 export const createDashboard = async (dashboardData) => {
-  const response = await fetch(`${BASE_URL}/dashboards`, {
+  const response = await fetch(`${BASE_URL}/dashboards/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -51,7 +50,7 @@ export const createDashboard = async (dashboardData) => {
 };
 
 export const getDashboardById = async (id) => {
-	const res = await fetch(`${API_BASE}/${id}`, {
+	const res = await fetch(`${BASE_URL}/dashboards/${id}`, {
 		headers: getAuthHeaders(),
 	});
 	if (!res.ok) throw new Error('Failed to fetch dashboard');
