@@ -8,6 +8,9 @@ import { useDashboardData } from '../../hooks/useDashboardData';
 import { normalizeReadings } from '../../utils/normalizeReadings';
 
 function Dashboard() {
+
+	const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+	console.log("🌍 Dashboard API_BASE_URL:", API_BASE_URL);
 	const [timeRange, setTimeRange] = useState('all');
 	const [sortBy, setSortBy] = useState('sensor_id');
 
@@ -56,6 +59,7 @@ function Dashboard() {
 
 	useEffect(() => {
 		loadData();
+		
 	}, []);
 
 	useEffect(() => {
@@ -145,6 +149,7 @@ function Dashboard() {
 							<div className='mb-4'>
 								<div className='d-flex align-items-center gap-2'>
 									<img src='/assets/rjes-logo.png' alt='RJES Logo' height='50' />
+									
 									<h1 className='themed-title m-0'>Sensor Dashboard</h1>
 								</div>
 
