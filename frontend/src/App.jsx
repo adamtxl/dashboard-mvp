@@ -8,6 +8,7 @@ import NavBar from './components/NavBar/NavBar';
 import RequireAuth from './components/RequireAuth';
 import SavedDashboardsPage from './pages/SavedDashboards/SavedDashboardsPage';
 import { AuthPollerWrapper } from './components/AuthPollWrapper/AuthPollerWrapper';
+import AdminBusinessList from './pages/Admin/AdminBusinesses';
 
 import './themes/theme.css';
 import './themes/theme-classes.css';
@@ -80,6 +81,14 @@ function App() {
 							element={
 								<RequireAuth>
 									<SavedDashboardsPage />
+								</RequireAuth>
+							}
+						/>
+						<Route
+							path='/admin/businesses'
+							element={
+								<RequireAuth>
+									<AdminBusinessList />
 								</RequireAuth>
 							}
 						/>
