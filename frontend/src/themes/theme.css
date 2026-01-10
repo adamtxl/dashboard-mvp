@@ -35,3 +35,7 @@ body.dark-mode {
   color: var(--text-color);
 }
 
+.custom-error-message {
+  color: #ff6b6b; /* bright red */
+  font-weight: bold;
+}
